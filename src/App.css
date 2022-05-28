@@ -1,6 +1,6 @@
 #wrapper {
   width: 100%;
-  height: auto;
+  height: 100%;
   border: 1px solid black;
   display: inline-grid;
   align-items: center;
@@ -10,4 +10,13 @@
 #button{
   height: 20px;
   width: 100px;
+}
+
+#can {
+  width:100%;
+}
+
+#panel {
+  display: flex;
+  justify-content: center;
 }

@@ -280,7 +280,7 @@ export default class Panel extends Component {
 
   render() {
     return(
-        <div>
+        <div id="panel">
             <button id="button" onClick={playBigThree}>Big Three</button>
             <button id="button" onClick={playAll}>Whole Chart</button>
         </div>

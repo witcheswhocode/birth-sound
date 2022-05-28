@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from 'react';
 
 const Canvas = props => {
     const canvasRef = useRef(null);
-    const wwidth = window.innerWidth * 0.5;
+    const wwidth = window.innerWidth * 0.9;
     const wheight = window.innerHeight * 0.5;
 
     const signInfo = {
@@ -43,7 +43,7 @@ const Canvas = props => {
     const draw = (context, canvas, frameCount) => {
         const signs = ['sun', 'moon', 'asc', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto', 'northnode', 'chiron', 'mc' ];
 
-        console.log(canvas);
+        console.log(canvas.width);
         const width = canvas.width;
         const height = canvas.height;
         const cx = canvas.width*0.5;
@@ -143,7 +143,6 @@ const Canvas = props => {
       for(let i = 0; i<num;i++){
   
         let angle = (slice1 * i)-(slice1*3)*0.8;
-        console.log(angle);
   
         x = cx + (width*0.3) * Math.sin(-angle);
         y = cy + (height*0.3) * Math.cos(-angle);
@@ -178,7 +177,6 @@ const Canvas = props => {
       for(let i = 0; i<num;i++){
   
         let angle = (slice1 * i)-(slice1*3)*0.82;
-        console.log(angle);
   
         x = cx + (width*0.13) * Math.sin(-angle);
         y = cy + (height*0.13) * Math.cos(-angle);
@@ -199,7 +197,6 @@ const Canvas = props => {
         var text = '♍';
         var font = "bold 12px serif";
         context.font = font;
-        console.log(signInfo['aries'].html);
         // Move it down by half the text height and left by half the text width
         var tw = context.measureText(text).width;
         var th = context.measureText("w").width; // this is a GUESS of height
@@ -214,8 +211,8 @@ const Canvas = props => {
     useEffect(() => {
         
         const canvas = canvasRef.current
-        canvas.width = 500
-        canvas.height = 500
+        canvas.width = 400
+        canvas.height = 400
         const context = canvas.getContext('2d')
         let frameCount = 0;
         let animationFrameId;
