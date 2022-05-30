@@ -1,0 +1,14 @@
+{
+    "aries": {"major":"C","minor":"Am"},
+    "taurus": {"major":"G","minor":"Em"},
+    "gemini": {"major":"D","minor":"Bm"}, 
+    "cancer": {"major":"A","minor":"F#m"},
+    "leo": {"major":"E","minor":"C#m"},
+    "virgo": {"major":"B","minor":"G#m"},
+    "libra": {"major":"F#","minor":"D#m"}, 
+    "scorpio": {"major":"C#","minor":""}, 
+    "sagittarius": {"major":"G#","minor":"Fm"}, 
+    "capricorn": {"major":"D#","minor":"Cm"}, 
+    "aquarius": {"major":"A#","minor":"Gm"}, 
+    "pisces": {"major":"F","minor":"Dm"}
+  }
