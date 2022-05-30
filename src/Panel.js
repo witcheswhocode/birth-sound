@@ -220,41 +220,43 @@ function playBigThree(){
 }
 function playAll(){
   const now = Tone.now();
-  const signs = ['sun', 'moon', 'asc', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto', 'northnode', 'chiron', 'mc' ];
 
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[0]]][type]+scale,now);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[0]]][type]+scale,now);  
   sampler.triggerRelease(now+1);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[1]]][type]+scale,now+0.5);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[1]]][type]+scale,now+0.5);  
   sampler.triggerRelease(now+1.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[2]]][type]+scale,now+1);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[2]]][type]+scale,now+1);  
   sampler.triggerRelease(now+2);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[3]]][type]+scale,now+1.5);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[3]]][type]+scale,now+1.5);  
   sampler.triggerRelease(now+2.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[4]]][type]+scale,now+2);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[4]]][type]+scale,now+2);  
   sampler.triggerRelease(now+3);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[5]]][type]+scale,now+2.5);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[5]]][type]+scale,now+2.5);  
   sampler.triggerRelease(now+3.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[6]]][type]+scale,now+3);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[6]]][type]+scale,now+3);  
   sampler.triggerRelease(now+4);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[7]]][type]+scale,now+3.5);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[7]]][type]+scale,now+3.5);  
   sampler.triggerRelease(now+4.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[8]]][type]+scale,now+4);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[8]]][type]+scale,now+4);  
   sampler.triggerRelease(now+5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[9]]][type]+scale,now+4.5);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[9]]][type]+scale,now+4.5);  
   sampler.triggerRelease(now+5.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[10]]][type]+scale,now+5);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[10]]][type]+scale,now+5);  
   sampler.triggerRelease(now+6);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[11]]][type]+scale,now+5.5);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[11]]][type]+scale,now+5.5);  
   sampler.triggerRelease(now+6.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[12]]][type]+scale,now+6);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[12]]][type]+scale,now+6);  
   sampler.triggerRelease(now+7);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[signs[13]]][type]+scale,now+6.5);  
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[13]]][type]+scale,now+6.5);  
   sampler.triggerRelease(now+7.5);
+}
+function playNote(now,planet){
+
+  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planet]][type]+scale,now);  
+  sampler.triggerRelease(now+1);
 }
 
 const Panel = (props) =>  {
-
-  console.log(props);
   const { alternateClick, otherAlternateClick, label } = props;
 
   const [userInput, setUserInput] = useState('');
@@ -262,12 +264,18 @@ const Panel = (props) =>  {
       console.log('test function');
   }
   const handleClick = () => {
-    testFunction();
-    alternateClick(userInput);
+    const now = Tone.now();
+    let nowInc = 0;
+    console.log(typeof(currentBirthChart));
+    for (var planet in currentBirthChart) {
+      playNote(now+nowInc,planet);
+      alternateClick(currentBirthChart[planet],(now+nowInc));
+      nowInc += 0.5;
+    };
   }
   const handleOtherClick = () => {
-    testFunction();
-    otherAlternateClick(userInput);
+    //playAll();
+    otherAlternateClick('virgo');
   }
   return(
       <div id="panel">

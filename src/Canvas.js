@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect,componentDidMount, useState } from 'react';
 import Panel from './Panel';
 
 
@@ -172,16 +172,16 @@ const Canvas = props => {
       }
       createBirthChart(){
         let x,y;
-    
+
         const birthchartOrder = this.chartOrder;
-    
+
         /*var canvas = document.getElementById("can");
         var context = canvas.getContext("2d");*/
         var lastend = 0; // angle start
         var sizeSlice = 10;
         var myTotal = sizeSlice*this.num;
         //const slice = degToRad((360/this.num));
-    
+
         for (var i = 0; i < this.num; i++) {
           this.context.save();
           this.context.translate(this.width*0.17,this.height*0.17);
@@ -192,10 +192,10 @@ const Canvas = props => {
           this.context.fillStyle = getColor(signInfo[birthchartOrder[i]].element);
           this.context.fill();
           this.context.restore();
-    
-    
+
+
           let angle = (this.slice * i)-(this.slice*3)*0.83;
-    
+
           x = this.cx + (this.width*0.40) * Math.sin(-angle);
           y = this.cy + (this.height*0.40) * Math.cos(-angle);
           this.context.save();
@@ -203,15 +203,15 @@ const Canvas = props => {
           this.context.beginPath();
           //context.rotate(angle1);
           var text = birthchartOrder[i]+' / ' + signInfo[birthchartOrder[i]].major;
-          var font = "bold 14px serif";
+          var font = "bold 20px serif";
           this.context.font = font;
           // Move it down by half the text height and left by half the text width
           var tw = this.context.measureText(text).width;
           var th = this.context.measureText("w").width; // this is a GUESS of height
           this.context.fillText(text, (x - 30),(y));
-    
+
           this.context.restore();
-    
+
           this.arcLocations.push(new ArcLocation(lastend, lastend+(Math.PI*2*(sizeSlice/myTotal))));
           lastend += Math.PI*2*(sizeSlice/myTotal);
           this.addPlanets(birthchartOrder[i]);
@@ -315,9 +315,9 @@ const Canvas = props => {
           context.restore();*/
           let planets = this.planetSigns[sign].split(',');
           let positions = this.getSignPosition(this.getQuadrant(sign));
-          console.log(positions)
+          //console.log(positions)
           let xAdd = positions[0], yAdd = positions[1];
-          console.log(this.chartOrder);
+          //console.log(this.chartOrder);
           for (var i = 0; i < planets.length; i++){
             x = this.cx + (this.width*0.33-(i*xAdd)) * Math.sin(-angle);
             y = this.cy + (this.height*0.33-(i*yAdd)) * Math.cos(-angle);
@@ -350,54 +350,43 @@ const Canvas = props => {
     const airActive = '#ede3e7';*/
 
     }
-
+    let birthchart;
     useEffect(() => {
-        
-        const canvas = canvasRef.current
-        canvas.width = 400
-        canvas.height = 400
-        const context = canvas.getContext('2d')
-        let frameCount = 0;
-        let animationFrameId;
+      const canvas = canvasRef.current;
+      console.log(canvas);
+      canvas.width = 400;
+      canvas.height = 400;
+      const context = canvas.getContext('2d');
 
-        let width = canvas.width;
-        let height = canvas.height;
+      let width = canvas.width;
+      let height = canvas.height;
 
-        //context.fillStyle = 'white';
-        //context.fillRect(0, 0, canvas.width, canvas.height);
-        //draw(context, canvas, frameCount);
+      context.fillStyle = 'white';
+      context.fillRect(0, 0, width, height);
 
-        context.fillStyle = 'white';
-        context.fillRect(0, 0, width, height);
-
-        context.fillStyle = '#2B3A67';
-        const birthchart = new Birthchart(lizBirthChart,width,height,context);
-        const bc = birthchart.createBirthChart(width,height);
-
-        //Our draw came here
-        /*const render = () => {
-        frameCount++
-        draw(context, canvas, frameCount)
-        //canvasSketch(draw, settings);
-        animationFrameId = window.requestAnimationFrame(render)
-        }
-        render()
-        
-        return () => {
-            window.cancelAnimationFrame(animationFrameId)
-        }*/
+      context.fillStyle = '#2B3A67';
+      birthchart = new Birthchart(lizBirthChart,width,height,context);
+      const bc = birthchart.createBirthChart(width,height);
     },[]);
 
     const [liftedValue, setLiftedValue] = useState('')
 
-    const handleAlternateClick = (liftedValue) => {
-      console.log("I've been clicked!!!");
-      setLiftedValue(liftedValue);
-      this.hello();
+    const handleAlternateClick = (liftedValue, time) => {
+      //setLiftedValue(liftedValue);
+        setTimeout(() => {
+          birthchart.colorArc(liftedValue,'Active');
+        }, 1000*time);
+        setTimeout(() => {
+          birthchart.colorArc(liftedValue,'');
+        }, (1000*time)+500);
+      console.log(liftedValue)
     }
     
     const handleOtherAlternateClick = (liftedValue) => {
         console.log("I've been other clicked!!!");
+        setTimeout(() => {
+          birthchart.colorArc(liftedValue,'Active');
+        }, 500);
     }
       
     return(
