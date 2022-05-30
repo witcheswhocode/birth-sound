@@ -158,11 +158,26 @@ const Panel = (props) =>  {
       const now = Tone.now();
       let nowInc = 0;
       const synth = new Tone.Synth().toDestination();
-      const seq = new Tone.Sequence((time, note) => {
-        synth.triggerAttackRelease(note, 0.1, time);
-        // subdivisions are given as subarrays
-      }, ["C4", ["E4", "D4", "E4"], "G4", ["A4", "G4"]]).start(0);
+      //const seq = new Tone.Sequence((time, note) => {
+      //  sampler.triggerAttackRelease(note, 0.1, time);
+      //  // subdivisions are given as subarrays
+      //}, [signToNotesLemniscate[currentBirthChart['sun']][type]+scale,
+      // [signToNotesLemniscate[currentBirthChart['sun']][type]+scale, signToNotesLemniscate[currentBirthChart['moon']][type]+scale, signToNotesLemniscate[currentBirthChart['asc']][type]+scale],]).start(0);
+      var seqCount2 = 0;  
+      const seq2 = new Tone.Sequence((time, note) => {
+          if (seqCount2 !== 3 && seqCount2 !== 4){
+            console.log(seqCount2);
+            sampler.triggerAttackRelease(note, 0.1, time);
+          }
+          seqCount2 += 1;
+          // subdivisions are given as subarrays
+        }, [signToNotesLemniscate[currentBirthChart['moon']][type]+scale, signToNotesLemniscate[currentBirthChart['moon']][type]+scale],0.5).start(0);
       Tone.Transport.start();
+      setTimeout(function() {
+        console.log('Now should be stopping');
+        seq2.dispose();
+        sampler.disconnect();
+      },5000)
   }
   return(
       <div id="panel">
