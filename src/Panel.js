@@ -170,18 +170,28 @@ const Panel = (props) =>  {
       console.log('test function');
   }
   const handleClick = () => {
+    let now = Tone.now();
+    let nowInc = 0;
+    let count = 0;
+    console.log(now);
+    for (var planet in currentBirthChart) {
+      if (count === 3) return;
+      playNote(now+nowInc,planet);
+      alternateClick(currentBirthChart[planet],(nowInc));
+      nowInc += 0.5;
+      count += 1;
+    };
+    return;
+  }
+  const handleOtherClick = () => {
     const now = Tone.now();
     let nowInc = 0;
     console.log(typeof(currentBirthChart));
     for (var planet in currentBirthChart) {
       playNote(now+nowInc,planet);
-      alternateClick(currentBirthChart[planet],(now+nowInc));
+      alternateClick(currentBirthChart[planet],(nowInc));
       nowInc += 0.5;
     };
-  }
-  const handleOtherClick = () => {
-    //playAll();
-    otherAlternateClick('virgo');
   }
   return(
       <div id="panel">

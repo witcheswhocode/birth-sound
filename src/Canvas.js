@@ -131,7 +131,7 @@ const Canvas = props => {
           this.context.restore();
 
 
-          let angle = (this.slice * i)-(this.slice*3)*0.83;
+          let angle = (this.slice * i)-(this.slice*3)*0.85;
 
           x = this.cx + (this.width*0.40) * Math.sin(-angle);
           y = this.cy + (this.height*0.40) * Math.cos(-angle);
@@ -220,13 +220,13 @@ const Canvas = props => {
         switch(quadrant){
           // [run,rise,x,y]
           case 1:
-            return [25,25,5,10];
+            return [15,15,-5,10];
           case 2:
-            return [25,25,5,10];
+            return [15,15,-5,5];
           case 3:
-            return [25,25,5,10];
+            return [15,15,-5,5];
           case 4:
-            return [25,25,0,0];
+            return [15,15,-5,0];
           default:
             return [25,25,5,10];
         }
@@ -256,8 +256,8 @@ const Canvas = props => {
           let xAdd = positions[0], yAdd = positions[1];
           //console.log(this.chartOrder);
           for (var i = 0; i < planets.length; i++){
-            x = this.cx + (this.width*0.33-(i*xAdd)) * Math.sin(-angle);
-            y = this.cy + (this.height*0.33-(i*yAdd)) * Math.cos(-angle);
+            x = this.cx + (this.width*0.3-(i*xAdd)) * Math.sin(-angle);
+            y = this.cy + (this.height*0.3-(i*yAdd)) * Math.cos(-angle);
             //console.log(planetInfo[planets[i]]);
             this.context.save();
             //context.translate(x,y);
@@ -310,8 +310,10 @@ const Canvas = props => {
 
     const handleAlternateClick = (liftedValue, time) => {
       //setLiftedValue(liftedValue);
+      //console.log(time);
         setTimeout(() => {
           birthchart.colorArc(liftedValue,'Active');
+          console.log('printing this one');
         }, 1000*time);
         setTimeout(() => {
           birthchart.colorArc(liftedValue,'');
@@ -319,11 +321,14 @@ const Canvas = props => {
       console.log(liftedValue)
     }
     
-    const handleOtherAlternateClick = (liftedValue) => {
+    const handleOtherAlternateClick = (liftedValue, time) => {
         console.log("I've been other clicked!!!");
         setTimeout(() => {
           birthchart.colorArc(liftedValue,'Active');
-        }, 500);
+        }, 1000*time);
+        setTimeout(() => {
+          birthchart.colorArc(liftedValue,'');
+        }, (1000*time)+500);
     }
       
     return(
