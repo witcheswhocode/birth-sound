@@ -293,8 +293,8 @@ const Canvas = props => {
     useEffect(() => {
       const canvas = canvasRef.current;
       console.log(canvas);
-      canvas.width = 400;
-      canvas.height = 400;
+      canvas.width = 600;
+      canvas.height = 600;
       const context = canvas.getContext('2d');
 
       let width = canvas.width;
@@ -324,6 +324,15 @@ const Canvas = props => {
     }
     
     const handleOtherAlternateClick = (liftedValue, time) => {
+      console.log("I've been other clicked!!!");
+      setTimeout(() => {
+        birthchart.colorArc(liftedValue,'Active');
+      }, 1000*time);
+      setTimeout(() => {
+        birthchart.colorArc(liftedValue,'');
+      }, (1000*time)+500);
+    }
+    const handleRhythmAlternateClick = (liftedValue, time) => {
         console.log("I've been other clicked!!!");
         setTimeout(() => {
           birthchart.colorArc(liftedValue,'Active');
@@ -336,7 +345,7 @@ const Canvas = props => {
     return(
       <div>
         <canvas id='can' ref={canvasRef} {...props}></canvas>
-        <Panel alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} />
+        <Panel alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
       </div>
     )
 

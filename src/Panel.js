@@ -109,53 +109,6 @@ const signToNotesLemniscate = require('./data/signsPianoNotes.json');
   return pitchNames[pitch] + octave
 }*/
 
-
-
-function playBigThree(){
-  const now = Tone.now();
-  const bigThree = ['sun', 'moon', 'asc'];
-
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[bigThree[0]]][type]+scale,now);
-  sampler.triggerRelease(now + 1);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[bigThree[1]]][type]+scale,now+0.5);
-  sampler.triggerRelease(now+1.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[bigThree[2]]][type]+scale,now+1);
-  sampler.triggerRelease(now+2);
-   
-  //setTimeout(Tone.Transport.stop(),1000);
-}
-function playAll(){
-  const now = Tone.now();
-
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[0]]][type]+scale,now);  
-  sampler.triggerRelease(now+1);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[1]]][type]+scale,now+0.5);  
-  sampler.triggerRelease(now+1.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[2]]][type]+scale,now+1);  
-  sampler.triggerRelease(now+2);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[3]]][type]+scale,now+1.5);  
-  sampler.triggerRelease(now+2.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[4]]][type]+scale,now+2);  
-  sampler.triggerRelease(now+3);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[5]]][type]+scale,now+2.5);  
-  sampler.triggerRelease(now+3.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[6]]][type]+scale,now+3);  
-  sampler.triggerRelease(now+4);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[7]]][type]+scale,now+3.5);  
-  sampler.triggerRelease(now+4.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[8]]][type]+scale,now+4);  
-  sampler.triggerRelease(now+5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[9]]][type]+scale,now+4.5);  
-  sampler.triggerRelease(now+5.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[10]]][type]+scale,now+5);  
-  sampler.triggerRelease(now+6);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[11]]][type]+scale,now+5.5);  
-  sampler.triggerRelease(now+6.5);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[12]]][type]+scale,now+6);  
-  sampler.triggerRelease(now+7);
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planets[13]]][type]+scale,now+6.5);  
-  sampler.triggerRelease(now+7.5);
-}
 function playNote(now,planet){
 
   sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planet]][type]+scale,now);  
@@ -193,10 +146,37 @@ const Panel = (props) =>  {
       nowInc += 0.5;
     };
   }
+  const handleRhythmClick = () => {
+    /*const now = Tone.now();
+    let nowInc = 0;
+      setInterval(function(now,nowInc,count){
+        playNote(now+nowInc,'sun')
+      },1000);
+      setTimeout(clearInterval)
+      alternateClick(currentBirthChart['sun'],(nowInc));*/
+      Tone.start();
+      const now = Tone.now();
+      let nowInc = 0;
+      const loop = new Tone.Loop((time) => {
+        
+        playNote(now+nowInc,'sun')
+        console.log(time);
+        //nowInc += 1;
+      }, "4n").start(0);
+      const loop2 = new Tone.Loop((time) => {
+        
+        playNote(now+nowInc,'moon')
+        console.log(time);
+        //nowInc += 1;
+      }, "4n").start(0.2);
+      Tone.Transport.start();
+      Tone.Transport.cancel(3);
+  }
   return(
       <div id="panel">
           <button id="button" onClick={handleClick}>Big Three</button>
           <button id="button" onClick={handleOtherClick}>Whole Chart</button>
+          <button id="button" onClick={handleRhythmClick}>Rhythm</button>
       </div>
   )
 }
