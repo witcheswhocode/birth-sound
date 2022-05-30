@@ -367,11 +367,11 @@ const Canvas = props => {
         //context.fillRect(0, 0, canvas.width, canvas.height);
         //draw(context, canvas, frameCount);
 
-        const birthchart = new Birthchart(lizBirthChart,width,height,context);
         context.fillStyle = 'white';
         context.fillRect(0, 0, width, height);
 
         context.fillStyle = '#2B3A67';
+        const birthchart = new Birthchart(lizBirthChart,width,height,context);
         const bc = birthchart.createBirthChart(width,height);
 
         //Our draw came here
@@ -388,12 +388,22 @@ const Canvas = props => {
         }*/
     },[]);
 
+    const [liftedValue, setLiftedValue] = useState('')
 
+    const handleAlternateClick = (liftedValue) => {
+      console.log("I've been clicked!!!");
+      setLiftedValue(liftedValue);
+      this.hello();
+    }
     
+    const handleOtherAlternateClick = (liftedValue) => {
+        console.log("I've been other clicked!!!");
+    }
+      
     return(
       <div>
         <canvas id='can' ref={canvasRef} {...props}></canvas>
-        <Panel {...props} />
+        <Panel alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} />
       </div>
     )
 

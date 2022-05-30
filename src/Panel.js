@@ -255,10 +255,24 @@ function playAll(){
 const Panel = (props) =>  {
 
   console.log(props);
+  const { alternateClick, otherAlternateClick, label } = props;
+
+  const [userInput, setUserInput] = useState('');
+  function testFunction(){
+      console.log('test function');
+  }
+  const handleClick = () => {
+    testFunction();
+    alternateClick(userInput);
+  }
+  const handleOtherClick = () => {
+    testFunction();
+    otherAlternateClick(userInput);
+  }
   return(
       <div id="panel">
-          <button id="button" onClick={playBigThree}>Big Three</button>
-          <button id="button" onClick={playAll}>Whole Chart</button>
+          <button id="button" onClick={handleClick}>Big Three</button>
+          <button id="button" onClick={handleOtherClick}>Whole Chart</button>
       </div>
   )
 }

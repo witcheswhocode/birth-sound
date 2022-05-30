@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 
 export const SomeButton = (props) => {
-    const { alternateClick, label } = props;
+    const { alternateClick, otherAlternateClick, label } = props;
   
     const [userInput, setUserInput] = useState('');
-  
-    const handleOnChange = (event) => {
-      const value = event.target.value;
-      setUserInput(value);    
-    }  
-  
+    function testFunction(){
+        console.log('test function');
+    }
     const handleClick = () => {
+      testFunction();
       alternateClick(userInput);
+    }
+    const handleOtherClick = () => {
+      testFunction();
+      otherAlternateClick(userInput);
     }
   
     return (
       <>
-        <input onChange={handleOnChange} />
-        <button onClick={handleClick}>{label}</button>
+        <button onClick={handleClick}>First</button>
+        <button onClick={handleOtherClick}>Other</button>
       </>
     )
   }
