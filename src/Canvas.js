@@ -140,14 +140,15 @@ const Canvas = props => {
           this.context.rotate(Math.PI/2 + angle);
           this.context.beginPath();
           //context.rotate(angle1);
-          var text = birthchartOrder[i]+' / ' + signInfo[birthchartOrder[i]].major;
+          var text1 = birthchartOrder[i];
+          var text2 = signInfo[birthchartOrder[i]].major;
           var font = "bold 14px serif";
           this.context.font = font;
           // Move it down by half the text height and left by half the text width
-          var tw = this.context.measureText(text).width;
+          var tw = this.context.measureText(text1).width;
           var th = this.context.measureText("w").width; // this is a GUESS of height
-          this.context.fillText(text, 0,0);
-
+          this.context.fillText(text2, 0,0);
+          this.context.fillText(text1, 0,15);
           this.context.restore();
 
           this.arcLocations.push(new ArcLocation(lastend, lastend+(Math.PI*2*(sizeSlice/myTotal))));
