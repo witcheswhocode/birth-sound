@@ -1,15 +1,34 @@
 #wrapper {
   width: 100%;
   height: 100%;
-  border: 1px solid black;
   display: inline-grid;
   align-items: center;
   justify-content: center;
+  font-family: 'Dosis';
+}
+
+#title{
+  width: 100%;
+  height: 100%;
+  display: inline-grid;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Dosis';
+}
+#title h1{
+  color:#2B3A67;
 }
 
 #button{
-  height: 20px;
   width: 100px;
+  font-family: 'Dosis';
+  background-color: #2B3A67;
+  border-color: #2B3A67;
+  color: white;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  margin: 8px;
+  padding: 4px;
 }
 
 #can {

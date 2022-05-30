@@ -142,7 +142,7 @@ const Canvas = props => {
           //context.rotate(angle1);
           var text1 = birthchartOrder[i];
           var text2 = signInfo[birthchartOrder[i]].major;
-          var font = "bold 14px serif";
+          var font = "bold 18px Dosis";
           this.context.font = font;
           // Move it down by half the text height and left by half the text width
           var tw = this.context.measureText(text1).width;
@@ -172,7 +172,7 @@ const Canvas = props => {
       
           this.context.beginPath();
           this.context.rect(-this.w*0.5,1,this.w,this.h);
-          this.context.fillStyle = '#2B3A67';
+          this.context.fillStyle = 'white';//'#2B3A67';
           this.context.fill();
           this.context.restore();
         }
@@ -266,7 +266,7 @@ const Canvas = props => {
             this.context.beginPath();
             //context.rotate(angle1);
             var text = planetInfo[planets[i]];
-            var font = "bold 14px serif";
+            var font = "bold 14px Dosis";
             this.context.font = font;
             // Move it down by half the text height and left by half the text width
             var tw = this.context.measureText(text).width;
