@@ -133,10 +133,11 @@ const Canvas = props => {
 
           let angle = (this.slice * i)-(this.slice*3)*0.85;
 
-          x = this.cx + (this.width*0.40) * Math.sin(-angle);
-          y = this.cy + (this.height*0.40) * Math.cos(-angle);
+          x = this.cx + (this.width*0.35) * Math.sin(-angle);
+          y = this.cy + (this.height*0.35) * Math.cos(-angle);
           this.context.save();
-          //context.translate(x,y);
+          this.context.translate(x,y);
+          this.context.rotate(Math.PI/2 + angle);
           this.context.beginPath();
           //context.rotate(angle1);
           var text = birthchartOrder[i]+' / ' + signInfo[birthchartOrder[i]].major;
@@ -145,7 +146,7 @@ const Canvas = props => {
           // Move it down by half the text height and left by half the text width
           var tw = this.context.measureText(text).width;
           var th = this.context.measureText("w").width; // this is a GUESS of height
-          this.context.fillText(text, (x - 30),(y));
+          this.context.fillText(text, 0,0);
 
           this.context.restore();
 

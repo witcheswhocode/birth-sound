@@ -9,4 +9,4 @@ const lizBirthChart = require('./lizbc.json');
 const krystophChart = require('./krystophbc.json');
 const taylorChart = require('./taylorbc.json');
 const rihannaChart = require('./rihannabc.json');
-export const currentBirthChart = krystophChart;
+export const currentBirthChart = rihannaChart;
