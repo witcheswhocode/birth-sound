@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-//const canvasSketch = require('canvas-sketch');
+import React, { useRef, useEffect, useState } from 'react';
+import Panel from './Panel';
 
 
 const Canvas = props => {
@@ -164,6 +164,9 @@ const Canvas = props => {
         }
         return arr;
       }
+      hello(){
+        console.log('why hello there');
+      }
       getAscendent(){
         return this.asc;
       }
@@ -272,6 +275,8 @@ const Canvas = props => {
           case 10:
           case 11:
             return 1;
+          default:
+            return 0;
         }
       }
       getSignPosition(quadrant){
@@ -285,6 +290,8 @@ const Canvas = props => {
             return [25,25,5,10];
           case 4:
             return [25,25,0,0];
+          default:
+            return [25,25,5,10];
         }
       }
       addPlanets(sign){
@@ -381,8 +388,13 @@ const Canvas = props => {
         }*/
     },[]);
 
+
+    
     return(
-      <canvas id='can' ref={canvasRef} {...props}></canvas>
+      <div>
+        <canvas id='can' ref={canvasRef} {...props}></canvas>
+        <Panel {...props} />
+      </div>
     )
 
 }
