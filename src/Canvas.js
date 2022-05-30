@@ -58,6 +58,7 @@ const Canvas = props => {
         }
         this.chartOrder = this.sortSignOrderToGenerateChart(); 
         this.planetSigns = this.getPlanetLocations(); 
+        this.houseLocations = this.getHouseLocations();
         this.num = 12;
         this.cx = width * 0.5;
         this.cy = height * 0.5;
@@ -83,6 +84,9 @@ const Canvas = props => {
           console.log('else on sign order sort!!!');
           return signOrder;
         }
+      }
+      getHouseLocations(){
+        console.log(this.sun);
       }
       getPlanetLocations(){
         var arr = {};
@@ -156,6 +160,7 @@ const Canvas = props => {
           this.addPlanets(birthchartOrder[i]);
         }
         this.createLines();
+        this.addHouses();
       }
       createLines(){
         let x,y;
@@ -194,6 +199,7 @@ const Canvas = props => {
         this.context.restore();
     
         this.createLines();
+        this.addHouses();
         this.addPlanets(sign);
       }
       getQuadrant(sign){
@@ -231,6 +237,32 @@ const Canvas = props => {
             return [15,15,-5,0];
           default:
             return [25,25,5,10];
+        }
+      }
+      addHouses(){
+        let x,y;
+
+        for(let i = 0; i<this.num;i++){
+
+          let angle = (this.slice * i)-(this.slice*3)*0.82;
+          //console.log(angle);
+
+          x = this.cx + (this.width*0.13) * Math.sin(-angle);
+          y = this.cy + (this.height*0.13) * Math.cos(-angle);
+
+          this.context.beginPath();
+          //context.rotate(angle1);
+          var text = '♍';
+          var font = "bold 12px serif";
+          this.context.font = font;
+          //console.log(signInfo['aries'].html);
+          // Move it down by half the text height and left by half the text width
+          var tw = this.context.measureText(text).width;
+          var th = this.context.measureText("w").width; // this is a GUESS of height
+          this.context.fillText(text, (x),(y));
+
+          this.context.restore();
+
         }
       }
       addPlanets(sign){
