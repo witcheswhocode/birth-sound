@@ -157,20 +157,12 @@ const Panel = (props) =>  {
       Tone.start();
       const now = Tone.now();
       let nowInc = 0;
-      const loop = new Tone.Loop((time) => {
-        
-        playNote(now+nowInc,'sun')
-        console.log(time);
-        //nowInc += 1;
-      }, "4n").start(0);
-      const loop2 = new Tone.Loop((time) => {
-        
-        playNote(now+nowInc,'moon')
-        console.log(time);
-        //nowInc += 1;
-      }, "4n").start(0.2);
+      const synth = new Tone.Synth().toDestination();
+      const seq = new Tone.Sequence((time, note) => {
+        synth.triggerAttackRelease(note, 0.1, time);
+        // subdivisions are given as subarrays
+      }, ["C4", ["E4", "D4", "E4"], "G4", ["A4", "G4"]]).start(0);
       Tone.Transport.start();
-      Tone.Transport.cancel(3);
   }
   return(
       <div id="panel">
