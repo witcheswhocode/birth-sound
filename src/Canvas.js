@@ -1,76 +1,13 @@
 import React, { useRef, useEffect,componentDidMount, useState } from 'react';
 import Panel from './Panel';
-
+import {planets,signOrder,currentBirthChart} from './data/settings';
 
 const Canvas = props => {
     const canvasRef = useRef(null);
 
     
-  const signInfo = {
-    'aries': {'sister':'libra','html':'&#9800;','element':'fire','major':'C','minor':'Am'},
-    'taurus': {'sister':'scorpio','html':'&#9800;','element':'earth','major':'G','minor':'Em'},
-    'gemini': {'sister':'sagittarius','html':'&#9800;','element':'air','major':'D','minor':'Bm'}, 
-    'cancer': {'sister':'capricorn','html':'&#9800;','element':'water','major':'A','minor':'F#m'},
-    'leo': {'sister':'aquarius','html':'&#9800;','element':'fire','major':'E','minor':'C#m'},
-    'virgo': {'sister':'pisces','html':'&#9800;','element':'earth','major':'B','minor':'G#m'},
-    'libra': {'sister':'aries','html':'&#9800;','element':'air','major':'F#','minor':'D#m'}, // major Gb, minor Ebm
-    'scorpio': {'sister':'taurus','html':'&#9800;','element':'water','major':'C#','minor':''}, // major Db, minor Bbm
-    'sagittarius': {'sister':'gemini','html':'&#9800;','element':'fire','major':'G#','minor':'Fm'}, // major Ab
-    'capricorn': {'sister':'cancer','html':'&#9800;','element':'earth','major':'D#','minor':'Cm'}, // major Eb
-    'aquarius': {'sister':'leo','html':'&#9800;','element':'air','major':'A#','minor':'Gm'}, // major Bb
-    'pisces': {'sister':'virgo','html':'&#9800;','element':'water','major':'F','minor':'Dm'}, 
-  }
-  const planetInfo = {
-    'sun': '☉',
-    'moon': '☾',
-    'asc': '☊',
-    'mercury': '☿',
-    'venus': '♀',
-    'mars': '♂',
-    'jupiter': '♃',
-    'saturn': '♄',
-    'uranus': '♅',
-    'neptune': '♆',
-    'pluto': '♇',
-    /*'northnode': 'nn',
-    'chiron': 'c',
-    'mc': 'mc',*/
-  }
-  const planets = ['sun', 'moon', 'asc', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto'/*, 'northnode', 'chiron', 'mc' */];
-  const signOrder = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces'];
-  const lizBirthChart = {
-    'sun': 'taurus',
-    'moon': 'taurus',
-    'asc': 'virgo',
-    'mercury': 'taurus',
-    'venus': 'taurus',
-    'mars': 'taurus',
-    'jupiter': 'taurus',
-    'saturn': 'taurus',
-    'uranus': 'taurus',
-    'neptune': 'taurus',
-    'pluto': 'taurus',
-    'northnode': 'virgo',
-    'chiron': 'virgo',
-    'mc': 'virgo',
-  }
-  /*const lizBirthChart = {
-    'sun': 'virgo',
-    'moon': 'cancer',
-    'asc': 'virgo',
-    'mercury': 'leo',
-    'venus': 'leo',
-    'mars': 'libra',
-    'jupiter': 'leo',
-    'saturn': 'aquarius',
-    'uranus': 'capricorn',
-    'neptune': 'capricorn',
-    'pluto': 'scorpio',
-    'northnode': 'capricorn',
-    'chiron': 'leo',
-    'mc': 'gemini',
-  }*/
-
+  const signInfo = require('./data/signInfo.json');
+  const planetInfo = require('./data/planetInfo.json');
   const degToRad = (degrees) =>{
     return degrees / 180 * Math.PI
   }
@@ -203,7 +140,7 @@ const Canvas = props => {
           this.context.beginPath();
           //context.rotate(angle1);
           var text = birthchartOrder[i]+' / ' + signInfo[birthchartOrder[i]].major;
-          var font = "bold 20px serif";
+          var font = "bold 14px serif";
           this.context.font = font;
           // Move it down by half the text height and left by half the text width
           var tw = this.context.measureText(text).width;
@@ -365,7 +302,7 @@ const Canvas = props => {
       context.fillRect(0, 0, width, height);
 
       context.fillStyle = '#2B3A67';
-      birthchart = new Birthchart(lizBirthChart,width,height,context);
+      birthchart = new Birthchart(currentBirthChart,width,height,context);
       const bc = birthchart.createBirthChart(width,height);
     },[]);
 

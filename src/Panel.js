@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Tone from "tone";
+import {planets,type,scale,currentBirthChart} from './data/settings';
 
 const sampler = new Tone.Sampler({
   urls: {
@@ -98,100 +99,7 @@ const sampler = new Tone.Sampler({
 	baseUrl: "https://nbrosowsky.github.io/tonejs-instruments/samples/piano/",
 }).toDestination();
 
-const signToNotesLemniscate = {
-  'aries': {'major':'C','minor':'Am'},
-  'taurus': {'major':'G','minor':'Em'},
-  'gemini': {'major':'D','minor':'Bm'}, 
-  'cancer': {'major':'A','minor':'F#m'},
-  'leo': {'major':'E','minor':'C#m'},
-  'virgo': {'major':'B','minor':'G#m'},
-  'libra': {'major':'F#','minor':'D#m'}, // major Gb, minor Ebm
-  'scorpio': {'major':'C#','minor':''}, // major Db, minor Bbm
-  'sagittarius': {'major':'G#','minor':'Fm'}, // major Ab
-  'capricorn': {'major':'D#','minor':'Cm'}, // major Eb
-  'aquarius': {'major':'A#','minor':'Gm'}, // major Bb
-  'pisces': {'major':'F','minor':'Dm'}, 
-
-}
-const signToNoteSynth = {
-  'virgo': 'Eb',
-  'libra': 'Bb',
-  'scorpio': 'F',
-  'sagittarius': 'C',
-  'capricorn': 'G',
-  'aquarius': 'D',
-  'pisces': 'A',
-  'aries': 'E',
-  'taurus': 'B',
-  'gemini': 'Gb',
-  'cancer': 'A',
-  'leo': 'Ab',
-}
-const lizBirthChart = {
-  'sun': 'virgo',
-  'moon': 'cancer',
-  'asc': 'virgo',
-  'mercury': 'leo',
-  'venus': 'leo',
-  'mars': 'libra',
-  'jupiter': 'leo',
-  'saturn': 'aquarius',
-  'uranus': 'capricorn',
-  'neptune': 'capricorn',
-  'pluto': 'scorpio',
-  'northnode': 'capricorn',
-  'chiron': 'leo',
-  'mc': 'gemini',
-}
-const taylorBirthChart = {
-  'sun': 'sagittarius',
-  'moon': 'cancer',
-  'asc': 'scorpio',
-  'mercury': 'capricorn',
-  'venus': 'aquarius',
-  'mars': 'scorpio',
-  'jupiter': 'cancer',
-  'saturn': 'capricorn',
-  'uranus': 'capricorn',
-  'neptune': 'capricorn',
-  'pluto': 'scorpio',
-  'northnode': 'aquarius',
-  'chiron': 'cancer',
-  'mc': 'virgo',
-}
-const rihannaBirthChart = {
-  'sun': 'pisces',
-  'moon': 'aries',
-  'asc': 'aries',
-  'mercury': 'aquarius',
-  'venus': 'aries',
-  'mars': 'sagittarius',
-  'jupiter': 'aries',
-  'saturn': 'capricorn',
-  'uranus': 'capricorn',
-  'neptune': 'capricorn',
-  'pluto': 'scorpio',
-  'northnode': 'pisces',
-  'chiron': 'gemini',
-  'mc': 'capricorn',
-}
-const krystophBirthChart = {
-  'sun': 'gemini',
-  'moon': 'gemini',
-  'asc': 'taurus',
-  'mercury': 'gemini',
-  'venus': 'gemini',
-  'mars': 'aries',
-  'jupiter': 'virgo',
-  'saturn': 'aquarius',
-  'uranus': 'capricorn',
-  'neptune': 'capricorn',
-  'pluto': 'scorpio',
-  'northnode': 'capricorn',
-  /*'chiron': 'gemini',
-  'mc': 'capricorn',*/
-}
-const planets = ['sun', 'moon', 'asc', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto'/*, 'northnode', 'chiron', 'mc' */];
+const signToNotesLemniscate = require('./data/signsPianoNotes.json');
 
 /*function midiNumberToPitch (midiNumber) {
   let octave = Math.floor(midiNumber / 12) - 1
@@ -201,9 +109,7 @@ const planets = ['sun', 'moon', 'asc', 'mercury', 'venus', 'mars', 'jupiter', 's
   return pitchNames[pitch] + octave
 }*/
 
-const scale = 2;
-const type = 'major';
-const currentBirthChart = krystophBirthChart;
+
 
 function playBigThree(){
   const now = Tone.now();
