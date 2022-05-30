@@ -163,11 +163,14 @@ const Panel = (props) =>  {
       //  // subdivisions are given as subarrays
       //}, [signToNotesLemniscate[currentBirthChart['sun']][type]+scale,
       // [signToNotesLemniscate[currentBirthChart['sun']][type]+scale, signToNotesLemniscate[currentBirthChart['moon']][type]+scale, signToNotesLemniscate[currentBirthChart['asc']][type]+scale],]).start(0);
-      var seqCount2 = 0;  
+      var seqCount2 = 1;  
       const seq2 = new Tone.Sequence((time, note) => {
-          if (seqCount2 !== 3 && seqCount2 !== 4){
+          if (seqCount2 !== 3 && seqCount2 !== 4 && seqCount2 !== 5 && seqCount2 !== 6){
             console.log(seqCount2);
             sampler.triggerAttackRelease(note, 0.1, time);
+          }
+          else if (seqCount2 === 3){
+            seqCount2 = 0;
           }
           seqCount2 += 1;
           // subdivisions are given as subarrays
@@ -177,7 +180,7 @@ const Panel = (props) =>  {
         console.log('Now should be stopping');
         seq2.dispose();
         sampler.disconnect();
-      },5000)
+      },10000)
   }
   return(
       <div id="panel">
