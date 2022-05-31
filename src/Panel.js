@@ -155,6 +155,7 @@ const Panel = (props) =>  {
       setTimeout(clearInterval)
       alternateClick(currentBirthChart['sun'],(nowInc));*/
       Tone.start();
+
       const now = Tone.now();
       let nowInc = 0;
       const synth = new Tone.Synth().toDestination();
@@ -166,7 +167,6 @@ const Panel = (props) =>  {
       var seqCount2 = 1;  
       const seq2 = new Tone.Sequence((time, note) => {
           if (seqCount2 !== 3 && seqCount2 !== 4 && seqCount2 !== 5 && seqCount2 !== 6){
-            console.log(seqCount2);
             sampler.triggerAttackRelease(note, 0.1, time);
             alternateClick(currentBirthChart['moon'],0.1);
           }
@@ -176,11 +176,25 @@ const Panel = (props) =>  {
           seqCount2 += 1;
           // subdivisions are given as subarrays
         }, [signToNotesLemniscate[currentBirthChart['moon']][type]+scale, signToNotesLemniscate[currentBirthChart['moon']][type]+scale],0.5).start(0);
+
+        var seqCount3 = 1;  
+        const seq3 = new Tone.Sequence((time, note) => {
+            if (seqCount3 === 3 || seqCount3 === 4 || seqCount3 === 6){
+              console.log('seqCount3');
+              sampler.triggerAttackRelease(note, 0.1, time);
+              alternateClick(currentBirthChart['sun'],0.1);
+              if (seqCount3 === 6) seqCount3 = 0;
+            }
+            seqCount3 += 1;
+            // subdivisions are given as subarrays
+          }, [signToNotesLemniscate[currentBirthChart['sun']][type]+scale,signToNotesLemniscate[currentBirthChart['sun']][type]+scale,signToNotesLemniscate[currentBirthChart['sun']][type]+scale],0.5).start(0);
+
       Tone.Transport.start();
       setTimeout(function() {
         console.log('Now should be stopping');
         seq2.dispose();
-        sampler.disconnect();
+        seq3.dispose();
+        //sampler.disconnect();
       },10000)
   }
   return(
