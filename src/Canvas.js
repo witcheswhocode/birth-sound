@@ -57,8 +57,8 @@ const Canvas = props => {
           this[planets[i]] = array[planets[i]];
         }
         this.chartOrder = this.sortSignOrderToGenerateChart(); 
-        this.planetSigns = this.getPlanetLocations(); 
-        this.houseLocations = this.getHouseLocations();
+        this.planetSigns = this.sortPlanetLocations(); 
+        this.houseLocations = this.sortHouseLocations();
         this.num = 12;
         this.cx = width * 0.5;
         this.cy = height * 0.5;
@@ -85,10 +85,18 @@ const Canvas = props => {
           return signOrder;
         }
       }
-      getHouseLocations(){
-        console.log(this.sun);
+      sortHouseLocations(){
+        var arr = [];
+        var sunIndex = signOrder.indexOf(this.sun);
+        for (var i = sunIndex; i >= 0; i--){
+          arr.push(signOrder[i]);
+        }
+        for (i = (signOrder.length-1); i >= sunIndex+1; i--){
+          arr.push(signOrder[i]);
+        }
+        return arr;
       }
-      getPlanetLocations(){
+      sortPlanetLocations(){
         var arr = {};
         for (var i = 0; i < planets.length; i++){
           var currentPlanet = planets[i];
@@ -158,9 +166,9 @@ const Canvas = props => {
           this.arcLocations.push(new ArcLocation(lastend, lastend+(Math.PI*2*(sizeSlice/myTotal))));
           lastend += Math.PI*2*(sizeSlice/myTotal);
           this.addPlanets(birthchartOrder[i]);
+          this.addHouses(birthchartOrder[i]);
         }
         this.createLines();
-        this.addHouses();
       }
       createLines(){
         let x,y;
@@ -199,7 +207,7 @@ const Canvas = props => {
         this.context.restore();
     
         this.createLines();
-        this.addHouses();
+        this.addHouses(sign);
         this.addPlanets(sign);
       }
       getQuadrant(sign){
@@ -239,31 +247,26 @@ const Canvas = props => {
             return [25,25,5,10];
         }
       }
-      addHouses(){
-        let x,y;
+      addHouses(sign){
+        console.log(this.houseLocations.indexOf(sign));
+        var angle = (this.slice * this.chartOrder.indexOf(sign))-(this.slice*3)*0.82;
+        //console.log(angle);
 
-        for(let i = 0; i<this.num;i++){
+        var x = this.cx + (this.width*0.1) * Math.sin(-angle);
+        var y = this.cy + (this.height*0.1) * Math.cos(-angle);
 
-          let angle = (this.slice * i)-(this.slice*3)*0.82;
-          //console.log(angle);
+        this.context.beginPath();
+        //context.rotate(angle1);
+        var text = this.houseLocations.indexOf(sign)+1;
+        var font = "bold 12px Dosis";
+        this.context.font = font;
+        //console.log(signInfo['aries'].html);
+        // Move it down by half the text height and left by half the text width
+        var tw = this.context.measureText(text).width;
+        var th = this.context.measureText("w").width; // this is a GUESS of height
+        this.context.fillText(text, (x),(y+5));
 
-          x = this.cx + (this.width*0.13) * Math.sin(-angle);
-          y = this.cy + (this.height*0.13) * Math.cos(-angle);
-
-          this.context.beginPath();
-          //context.rotate(angle1);
-          var text = '♍';
-          var font = "bold 12px serif";
-          this.context.font = font;
-          //console.log(signInfo['aries'].html);
-          // Move it down by half the text height and left by half the text width
-          var tw = this.context.measureText(text).width;
-          var th = this.context.measureText("w").width; // this is a GUESS of height
-          this.context.fillText(text, (x),(y));
-
-          this.context.restore();
-
-        }
+        this.context.restore();
       }
       addPlanets(sign){
         if (this.planetSigns[sign]){
@@ -273,17 +276,7 @@ const Canvas = props => {
       
           x = this.cx + (this.width*0.3) * Math.sin(-angle);
           y = this.cy + (this.height*0.3) * Math.cos(-angle);
-          /*context.save();
-          context.translate(x,y);
-          //context.rotate(angle);
-          context.beginPath();
-          //context.moveTo(width/3,height/3);
-          context.rect(0,0,20,20);
-          //context.lineTo(width/3,height/3);
-          
-          context.fillStyle = getColor(signInfo[birthchartOrder[i]].element);
-          context.fill();
-          context.restore();*/
+
           let planets = this.planetSigns[sign].split(',');
           let positions = this.getSignPosition(this.getQuadrant(sign));
           //console.log(positions)
@@ -305,8 +298,8 @@ const Canvas = props => {
             var th = this.context.measureText("w").width; // this is a GUESS of height
             this.context.fillText(text, (x+positions[2]),(y+positions[3]));
             this.context.restore();
-    
           }
+
         }
       }
         

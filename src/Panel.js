@@ -168,6 +168,7 @@ const Panel = (props) =>  {
           if (seqCount2 !== 3 && seqCount2 !== 4 && seqCount2 !== 5 && seqCount2 !== 6){
             console.log(seqCount2);
             sampler.triggerAttackRelease(note, 0.1, time);
+            alternateClick(currentBirthChart['moon'],0.1);
           }
           else if (seqCount2 === 3){
             seqCount2 = 0;
