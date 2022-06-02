@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Tone from "tone";
+import {mergeDurationVelocityAndPitch,mergeDurationsAndPitch} from "./Rhythm";
 import {planets,type,scale,currentBirthChart} from './data/settings';
 
 const sampler = new Tone.Sampler({
@@ -109,6 +110,7 @@ const signToNotesLemniscate = require('./data/signsPianoNotes.json');
   return pitchNames[pitch] + octave
 }*/
 
+
 function playNote(now,planet){
 
   sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planet]][type]+scale,now);  
@@ -187,21 +189,130 @@ const Panel = (props) =>  {
             }
             seqCount3 += 1;
             // subdivisions are given as subarrays
-          }, [signToNotesLemniscate[currentBirthChart['sun']][type]+scale,signToNotesLemniscate[currentBirthChart['sun']][type]+scale,signToNotesLemniscate[currentBirthChart['sun']][type]+scale],0.5).start(0);
+          }, [signToNotesLemniscate[currentBirthChart['sun']][type]+scale,signToNotesLemniscate[currentBirthChart['sun']][type]+scale,signToNotesLemniscate[currentBirthChart['sun']][type]+scale],1).start(0);
 
+          var seqCount4 = 1;  
+          const seq4 = new Tone.Sequence((time, note) => {
+              if (seqCount4 === 3){
+                console.log('seqCount4');
+                sampler.triggerAttackRelease(note, 0.1+2, time);
+                alternateClick(currentBirthChart['mercury'],2);
+              }
+              else if (seqCount4 === 4 || seqCount4 === 6){
+                sampler.triggerAttackRelease(note, 0.1, time);
+                alternateClick(currentBirthChart['mercury'],0.1);
+                if (seqCount4 === 6) seqCount4 = 0;
+              }
+              seqCount4 += 1;
+              // subdivisions are given as subarrays
+            }, [signToNotesLemniscate[currentBirthChart['mercury']][type]+scale,signToNotesLemniscate[currentBirthChart['mercury']][type]+scale,signToNotesLemniscate[currentBirthChart['mercury']][type]+scale],0.5).start(0);
+  
       Tone.Transport.start();
       setTimeout(function() {
         console.log('Now should be stopping');
         seq2.dispose();
         seq3.dispose();
+        //seq4.dispose();
         //sampler.disconnect();
       },10000)
   }
+
+  const handleOtherRhythmClick = () => {
+    Tone.start();
+
+    // use an array of objects as long as the object has a "time" attribute
+    const part = new Tone.Part(((time, value) => {
+      // the value is an object which contains both the note and the velocity
+      sampler.triggerAttackRelease(signToNotesLemniscate[currentBirthChart[value.note]][type]+scale, "8n", time, value.velocity);
+      alternateClick(currentBirthChart[value.note],0.1);
+    }), [{ time: 0, note: 'mercury', velocity: 0.9 },
+    { time: 0.5, note: 'mercury', velocity: 0.9 },
+    { time: 0.5, note: 'sun', velocity: 0.5 },
+    { time: 1, note: 'sun', velocity: 0.5 }
+    ]).start(0);
+    Tone.Transport.start();
+    setTimeout(function() {
+      console.log('Now should be stopping');
+      part.dispose();
+    },3000)
+  }
+
+  const heyHo = () => {
+    var HeyHoNotes = ["D4","C4","D4","D4","D4","A3",  "D4","D4","E4","E4","F4","F4","F4","F4","E4",   "A4","G4","A4","G4","A4","G4","A4","G4","F4","E4"];
+    var HeyHoDurations = ["2n","2n","4n","8n","8n","2n", "4n","4n","4n","4n","8n","8n","8n","8n","2n","4n+8n","8n","4n+8n","8n","4n+8n","8n","8n","8n","8n","8n"];
+    var HeHoVelocity = [0.9,0.9,0.9,0.7,0.7,0.9,  0.9,0.7,0.9,0.7,0.9,0.7,0.7,0.7,0.9,   0.9,0.7,0.9,0.7,0.9,0.7,0.9,0.7,0.7,0.7];
+		Tone.start();
+    //var HeyHoMelody = Rhythm.mergeDurationVelocityAndPitch(HeyHoDurations, HeyHoNotes, HeHoVelocity);
+    var HeyHoMelody = mergeDurationVelocityAndPitch(HeyHoDurations, HeyHoNotes, HeHoVelocity);
+    console.log(HeyHoMelody);
+    var count = 0;
+    var heyHoPart1 = new Tone.Part(function(time, value){
+        sampler.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+        console.log('1: '+HeyHoNotes[count]+' '+value.note+' '+value.duration+' '+time);
+        count += 1;
+    }, HeyHoMelody ).start(0);
+    sampler.volume.value = -5;
+
+    // offset 2 bars
+    var heyHoPart2 = new Tone.Part(function(time, value){
+      sampler.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+      //console.log('2: '+value.note+' '+value.duration+' '+time);
+    }, HeyHoMelody ).start("2*1m");
+
+    // offset 4 bars
+    var heyHoPart3 = new Tone.Part(function(time, value){
+      sampler.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+      //console.log('3: '+value.note+' '+value.duration+' '+time);
+    }, HeyHoMelody ).start("4*1m");
+    sampler.volume.value = -10;
+
+    //TRANSPORT
+    heyHoPart1.loopStart = "0";
+    heyHoPart1.loopEnd = "6:0";
+    heyHoPart1.loop = 1;
+
+    // still play 6 bars (but start 2 bars late)
+    heyHoPart2.loopStart = "0";
+    heyHoPart2.loopEnd = "6:0";
+    heyHoPart2.loop = 1;
+
+    // still play 6 bars (but start 4 bars late)
+    heyHoPart3.loopStart = "0";
+    heyHoPart3.loopEnd = "6:0";
+    heyHoPart3.loop = 1;
+
+    Tone.Transport.bpm.value = 170;   
+    Tone.Transport.start("+0.1");
+}
+
+const mariamaria = () => {
+  const synth = new Tone.Synth().toDestination();
+
+  var mariaPitches = ["Eb4","A4","Bb4","Eb4","A4","Bb4","C5","A4","Bb4","C5","A4","Bb4","Bb4","A4","G4","F4","Eb4","F4","Bb4","Ab4","G4","F4","Eb4","F4","Eb4","G4"];
+
+  var mariaDurations = ["8n","8n","2n + 4n","8n","4t","4t","4t","4t","4t","4t","8n","2n + 4n","8n","8n","8n","8n","8n","4n + 8n","8n","8n","8n","8n","8n","4n","4n","2n"];
+
+  // processDurationNotation() is called inside mergeDurationsAndPitch()
+  var myMelody = mergeDurationsAndPitch(mariaDurations, mariaPitches); 
+  console.log(myMelody);
+  Tone.start();
+  //use an array of objects as long as the object has a "time" attribute
+  var part = new Tone.Part(function(time, value){
+    console.log(value.note+' '+value.duration+' '+value.time);
+    //the value is an object which contains both the note and the duration
+    synth.triggerAttackRelease(value.note, value.duration, value.time);
+  }, myMelody).start(0); 
+  Tone.Transport.start("+0.1");
+}
+
   return(
       <div id="panel">
           <button id="button" onClick={handleClick}>Big Three</button>
           <button id="button" onClick={handleOtherClick}>Whole Chart</button>
           <button id="button" onClick={handleRhythmClick}>Rhythm</button>
+          <button id="button" onClick={handleOtherRhythmClick}>Other Rhythm</button>
+          <button id="button" onClick={heyHo}>Hey Ho</button>
+          <button id="button" onClick={mariamaria}>Maria</button>
       </div>
   )
 }

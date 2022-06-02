@@ -1,0 +1,14 @@
+{
+    "sun": "libra",
+    "moon": "cancer",
+    "mercury": "libra",
+    "venus": "leo",
+    "mars": "aries",
+    "jupiter": "gemini",
+    "saturn": "sagittarius",
+    "uranus": "sagittarius",
+    "neptune": "capricorn",
+    "pluto": "scorpio",
+    "northnode": "pisces",
+    "chiron": "cancer"
+  }

@@ -11,4 +11,6 @@ const lizBirthChart = require('./lizbc.json');
 const krystophChart = require('./krystophbc.json');
 const taylorChart = require('./taylorbc.json');
 const rihannaChart = require('./rihannabc.json');
+const macmillerChart = require('./macmbc.json'); // chart is off by one shift
+const britthowardChart = require('./brittanyhbc.json');
 export const currentBirthChart = lizBirthChart;
