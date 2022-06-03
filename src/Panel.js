@@ -218,23 +218,45 @@ const Panel = (props) =>  {
   }
 
   const handleOtherRhythmClick = () => {
-    Tone.start();
+    var sun = signToNotesLemniscate[currentBirthChart['sun']][type]+scale;
+    var asc = signToNotesLemniscate[currentBirthChart['asc']][type]+scale;
 
-    // use an array of objects as long as the object has a "time" attribute
-    const part = new Tone.Part(((time, value) => {
-      // the value is an object which contains both the note and the velocity
-      sampler.triggerAttackRelease(signToNotesLemniscate[currentBirthChart[value.note]][type]+scale, "8n", time, value.velocity);
-      alternateClick(currentBirthChart[value.note],0.1);
-    }), [{ time: 0, note: 'mercury', velocity: 0.9 },
-    { time: 0.5, note: 'mercury', velocity: 0.9 },
-    { time: 0.5, note: 'sun', velocity: 0.5 },
-    { time: 1, note: 'sun', velocity: 0.5 }
-    ]).start(0);
-    Tone.Transport.start();
-    setTimeout(function() {
-      console.log('Now should be stopping');
-      part.dispose();
-    },3000)
+    var firstHouseNotes = [sun,sun,sun];
+    var firstHouseDurations = ["8n","8n","2n + 4n"];
+    var firstHouseNotes1 = [asc,asc,asc];
+    var firstHouseDurations1 = ["4n + 8n","4t","4t"];
+
+    // processDurationNotation() is called inside mergeDurationsAndPitch()
+    var myMelody = mergeDurationsAndPitch(firstHouseDurations, firstHouseNotes); 
+    var myMelody1 = mergeDurationsAndPitch(firstHouseDurations1, firstHouseNotes1); 
+    console.log(myMelody);
+    console.log(myMelody1);
+    Tone.start();
+    //use an array of objects as long as the object has a "time" attribute
+    var part = new Tone.Part(function(time, value){
+      console.log('1 '+value.note+' '+value.duration+' '+value.time);
+      //the value is an object which contains both the note and the duration
+      sampler.triggerAttackRelease(value.note, value.duration, value.time);
+    }, myMelody).start(0); 
+    //use an array of objects as long as the object has a "time" attribute
+    var part1 = new Tone.Part(function(time, value){
+      console.log('2 '+value.note+' '+value.duration+' '+value.time);
+      //the value is an object which contains both the note and the duration
+      sampler.triggerAttackRelease(value.note, value.duration, value.time);
+    }, myMelody1).start(0.25); 
+
+    //TRANSPORT
+    part.loopStart = "0";
+    part.loopEnd = "6:0";
+    part.loop = 3;
+
+    //TRANSPORT
+    part1.loopStart = "0";
+    part1.loopEnd = "6:0";
+    part1.loop = 3;
+    
+    Tone.Transport.bpm.value = 170;   
+    Tone.Transport.start("+0.1");
   }
 
   const heyHo = () => {
