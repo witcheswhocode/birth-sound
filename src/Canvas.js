@@ -117,7 +117,8 @@ const Canvas = props => {
         console.log('why hello there');
       }
       getAscendent(){
-        return this.asc;
+        if (this.asc) return this.asc;
+        else { return this.sun }
       }
       createBirthChart(){
         let x,y;
