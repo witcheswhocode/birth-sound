@@ -2,7 +2,6 @@ import React, { useRef, useEffect,componentDidMount, useState } from 'react';
 import Panel from './Panel';
 import SignList from './SignList';
 import {planets,signOrder,currentBirthChart} from './data/settings';
-console.log(currentBirthChart);
 
 const Canvas = props => {
     const canvasRef = useRef(null);
@@ -127,7 +126,6 @@ const Canvas = props => {
         this.context = context;
       }
       sortSignOrderToGenerateChart(){ // asc should be the sixth item in the list
-        console.log(this);
         var sisterIndex = signOrder.indexOf(signInfo[this.getAscendent()]['sister']);
     
         if (sisterIndex == signOrder.length-1){
@@ -312,7 +310,6 @@ const Canvas = props => {
         }
       }
       addHouses(sign){
-        console.log(this.houseLocations.indexOf(sign));
         var angle = (this.slice * this.chartOrder.indexOf(sign))-(this.slice*3)*0.82;
         //console.log(angle);
 
@@ -383,7 +380,6 @@ const Canvas = props => {
     let birthchart;
     useEffect(() => {
       const canvas = canvasRef.current;
-      console.log(canvas);
       canvas.width = 600;
       canvas.height = 600;
       const context = canvas.getContext('2d');
