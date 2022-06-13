@@ -26,7 +26,7 @@ const Canvas = props => {
         case 'water':
           return '#6FC0CB';
         case 'air':
-          return '#FAF6F8';*/
+          return '#FAF6F8';
         case 'fire':
           return '#FFE7E2';
         case 'earth':
@@ -42,7 +42,41 @@ const Canvas = props => {
         case 'waterActive':
           return '#28666E';
         case 'airActive':
-          return '#DCBCC8';//'#EAD7DE';//'#F0E2E7';
+          return '#DCBCC8';*///'#EAD7DE';//'#F0E2E7';
+
+        /* MONOTONE LIKE BLUE */
+        /*case 'fire':
+          return '#b8b3b2';
+        case 'earth':
+          return '#bedacd';
+        case 'water':
+          return '#9fbec4';
+        case 'air':
+          return '#e2f0e2';
+        case 'fireActive':
+          return '#797270';
+        case 'earthActive':
+          return '#87BBA2';
+        case 'waterActive':
+          return '#55828B';
+        case 'airActive':
+          return '#C9E4CA';*/
+        case 'fire':
+          return '#ccb8c4';
+        case 'earth':
+          return '#8fbcc2'; // gold #8F7E4F
+        case 'water':
+          return '#b4bdd1';
+        case 'air':
+          return '#d2d7e5';
+        case 'fireActive':
+          return '#9E788F';
+        case 'earthActive':
+          return '#407076'; // gold #8F7E4F
+        case 'waterActive':
+          return '#7284A8';
+        case 'airActive':
+          return '#A9B3CE';
         default:
           return 'white';
       }
@@ -166,6 +200,7 @@ const Canvas = props => {
           var text2 = signInfo[birthchartOrder[i]].major;
           var font = "bold 18px Dosis";
           this.context.font = font;
+          this.context.fillStyle = 'white';
           // Move it down by half the text height and left by half the text width
           var tw = this.context.measureText(text1).width;
           var th = this.context.measureText("w").width; // this is a GUESS of height
@@ -195,7 +230,7 @@ const Canvas = props => {
       
           this.context.beginPath();
           this.context.rect(-this.w*0.5,1,this.w,this.h);
-          this.context.fillStyle = 'white';//'#2B3A67';
+          this.context.fillStyle = '#070e0a';//'#2B3A67';
           this.context.fill();
           this.context.restore();
         }
@@ -270,6 +305,7 @@ const Canvas = props => {
         var text = this.houseLocations.indexOf(sign)+1;
         var font = "bold 12px Dosis";
         this.context.font = font;
+        this.context.fillStyle = '#070E0A';
         //console.log(signInfo['aries'].html);
         // Move it down by half the text height and left by half the text width
         var tw = this.context.measureText(text).width;
@@ -303,6 +339,7 @@ const Canvas = props => {
             var text = planetInfo[planets[i]];
             var font = "bold 14px Dosis";
             this.context.font = font;
+            this.context.fillStyle = '#070E0A';
             // Move it down by half the text height and left by half the text width
             var tw = this.context.measureText(text).width;
             var th = this.context.measureText("w").width; // this is a GUESS of height
@@ -335,10 +372,10 @@ const Canvas = props => {
       let width = canvas.width;
       let height = canvas.height;
 
-      context.fillStyle = 'white';
+      context.fillStyle = '#070E0A';
       context.fillRect(0, 0, width, height);
 
-      context.fillStyle = '#2B3A67';
+      context.fillStyle = 'white';
       birthchart = new Birthchart(currentBirthChart,width,height,context);
       const bc = birthchart.createBirthChart(width,height);
     },[]);
