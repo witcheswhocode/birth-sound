@@ -215,7 +215,7 @@ const Canvas = props => {
           this.context.rotate(Math.PI/2 + angle);
           this.context.beginPath();
           //context.rotate(angle1);
-          var text1 = birthchartOrder[i];
+          var text1 = birthchartOrder[i].split("").join(String.fromCharCode(8202)); // line spacing
           var text2 = signInfo[birthchartOrder[i]].major;
           var font = "bold 18px Dosis";
           this.context.font = font;
@@ -322,10 +322,10 @@ const Canvas = props => {
         this.context.beginPath();
         //context.rotate(angle1);
         var text = this.houseLocations.indexOf(sign)+1;
-        var font = "bold 12px Dosis";
+        var font = "bold 16px Dosis";
         this.context.font = font;
         this.context.fillStyle = '#0d0c1d';//'#070E0A';
-        //console.log(signInfo['aries'].html);
+
         // Move it down by half the text height and left by half the text width
         var tw = this.context.measureText(text).width;
         var th = this.context.measureText("w").width; // this is a GUESS of height

@@ -50,36 +50,50 @@ body {
   justify-content: center;
   align-items: center;
 }
+table {
+  border-spacing: 8px;
+}
 .birthchart-table-data {
   border: 2px black solid;
+  border-radius: 2px;
   width: 150px;
   padding: 8px;
-  margin: 8px;
+  font-size: 16px;
+  line-height: 14px;
+  color: #0d0c1d;
+  text-align: center;
+}
+.birthchart-table-data span {
+  padding-right: 4px;
 }
 
 /* COLORS */
 .color-leo,
 .color-saggitarius,
 .color-aries{
-  background-color: #efc9c2;
+  /*background-color: #efc9c2;*/
+  background-color: white;
   border: 4px solid #bb4430;
 }
 .color-virgo,
 .color-taurus,
 .color-capricorn{
-  background-color: #dcdcbe;
+  /*background-color: #dcdcbe;*/
+  background-color: white;
   border: 4px solid #646536;
 }
 .color-libra,
 .color-gemini,
 .color-aquarius{
-  background-color: #fdebfb;
+  /*background-color: #fdebfb;*/
+  background-color: white;
   border: 4px solid #f9b9f2;
 }
 .color-cancer,
 .color-pisces,
 .color-scorpio{
-  background-color: #dbedee;
+  /*background-color: #dbedee;*/
+  background-color: white;
   border: 4px solid #7ebdc2;
 }
 
