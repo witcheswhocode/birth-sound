@@ -121,9 +121,7 @@ const Panel = (props) =>  {
   const { alternateClick, otherAlternateClick, label } = props;
 
   const [userInput, setUserInput] = useState('');
-  function testFunction(){
-      console.log('test function');
-  }
+  
   const handleClick = () => {
     let now = Tone.now();
     let nowInc = 0;
