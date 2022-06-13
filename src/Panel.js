@@ -112,7 +112,7 @@ const signToNotesLemniscate = require('./data/signsPianoNotes.json');
 
 
 function playNote(now,planet){
-
+  console.log(signToNotesLemniscate[currentBirthChart[planet]][type]+scale)
   sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planet]][type]+scale,now);  
   sampler.triggerRelease(now+1);
 }
@@ -126,11 +126,10 @@ const Panel = (props) =>  {
     let now = Tone.now();
     let nowInc = 0;
     let count = 0;
-    console.log(now);
-    for (var planet in currentBirthChart) {
+    for (var planet in planets) {
       if (count === 3) return;
-      playNote(now+nowInc,planet);
-      alternateClick(currentBirthChart[planet],planet,(nowInc));
+      playNote(now+nowInc,planets[planet]);
+      alternateClick(currentBirthChart[planets[planet]],planets[planet],(nowInc));
       nowInc += 0.5;
       count += 1;
     };
@@ -139,10 +138,9 @@ const Panel = (props) =>  {
   const handleOtherClick = () => {
     const now = Tone.now();
     let nowInc = 0;
-    console.log(typeof(currentBirthChart));
-    for (var planet in currentBirthChart) {
-      playNote(now+nowInc,planet);
-      alternateClick(currentBirthChart[planet],planet,(nowInc));
+    for (var planet in planets) {
+      playNote(now+nowInc,planets[planet]);
+      alternateClick(currentBirthChart[planets[planet]],planets[planet],(nowInc));
       nowInc += 0.5;
     };
   }
