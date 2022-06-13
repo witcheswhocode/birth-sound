@@ -356,7 +356,7 @@ const Canvas = props => {
             this.context.beginPath();
             //context.rotate(angle1);
             var text = planetInfo[planets[i]];
-            var font = "bold 14px Dosis";
+            var font = "bold 20px Dosis";
             this.context.font = font;
             this.context.fillStyle = '#0d0c1d';//'#070E0A';
             // Move it down by half the text height and left by half the text width
