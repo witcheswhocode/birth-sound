@@ -1,5 +1,6 @@
 body {
-  background-color: #070E0A;
+  /*background-color: #070E0A;*/
+  background-color: #0d0c1d;
 }
 
 #wrapper {
@@ -53,4 +54,52 @@ body {
   border: 2px black solid;
   width: 150px;
   padding: 8px;
+  margin: 8px;
+}
+
+/* COLORS */
+.color-leo,
+.color-saggitarius,
+.color-aries{
+  background-color: #efc9c2;
+  border: 4px solid #bb4430;
+}
+.color-virgo,
+.color-taurus,
+.color-capricorn{
+  background-color: #dcdcbe;
+  border: 4px solid #646536;
+}
+.color-libra,
+.color-gemini,
+.color-aquarius{
+  background-color: #fdebfb;
+  border: 4px solid #f9b9f2;
+}
+.color-cancer,
+.color-pisces,
+.color-scorpio{
+  background-color: #dbedee;
+  border: 4px solid #7ebdc2;
+}
+
+.color-leo.active,
+.color-saggitarius.active,
+.color-aries.active{
+  background-color: #bb4430;
+}
+.color-virgo.active,
+.color-taurus.active,
+.color-capricorn.active{
+  background-color: #646536;
+}
+.color-libra.active,
+.color-gemini.active,
+.color-aquarius.active{
+  background-color: #f9b9f2;
+}
+.color-cancer.active,
+.color-pisces.active,
+.color-scorpio.active{
+  background-color: #7ebdc2;
 }

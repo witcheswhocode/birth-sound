@@ -61,6 +61,8 @@ const Canvas = props => {
           return '#55828B';
         case 'airActive':
           return '#C9E4CA';*/
+
+         /* 
         case 'fire':
           return '#ccb8c4';
         case 'earth':
@@ -76,7 +78,24 @@ const Canvas = props => {
         case 'waterActive':
           return '#7284A8';
         case 'airActive':
-          return '#A9B3CE';
+          return '#A9B3CE';*/
+
+        case 'fire':
+          return '#efc9c2';
+        case 'earth':
+          return '#dcdcbe'; // gold #8F7E4F
+        case 'water':
+          return '#dbedee';
+        case 'air':
+          return '#fdebfb';
+        case 'fireActive':
+          return '#bb4430';
+        case 'earthActive':
+          return '#646536'; // gold #8F7E4F
+        case 'waterActive':
+          return '#7ebdc2';
+        case 'airActive':
+          return '#f9b9f2';
         default:
           return 'white';
       }
@@ -230,7 +249,7 @@ const Canvas = props => {
       
           this.context.beginPath();
           this.context.rect(-this.w*0.5,1,this.w,this.h);
-          this.context.fillStyle = '#070e0a';//'#2B3A67';
+          this.context.fillStyle = 'white';//'#0d0c1d';//'#070e0a';//'#2B3A67';
           this.context.fill();
           this.context.restore();
         }
@@ -305,7 +324,7 @@ const Canvas = props => {
         var text = this.houseLocations.indexOf(sign)+1;
         var font = "bold 12px Dosis";
         this.context.font = font;
-        this.context.fillStyle = '#070E0A';
+        this.context.fillStyle = '#0d0c1d';//'#070E0A';
         //console.log(signInfo['aries'].html);
         // Move it down by half the text height and left by half the text width
         var tw = this.context.measureText(text).width;
@@ -339,7 +358,7 @@ const Canvas = props => {
             var text = planetInfo[planets[i]];
             var font = "bold 14px Dosis";
             this.context.font = font;
-            this.context.fillStyle = '#070E0A';
+            this.context.fillStyle = '#0d0c1d';//'#070E0A';
             // Move it down by half the text height and left by half the text width
             var tw = this.context.measureText(text).width;
             var th = this.context.measureText("w").width; // this is a GUESS of height
@@ -372,7 +391,7 @@ const Canvas = props => {
       let width = canvas.width;
       let height = canvas.height;
 
-      context.fillStyle = '#070E0A';
+      context.fillStyle = '#0d0c1d';//'#070E0A';
       context.fillRect(0, 0, width, height);
 
       context.fillStyle = 'white';
@@ -390,16 +409,16 @@ const Canvas = props => {
 
           // highlight birthchart list
           const elem = document.getElementById(planet);
-          elem.style.background = 'black';
+          elem.classList.toggle('active');
 
           console.log('printing this one');
         }, 1000*time);
         setTimeout(() => {
           birthchart.colorArc(liftedValue,'');
-          
+
           // highlight birthchart list
           const elem = document.getElementById(planet);
-          elem.style.background = 'white';
+          elem.classList.toggle('active');
         }, (1000*time)+500);
       console.log(liftedValue)
     }
