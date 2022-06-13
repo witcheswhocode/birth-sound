@@ -1,6 +1,8 @@
 import React, { useRef, useEffect,componentDidMount, useState } from 'react';
 import Panel from './Panel';
+import SignList from './SignList';
 import {planets,signOrder,currentBirthChart} from './data/settings';
+console.log(currentBirthChart);
 
 const Canvas = props => {
     const canvasRef = useRef(null);
@@ -72,6 +74,7 @@ const Canvas = props => {
         this.context = context;
       }
       sortSignOrderToGenerateChart(){ // asc should be the sixth item in the list
+        console.log(this);
         var sisterIndex = signOrder.indexOf(signInfo[this.getAscendent()]['sister']);
     
         if (sisterIndex == signOrder.length-1){
@@ -138,6 +141,12 @@ const Canvas = props => {
           this.context.beginPath();
           //context.moveTo(width/3,height/3);
           this.context.arc(this.width/3,this.height/3,this.height/3,lastend,lastend+(Math.PI*2*(sizeSlice/myTotal)),false);
+          
+          // 
+          this.context.lineWidth = 10;
+          this.context.strokeStyle = "white";
+          this.context.stroke();
+
           this.context.lineTo(this.width/3,this.height/3);
           this.context.fillStyle = getColor(signInfo[birthchartOrder[i]].element);
           this.context.fill();
@@ -336,15 +345,24 @@ const Canvas = props => {
 
     const [liftedValue, setLiftedValue] = useState('')
 
-    const handleAlternateClick = (liftedValue, time) => {
+    const handleAlternateClick = (liftedValue, planet, time) => {
       //setLiftedValue(liftedValue);
       //console.log(time);
         setTimeout(() => {
           birthchart.colorArc(liftedValue,'Active');
+
+          // highlight birthchart list
+          const elem = document.getElementById(planet);
+          elem.style.background = 'black';
+
           console.log('printing this one');
         }, 1000*time);
         setTimeout(() => {
           birthchart.colorArc(liftedValue,'');
+          
+          // highlight birthchart list
+          const elem = document.getElementById(planet);
+          elem.style.background = 'white';
         }, (1000*time)+500);
       console.log(liftedValue)
     }
@@ -371,6 +389,7 @@ const Canvas = props => {
     return(
       <div>
         <canvas id='can' ref={canvasRef} {...props}></canvas>
+        <SignList />
         <Panel alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
       </div>
     )

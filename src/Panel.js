@@ -132,7 +132,7 @@ const Panel = (props) =>  {
     for (var planet in currentBirthChart) {
       if (count === 3) return;
       playNote(now+nowInc,planet);
-      alternateClick(currentBirthChart[planet],(nowInc));
+      alternateClick(currentBirthChart[planet],planet,(nowInc));
       nowInc += 0.5;
       count += 1;
     };
@@ -144,7 +144,7 @@ const Panel = (props) =>  {
     console.log(typeof(currentBirthChart));
     for (var planet in currentBirthChart) {
       playNote(now+nowInc,planet);
-      alternateClick(currentBirthChart[planet],(nowInc));
+      alternateClick(currentBirthChart[planet],planet,(nowInc));
       nowInc += 0.5;
     };
   }
@@ -170,7 +170,7 @@ const Panel = (props) =>  {
       const seq2 = new Tone.Sequence((time, note) => {
           if (seqCount2 !== 3 && seqCount2 !== 4 && seqCount2 !== 5 && seqCount2 !== 6){
             sampler.triggerAttackRelease(note, 0.1, time);
-            alternateClick(currentBirthChart['moon'],0.1);
+            alternateClick(currentBirthChart['moon'],'moon',0.1);
           }
           else if (seqCount2 === 3){
             seqCount2 = 0;
@@ -184,7 +184,7 @@ const Panel = (props) =>  {
             if (seqCount3 === 3 || seqCount3 === 4 || seqCount3 === 6){
               console.log('seqCount3');
               sampler.triggerAttackRelease(note, 0.1, time);
-              alternateClick(currentBirthChart['sun'],0.1);
+              alternateClick(currentBirthChart['sun'],'sun',0.1);
               if (seqCount3 === 6) seqCount3 = 0;
             }
             seqCount3 += 1;
@@ -196,11 +196,11 @@ const Panel = (props) =>  {
               if (seqCount4 === 3){
                 console.log('seqCount4');
                 sampler.triggerAttackRelease(note, 0.1+2, time);
-                alternateClick(currentBirthChart['mercury'],2);
+                alternateClick(currentBirthChart['mercury'],'mercury',2);
               }
               else if (seqCount4 === 4 || seqCount4 === 6){
                 sampler.triggerAttackRelease(note, 0.1, time);
-                alternateClick(currentBirthChart['mercury'],0.1);
+                alternateClick(currentBirthChart['mercury'],'mercury',0.1);
                 if (seqCount4 === 6) seqCount4 = 0;
               }
               seqCount4 += 1;
