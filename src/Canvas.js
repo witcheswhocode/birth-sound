@@ -396,7 +396,9 @@ const Canvas = props => {
 
       context.fillStyle = 'white';
       birthchart = new Birthchart(currentBirthChart,width,height,context);
-      const bc = birthchart.createBirthChart(width,height);
+      setTimeout(function(){
+        const bc = birthchart.createBirthChart(width,height);
+      }, 250)
     },[]);
 
     const [liftedValue, setLiftedValue] = useState('')
