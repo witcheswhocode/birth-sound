@@ -24,7 +24,7 @@ body {
 }
 
 #button{
-  width: 100px;
+  min-width: 30px;
   font-family: 'Dosis';
   background-color: #2B3A67;
   border-color: #2B3A67;
