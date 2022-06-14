@@ -72,7 +72,7 @@ table {
 
 /* COLORS */
 .color-leo,
-.color-saggitarius,
+.color-sagittarius,
 .color-aries{
   /*background-color: #efc9c2;*/
   background-color: white;
@@ -101,7 +101,7 @@ table {
 }
 
 .color-leo.active,
-.color-saggitarius.active,
+.color-sagittarius.active,
 .color-aries.active{
   background-color: #bb4430;
 }
