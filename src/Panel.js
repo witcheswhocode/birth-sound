@@ -303,6 +303,57 @@ const Panel = (props) =>  {
     Tone.Transport.start("+0.1");
 }
 
+const heyHo2 = () => {
+  // fugue
+  var HeyHoNotes = ["D4","C4","D4","D4","D4","A3",  "D4","D4","E4","E4","F4","F4","F4","F4","E4",   "A4","G4","A4","G4","A4","G4","A4","G4","F4","E4"];
+  var HeyHoDurations1 = ["2n","2n","4n","8n","8n","2n", "4n","4n","4n","4n","8n","8n","8n","8n","2n","4n+8n","8n","4n+8n","8n","4n+8n","8n","8n","8n","8n","8n"];
+  var HeyHoDurations2 = ["4n","4n","8n","16n","16n","4n", "8n","8n","8n","8n","16n","16n","16n","16n","4n","8n+16n","16n","8n+16n","16n","8n+16n","16n","16n","16n","16n","16n"];
+  var HeHoVelocity = [0.9,0.9,0.9,0.7,0.7,0.9,  0.9,0.7,0.9,0.7,0.9,0.7,0.7,0.7,0.9,   0.9,0.7,0.9,0.7,0.9,0.7,0.9,0.7,0.7,0.7];
+  Tone.start();
+  //var HeyHoMelody = Rhythm.mergeDurationVelocityAndPitch(HeyHoDurations, HeyHoNotes, HeHoVelocity);
+  var HeyHoMelody1 = mergeDurationVelocityAndPitch(HeyHoDurations1, HeyHoNotes, HeHoVelocity);
+  var HeyHoMelody2 = mergeDurationVelocityAndPitch(HeyHoDurations2, HeyHoNotes, HeHoVelocity);
+
+  var count = 0;
+  var heyHoPart1 = new Tone.Part(function(time, value){
+      sampler.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+      //console.log('1: '+HeyHoNotes[count]+' '+value.note+' '+value.duration+' '+time);
+      //count += 1;
+  }, HeyHoMelody1 ).start(0);
+  sampler.volume.value = -5;
+
+  // offset 2 bars
+  var heyHoPart2 = new Tone.Part(function(time, value){
+    sampler.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+    //console.log('2: '+value.note+' '+value.duration+' '+time);
+  }, HeyHoMelody2 ).start("2*1m");
+
+  // offset 4 bars
+  /*var heyHoPart3 = new Tone.Part(function(time, value){
+    sampler.triggerAttackRelease(value.note, value.duration, time, value.velocity)
+    //console.log('3: '+value.note+' '+value.duration+' '+time);
+  }, HeyHoMelody ).start("4*1m");
+  sampler.volume.value = -10;*/
+
+  //TRANSPORT
+  heyHoPart1.loopStart = "0";
+  heyHoPart1.loopEnd = "6:0";
+  heyHoPart1.loop = 1;
+
+  // still play 6 bars (but start 2 bars late)
+  heyHoPart2.loopStart = "0";
+  heyHoPart2.loopEnd = "6:0";
+  heyHoPart2.loop = 2;
+
+  // still play 6 bars (but start 4 bars late)
+  /*heyHoPart3.loopStart = "0";
+  heyHoPart3.loopEnd = "6:0";
+  heyHoPart3.loop = 1;*/
+
+  Tone.Transport.bpm.value = 170;   
+  Tone.Transport.start("+0.1");
+}
+
 const mariamaria = () => {
   const synth = new Tone.Synth().toDestination();
 
@@ -330,6 +381,7 @@ const mariamaria = () => {
           <button id="button" onClick={handleRhythmClick}>1</button>
           <button id="button" onClick={handleOtherRhythmClick}>2</button>
           <button id="button" onClick={heyHo}>Hey Ho</button>
+          <button id="button" onClick={heyHo2}>Hey Ho 2</button>
           <button id="button" onClick={mariamaria}>Maria</button>
       </div>
   )
