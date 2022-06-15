@@ -322,6 +322,8 @@ const heyHo2 = () => {
   }, HeyHoMelody1 ).start(0);
   sampler.volume.value = -5;
 
+  // this is a comment
+
   // offset 2 bars
   var heyHoPart2 = new Tone.Part(function(time, value){
     sampler.triggerAttackRelease(value.note, value.duration, time, value.velocity)
