@@ -12,13 +12,7 @@ const BirthForm = () => {
   const formOptions = {
     name: { required: "Name is required" },
     email: { required: "Email is required" },
-    password: {
-      required: "Password is required",
-      minLength: {
-        value: 8,
-        message: "Password must have at least 8 characters"
-      }
-    }
+    birthday: { required: "Password is required"    }
   };
 
   return (
@@ -44,7 +38,11 @@ const BirthForm = () => {
             </div>
             <div>
                 <label>Birthday</label>
-                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                <DatePicker
+                type="birthday"
+                name="birthday"
+                {...register('birthday', formOptions.birthday)} selected={startDate} onChange={(date) => setStartDate(date)} />
+                {errors?.email && errors.email.message}
             </div>
             <button>Submit</button>
 
