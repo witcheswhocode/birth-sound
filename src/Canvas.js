@@ -1,6 +1,7 @@
 import React, { useRef, useEffect,componentDidMount, useState } from 'react';
 import Panel from './Panel';
 import SignList from './SignList';
+import BirthForm from './BirthForm';
 import {planets,signOrder,currentBirthChart} from './data/settings';
 
 const Canvas = props => {
@@ -442,6 +443,7 @@ const Canvas = props => {
       
     return(
       <div>
+        <BirthForm />
         <canvas id='can' ref={canvasRef} {...props}></canvas>
         <Panel alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
         <SignList />

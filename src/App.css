@@ -120,3 +120,14 @@ table {
 .color-scorpio.active{
   background-color: #7ebdc2;
 }
+
+/* FORM */
+
+#birth-form{
+  display:flex;
+}
+#birth-form label{
+  color:white;
+}
+
+/* END FORM */
