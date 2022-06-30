@@ -8,8 +8,10 @@ const BirthForm = () => {
   const { control, register, handleSubmit, formState: { errors } } = useForm();
   const [startDate, setBirthDate] = useState(new Date());
   const [value, setBirthTime] = useState('12:00');
-  const handleRegistration = (data) => {console.log(data)};
-  const handleError = (errors) => {console.log(errors['birthtime'])};
+  const handleRegistration = (data) => {console.log(value)
+                                        console.log(startDate)
+                                        console.log(data['location'])};
+  const handleError = (errors) => {console.log(errors)};
 
   const formOptions = {
     location: { required: "Location of birth is required" },
@@ -39,7 +41,7 @@ const BirthForm = () => {
                         type="birthtime"
                         name="birthtime"
                         {...register('birthtime', formOptions.birthtime)}
-                        onChange={(field)=>setBirthTime(field)}
+                        onChange={(field)=>{setBirthTime(field)}}
                         value={value}
                         inputRef={ref}
                         clearIcon={null}
