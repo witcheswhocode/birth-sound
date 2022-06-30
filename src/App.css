@@ -128,11 +128,19 @@ table {
 {
   color:white;
 }
+.text-danger
+{
+  color:yellow;
+  padding-left: 5px;
+}
 #birth-form{
   display:flex;
 }
 #birth-form label{
   color:white;
+}
+#birth-form .form-item {
+  max-width: fit-content;
 }
 
 /* END FORM */

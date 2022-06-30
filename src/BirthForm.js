@@ -20,7 +20,7 @@ const BirthForm = () => {
   const handleError = (errors) => {console.log(errors)};
 
   const formOptions = {
-    location: { required: "Location of birth is required" },
+    location: { required: "Location is required" },
     birthtime: { required: "Birthtime is required" },
     birthday: { required: "Birthday is required"    }
   };
@@ -30,13 +30,17 @@ const BirthForm = () => {
         <div id='birth-form'>
             <div className='form-item'>
                 <label>Location</label>
-                <input name="location" type="text" {...register('location', formOptions.location) }/>
                 <small className="text-danger">
                 {errors?.location && errors.location.message}
                 </small>
+                <input name="location" type="text" {...register('location', formOptions.location) }/>
+                
             </div>
             <div className='form-item'>
                 <label>Birthtime</label>
+                <small className="text-danger">
+                {errors?.birthtime && errors.birthtime.message}
+                </small>
                 <Controller
                     name={"birthtime"}
                     control={control}
@@ -56,12 +60,12 @@ const BirthForm = () => {
                         />
                     )}
                 />
-                <small className="text-danger">
-                {errors?.birthtime && errors.birthtime.message}
-                </small>
             </div>
             <div className='form-item'>
                 <label>Birthday</label>
+                <small className="text-danger">
+                {errors?.birthday && errors.birthday.message}
+                </small>
                 <Controller
                     name={"birthday"}
                     control={control}
@@ -77,9 +81,6 @@ const BirthForm = () => {
                         onChange={(field)=>setBirthDate(field)}  />
                     )}
                 />
-                <small className="text-danger">
-                {errors?.birthday && errors.birthday.message}
-                </small>
             </div>
             <button>Submit</button>
 
