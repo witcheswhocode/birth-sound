@@ -3,6 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import TimePicker from 'react-time-picker'
 import "react-datepicker/dist/react-datepicker.css";
+import { assertJSXAttribute } from "@babel/types";
 
 const BirthForm = () => {
   const { control, register, handleSubmit, formState: { errors } } = useForm();
@@ -10,7 +11,12 @@ const BirthForm = () => {
   const [value, setBirthTime] = useState('12:00');
   const handleRegistration = (data) => {console.log(value)
                                         console.log(startDate)
-                                        console.log(data['location'])};
+                                        console.log(data['location'])
+                                        fetch("http://localhost:3001/api/"+data['location']+"/"+startDate+"/"+value)
+                                        .then(res => res.json())
+                                        .then((result)=>{
+                                            console.log(result);
+                                        })};
   const handleError = (errors) => {console.log(errors)};
 
   const formOptions = {
