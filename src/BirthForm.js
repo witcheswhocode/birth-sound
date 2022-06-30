@@ -1,48 +1,77 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
+import TimePicker from 'react-time-picker'
 import "react-datepicker/dist/react-datepicker.css";
 
 const BirthForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [startDate, setStartDate] = useState(new Date());
-  const handleRegistration = (data) => console.log(data);
-  const handleError = (errors) => {};
+  const { control, register, handleSubmit, formState: { errors } } = useForm();
+  const [startDate, setBirthDate] = useState(new Date());
+  const [value, setBirthTime] = useState('12:00');
+  const handleRegistration = (data) => {console.log(data)};
+  const handleError = (errors) => {console.log(errors['birthtime'])};
 
   const formOptions = {
-    name: { required: "Name is required" },
-    email: { required: "Email is required" },
-    birthday: { required: "Password is required"    }
+    location: { required: "Location of birth is required" },
+    birthtime: { required: "Birthtime is required" },
+    birthday: { required: "Birthday is required"    }
   };
 
   return (
     <form onSubmit={handleSubmit(handleRegistration, handleError)}>
         <div id='birth-form'>
-            <div>
-                <label>Name</label>
-                <input name="name" type="text" {...register('name', formOptions.name) }/>
+            <div className='form-item'>
+                <label>Location</label>
+                <input name="location" type="text" {...register('location', formOptions.location) }/>
                 <small className="text-danger">
-                {errors?.name && errors.name.message}
+                {errors?.location && errors.location.message}
                 </small>
             </div>
-            <div>
-                <label>Email</label>
-                <input
-                type="email"
-                name="email"
-                {...register('email', formOptions.email)}
+            <div className='form-item'>
+                <label>Birthtime</label>
+                <Controller
+                    name={"birthtime"}
+                    control={control}
+                    rules={{ required: true }}
+                    defaultValue={'12:00'}
+                    render={({ field:{ref, ...field} }) => (
+                        <TimePicker
+                        type="birthtime"
+                        name="birthtime"
+                        {...register('birthtime', formOptions.birthtime)}
+                        onChange={(field)=>setBirthTime(field)}
+                        value={value}
+                        inputRef={ref}
+                        clearIcon={null}
+                        clockIcon={null}
+                        openClockOnFocus={false}
+                        />
+                    )}
                 />
                 <small className="text-danger">
-                {errors?.email && errors.email.message}
+                {errors?.birthtime && errors.birthtime.message}
                 </small>
             </div>
-            <div>
+            <div className='form-item'>
                 <label>Birthday</label>
-                <DatePicker
-                type="birthday"
-                name="birthday"
-                {...register('birthday', formOptions.birthday)} selected={startDate} onChange={(date) => setStartDate(date)} />
-                {errors?.email && errors.email.message}
+                <Controller
+                    name={"birthday"}
+                    control={control}
+                    rules={{ required: true }}
+                    defaultValue={new Date()}
+                    render={({ field:{ref, ...field} }) => (
+                        <DatePicker
+                        type="birthday"
+                        name="birthday"
+                        {...register('birthday', formOptions.birthday)} 
+                        selected={startDate} 
+                        inputRef={ref}
+                        onChange={(field)=>setBirthDate(field)}  />
+                    )}
+                />
+                <small className="text-danger">
+                {errors?.birthday && errors.birthday.message}
+                </small>
             </div>
             <button>Submit</button>
 

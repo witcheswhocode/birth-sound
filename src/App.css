@@ -122,7 +122,12 @@ table {
 }
 
 /* FORM */
-
+.react-time-picker input,
+.react-time-picker span,
+.react-time-picker select
+{
+  color:white;
+}
 #birth-form{
   display:flex;
 }
