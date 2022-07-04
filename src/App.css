@@ -10,6 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Dosis';
+  position: relative;
 }
 
 #title{
@@ -36,7 +37,6 @@ body {
   margin: 8px;
   padding: 4px;
 }
-
 #can {
   width:100%;
   max-width: 500px;
@@ -122,6 +122,12 @@ table {
 }
 
 /* FORM */
+form {
+  position: absolute;
+  display:flex;
+  max-height: 50px;
+  overflow: inherit;
+}
 .react-time-picker input,
 .react-time-picker span,
 .react-time-picker select
@@ -133,14 +139,26 @@ table {
   color:yellow;
   padding-left: 5px;
 }
-#birth-form{
-  display:flex;
+#container{
+  position: relative;
+}
+#birth-form,
+#canvas, #panel, #birthchart-list{
+  width: 100%;
+  min-height: 40px;
 }
 #birth-form label{
   color:white;
 }
 #birth-form .form-item {
   max-width: fit-content;
+  margin: 4px;
+  padding: 4px;
+}
+.form-item ul {
+  color:white;
+  background: #2B3A67;
+  margin: 0;
 }
 
 /* END FORM */

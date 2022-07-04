@@ -442,9 +442,9 @@ const Canvas = props => {
     }
       
     return(
-      <div>
+      <div id="container">
         <BirthForm />
-        <canvas id='can' ref={canvasRef} {...props}></canvas>
+        <div id='canvas'><canvas id='can' ref={canvasRef} {...props}></canvas></div>
         <Panel alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
         <SignList />
       </div>
