@@ -9,9 +9,10 @@ import { Birthchart } from './BirthchartClass';
 const Canvas = (props) => {
   const { updateBirthchartList,birthchartprop } = props;
   const canvasRef = useRef(null);
+  let birthchart;
   
     
-    let birthchart;
+    //let birthchart;
     let width;
     let height;
     let context;
@@ -29,7 +30,9 @@ const Canvas = (props) => {
 
       context.fillStyle = 'white';
       nowToBirthchart().then((chart)=>{
-        birthchart = new Birthchart(chart,width,height,context);
+        birthchart = new Birthchart(chart,width,height,context);      
+        setBirthchart(birthchart);
+
         setTimeout(function(){
           const bc = birthchart.createBirthChart(width,height);
         }, 250);
@@ -47,19 +50,21 @@ const Canvas = (props) => {
       height = canvas.height;
       context.clearRect(0, 0, width, height);
       birthchart = new Birthchart(chart,width,height,context);
+      setBirthchart(birthchart);
       setTimeout(function(){
         const bc = birthchart.createBirthChart(width,height);
       }, 250);
       setLiftedValue(chart);
     }
 
-    const [liftedValue, setLiftedValue] = useState('')
+    const [liftedValue, setLiftedValue] = useState('');
+    const [currentBirthchart, setBirthchart] = useState(birthchart);
 
     const handleAlternateClick = (liftedValue, planet, time) => {
       //setLiftedValue(liftedValue);
-      //console.log(time);
+      console.log(currentBirthchart);
         setTimeout(() => {
-          birthchart.colorArc(liftedValue,'Active');
+          currentBirthchart.colorArc(liftedValue,'Active');
 
           // highlight birthchart list
           const elem = document.getElementById(planet);
@@ -68,7 +73,7 @@ const Canvas = (props) => {
           console.log('printing this one');
         }, 1000*time);
         setTimeout(() => {
-          birthchart.colorArc(liftedValue,'');
+          currentBirthchart.colorArc(liftedValue,'');
 
           // highlight birthchart list
           const elem = document.getElementById(planet);
