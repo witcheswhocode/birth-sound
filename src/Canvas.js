@@ -2,11 +2,11 @@ import React, { useRef, useEffect,componentDidMount, useState } from 'react';
 import Panel from './Panel';
 import SignList from './SignList';
 import BirthForm from './BirthForm';
-import {planets,signOrder,currentBirthChart} from './data/settings';
+import {planets,signOrder} from './data/settings';
+import { nowToBirthchart } from './utils/nowToBirthchart';
 
 const Canvas = props => {
-    const canvasRef = useRef(null);
-
+  const canvasRef = useRef(null);
     
   const signInfo = require('./data/signInfo.json');
   const planetInfo = require('./data/planetInfo.json');
@@ -127,6 +127,7 @@ const Canvas = props => {
         this.context = context;
       }
       sortSignOrderToGenerateChart(){ // asc should be the sixth item in the list
+        console.log(this.getAscendent())
         var sisterIndex = signOrder.indexOf(signInfo[this.getAscendent()]['sister']);
     
         if (sisterIndex == signOrder.length-1){
@@ -392,10 +393,13 @@ const Canvas = props => {
       context.fillRect(0, 0, width, height);
 
       context.fillStyle = 'white';
-      birthchart = new Birthchart(currentBirthChart,width,height,context);
-      setTimeout(function(){
-        const bc = birthchart.createBirthChart(width,height);
-      }, 250)
+      nowToBirthchart().then((chart)=>{
+        console.log(chart)
+        birthchart = new Birthchart(chart,width,height,context);
+        setTimeout(function(){
+          const bc = birthchart.createBirthChart(width,height);
+        }, 250)
+      })
     },[]);
 
     const [liftedValue, setLiftedValue] = useState('')

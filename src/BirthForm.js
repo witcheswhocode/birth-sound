@@ -6,6 +6,7 @@ import PlacesAutocomplete from './Autocomplete';
 import "react-datepicker/dist/react-datepicker.css";
 import Moment from 'moment';
 import {apiSignOrder} from './data/settings';
+import { dateToBirthchart } from "./utils/nowToBirthchart";
 var ts = require('@mapbox/timespace');
 
 const BirthForm = () => {
@@ -13,22 +14,10 @@ const BirthForm = () => {
   const [location, setLocation] = useState('');
   const [startDate, setBirthDate] = useState(new Date());
   const [value, setBirthTime] = useState('12:00');
-  const handleRegistration = (data) => {console.log(value+':00')
-                                        console.log(startDate)
-                                        const date = Moment(startDate).format('YYYY-MM-DD');
-                                        const datetime = Moment(date+' '+value, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm:00');
-                                        var point = [location['lng'], location['lat']];
-                                        var time = ts.getFuzzyLocalTimeFromPoint(new Date(datetime), point);
-                                        console.log(time.format().replaceAll(':','%3A'))
-                                        const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(datetime), point).format().replaceAll(':','%3A')
-                                                                                                        +"&latitude="+point[1]+"&longitude="+point[0]
-                                        console.log(url)
-                                        fetch("http://localhost:3001/horoscope?"+url)
-                                        //fetch("http://localhost:3000/horoscope?time=1993-08-06T16%3A50%3A00-04%3A00&latitude=-33.41167&longitude=-70.66647")
-                                        .then(res => res.json())
-                                        .then((result)=>{
-                                            console.log(apiSignOrder[result.data.astros.sun.sign-1]);
-                                        })};
+  const handleRegistration = (data) => {
+                                        const newBirthchart = dateToBirthchart(startDate,value,[location['lng'], location['lat']]);
+
+                                    };
   const handleError = (errors) => {console.log(errors)};
   const handleAlternateClick = (liftedValue) => {
       console.log("I've been clicked!!!");
