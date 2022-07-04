@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Tone from "tone";
 import {mergeDurationVelocityAndPitch,mergeDurationsAndPitch} from "./Rhythm";
-import {planets,type,scale,currentBirthChart} from './data/settings';
+import {planets,type,scale} from './data/settings';
 
 const sampler = new Tone.Sampler({
   urls: {
@@ -111,17 +111,17 @@ const signToNotesLemniscate = require('./data/signsPianoNotes.json');
 }*/
 
 
-function playNote(now,planet){
-  console.log(signToNotesLemniscate[currentBirthChart[planet]][type]+scale)
-  sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planet]][type]+scale,now);  
-  sampler.triggerRelease(now+1);
-}
 
 const Panel = (props) =>  {
-  const { alternateClick, otherAlternateClick, label } = props;
+  const { alternateClick, currentBirthChart } = props;
 
   const [userInput, setUserInput] = useState('');
   
+  function playNote(now,planet){
+    console.log(signToNotesLemniscate[currentBirthChart[planet]][type]+scale)
+    sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planet]][type]+scale,now);  
+    sampler.triggerRelease(now+1);
+  }
   const handleClick = () => {
     let now = Tone.now();
     let nowInc = 0;

@@ -1,14 +1,14 @@
 {
-    "aries": {"sister":"libra","html":"&#9800;","element":"fire","modality":"cardinal","major":"C","minor":"Am"},
-    "taurus": {"sister":"scorpio","html":"&#9800;","element":"earth","modality":"fixed","major":"G","minor":"Em"},
-    "gemini": {"sister":"sagittarius","html":"&#9800;","element":"air","modality":"mutable","major":"D","minor":"Bm"}, 
-    "cancer": {"sister":"capricorn","html":"&#9800;","element":"water","modality":"cardinal","major":"A","minor":"F#m"},
-    "leo": {"sister":"aquarius","html":"&#9800;","element":"fire","modality":"fixed","major":"E","minor":"C#m"},
-    "virgo": {"sister":"pisces","html":"&#9800;","element":"earth","modality":"mutable","major":"B","minor":"G#m"},
-    "libra": {"sister":"aries","html":"&#9800;","element":"air","modality":"cardinal","major":"F#","minor":"D#m"}, 
-    "scorpio": {"sister":"taurus","html":"&#9800;","element":"water","modality":"fixed","major":"C#","minor":""}, 
-    "sagittarius": {"sister":"gemini","html":"&#9800;","element":"fire","modality":"mutable","major":"G#","minor":"Fm"}, 
-    "capricorn": {"sister":"cancer","html":"&#9800;","element":"earth","modality":"cardinal","major":"D#","minor":"Cm"}, 
-    "aquarius": {"sister":"leo","html":"&#9800;","element":"air","modality":"fixed","major":"A#","minor":"Gm"}, 
-    "pisces": {"sister":"virgo","html":"&#9800;","element":"water","modality":"mutable","major":"F","minor":"Dm"}
+    "aries": {"id":1,"sister":"libra","html":"&#9800;","element":"fire","modality":"cardinal","major":"C","minor":"Am"},
+    "taurus": {"id":2,"sister":"scorpio","html":"&#9800;","element":"earth","modality":"fixed","major":"G","minor":"Em"},
+    "gemini": {"id":3,"sister":"sagittarius","html":"&#9800;","element":"air","modality":"mutable","major":"D","minor":"Bm"}, 
+    "cancer": {"id":4,"sister":"capricorn","html":"&#9800;","element":"water","modality":"cardinal","major":"A","minor":"F#m"},
+    "leo": {"id":5,"sister":"aquarius","html":"&#9800;","element":"fire","modality":"fixed","major":"E","minor":"C#m"},
+    "virgo": {"id":6,"sister":"pisces","html":"&#9800;","element":"earth","modality":"mutable","major":"B","minor":"G#m"},
+    "libra": {"id":7,"sister":"aries","html":"&#9800;","element":"air","modality":"cardinal","major":"F#","minor":"D#m"}, 
+    "scorpio": {"id":8,"sister":"taurus","html":"&#9800;","element":"water","modality":"fixed","major":"C#","minor":""}, 
+    "sagittarius": {"id":9,"sister":"gemini","html":"&#9800;","element":"fire","modality":"mutable","major":"G#","minor":"Fm"}, 
+    "capricorn": {"id":10,"sister":"cancer","html":"&#9800;","element":"earth","modality":"cardinal","major":"D#","minor":"Cm"}, 
+    "aquarius": {"id":11,"sister":"leo","html":"&#9800;","element":"air","modality":"fixed","major":"A#","minor":"Gm"}, 
+    "pisces": {"id":12,"sister":"virgo","html":"&#9800;","element":"water","modality":"mutable","major":"F","minor":"Dm"}
   }

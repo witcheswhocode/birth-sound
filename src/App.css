@@ -10,6 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Dosis';
+  position: relative;
 }
 
 #title{
@@ -36,7 +37,6 @@ body {
   margin: 8px;
   padding: 4px;
 }
-
 #can {
   width:100%;
   max-width: 500px;
@@ -120,3 +120,50 @@ table {
 .color-scorpio.active{
   background-color: #7ebdc2;
 }
+
+/* FORM */
+form {
+  position: absolute;
+  max-height: 50px;
+  overflow: inherit;
+  justify-content: center;
+  width: inherit;
+}
+.react-time-picker input,
+.react-time-picker span,
+.react-time-picker select
+{
+  color:white;
+}
+.text-danger
+{
+  color:yellow;
+  padding-left: 5px;
+}
+#container{
+  position: relative;
+}
+#birth-form,
+#canvas, #panel, #birthchart-list{
+  width: 100%;
+  min-height: 180px;
+}
+#birth-form label{
+  color:white;
+}
+#birth-form .form-item,
+#birth-form button {
+  width: 155px;
+  margin: auto;
+  padding: 4px;
+}
+.form-item ul {
+  color:white;
+  background: #2B3A67;
+  margin: 0;
+  max-width: fit-content;
+  position: absolute;
+  z-index: 1;
+}
+
+/* END FORM */
