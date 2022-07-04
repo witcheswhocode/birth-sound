@@ -59,6 +59,6 @@ export async function dateToBirthchart(startDate,value,point){
                     "uranus":apiSignOrder[result.data.astros.uranus.sign-1],
                     "neptune":apiSignOrder[result.data.astros.neptune.sign-1],
                     "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
-                    "asc":apiSignOrder[result.data.axes.asc.sign-1]};
+                    "asc":apiSignOrder[result.data.axes.asc.sign-2]};
         });
 }

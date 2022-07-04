@@ -7,16 +7,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import Moment from 'moment';
 import {apiSignOrder} from './data/settings';
 import { dateToBirthchart } from "./utils/nowToBirthchart";
+import {handle} from "./Canvas";
+
 var ts = require('@mapbox/timespace');
 
-const BirthForm = () => {
+const BirthForm = (props) =>  {
+  const { updateBirthchart } = props;
   const { control, register, handleSubmit, formState: { errors } } = useForm();
   const [location, setLocation] = useState('');
   const [startDate, setBirthDate] = useState(new Date());
   const [value, setBirthTime] = useState('12:00');
   const handleRegistration = (data) => {
-                                        const newBirthchart = dateToBirthchart(startDate,value,[location['lng'], location['lat']]);
-
+                                        dateToBirthchart(startDate,value,[location['lng'], location['lat']])
+                                        .then((newBirthchart) => {
+                                            console.log(newBirthchart)
+                                            updateBirthchart(newBirthchart);
+                                        });
                                     };
   const handleError = (errors) => {console.log(errors)};
   const handleAlternateClick = (liftedValue) => {
