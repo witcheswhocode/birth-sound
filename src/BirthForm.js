@@ -94,7 +94,9 @@ const BirthForm = (props) =>  {
                     )}
                 />
             </div>
-            <button>Submit</button>
+            <div className='form-item'>
+                <button>Submit</button>
+            </div>
 
         </form>
     </div>
