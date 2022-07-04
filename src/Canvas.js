@@ -28,7 +28,6 @@ const Canvas = props => {
 
       context.fillStyle = 'white';
       nowToBirthchart().then((chart)=>{
-        console.log(chart)
         birthchart = new Birthchart(chart,width,height,context);
         setTimeout(function(){
           const bc = birthchart.createBirthChart(width,height);
