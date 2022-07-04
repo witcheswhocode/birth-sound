@@ -105,7 +105,7 @@ const Canvas = (props) => {
       <div id="container">
         <BirthForm updateBirthchart={handleBirthchartChange} />
         <div id='canvas'><canvas id='can' ref={canvasRef} {...props}></canvas></div>
-        <Panel alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
+        <Panel currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
         <SignList birthchartprop={liftedValue} />
       </div>
     )
