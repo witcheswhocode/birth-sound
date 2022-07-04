@@ -1,6 +1,7 @@
 export const planets = ['asc', 'sun', 'moon', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto'/*, 'northnode', 'chiron', 'mc' */];
 //export const signOrder = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces'];
 export const signOrder = ['pisces','aquarius','capricorn','sagittarius','scorpio','libra','virgo','leo','cancer','gemini','taurus','aries'];
+export const apiSignOrder = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces'];
 
 export const planetInfo = require('./planetInfo.json');
 

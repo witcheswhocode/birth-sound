@@ -4,23 +4,36 @@ import DatePicker from "react-datepicker";
 import TimePicker from 'react-time-picker'
 import PlacesAutocomplete from './Autocomplete';
 import "react-datepicker/dist/react-datepicker.css";
-import { assertJSXAttribute } from "@babel/types";
-import { AutomationEventList } from "automation-events";
+import Moment from 'moment';
+import {apiSignOrder} from './data/settings';
+var ts = require('@mapbox/timespace');
 
 const BirthForm = () => {
   const { control, register, handleSubmit, formState: { errors } } = useForm();
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState('');
   const [startDate, setBirthDate] = useState(new Date());
   const [value, setBirthTime] = useState('12:00');
-  const handleRegistration = (data) => {console.log(value)
+  const handleRegistration = (data) => {console.log(value+':00')
                                         console.log(startDate)
-                                        console.log(data['location'])
-                                        fetch("http://localhost:3001/horoscope?time=1993-08-06T16%3A50%3A00-04%3A00&latitude=-33.41167&longitude=-70.66647")
+                                        const date = Moment(startDate).format('YYYY-MM-DD');
+                                        const datetime = Moment(date+' '+value, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm:00');
+                                        var point = [location['lng'], location['lat']];
+                                        var time = ts.getFuzzyLocalTimeFromPoint(new Date(datetime), point);
+                                        console.log(time.format().replaceAll(':','%3A'))
+                                        const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(datetime), point).format().replaceAll(':','%3A')
+                                                                                                        +"&latitude="+point[1]+"&longitude="+point[0]
+                                        console.log(url)
+                                        fetch("http://localhost:3001/horoscope?"+url)
+                                        //fetch("http://localhost:3000/horoscope?time=1993-08-06T16%3A50%3A00-04%3A00&latitude=-33.41167&longitude=-70.66647")
                                         .then(res => res.json())
                                         .then((result)=>{
-                                            console.log('process.env.GOOGLE_MAPS_API');
+                                            console.log(apiSignOrder[result.data.astros.sun.sign-1]);
                                         })};
   const handleError = (errors) => {console.log(errors)};
+  const handleAlternateClick = (liftedValue) => {
+      console.log("I've been clicked!!!");
+      setLocation(liftedValue);
+  }
 
   const formOptions = {
     location: { required: "Location is required" },
@@ -37,7 +50,7 @@ const BirthForm = () => {
                 <small className="text-danger">
                 {errors?.location && errors.location.message}
                 </small>
-                <PlacesAutocomplete
+                <PlacesAutocomplete alternateClick={handleAlternateClick}
                 />
             </div>
             <div className='form-item'>

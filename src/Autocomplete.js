@@ -4,7 +4,8 @@ import usePlacesAutocomplete, {
   } from "use-places-autocomplete";
   import useOnclickOutside from "react-cool-onclickoutside";
   
-  const PlacesAutocomplete = () => {
+  const PlacesAutocomplete = (props) =>  {
+    const { alternateClick } = props;
     const {
       ready,
       value,
@@ -40,6 +41,7 @@ import usePlacesAutocomplete, {
         getGeocode({ address: description }).then((results) => {
           const { lat, lng } = getLatLng(results[0]);
           console.log("📍 Coordinates: ", { lat, lng });
+          alternateClick({ lat, lng });
         });
       };
   
