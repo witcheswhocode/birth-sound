@@ -6,7 +6,8 @@ import {planets,signOrder} from './data/settings';
 import { nowToBirthchart } from './utils/nowToBirthchart';
 import { Birthchart } from './BirthchartClass';
 
-const Canvas = props => {
+const Canvas = (props) => {
+  const { updateBirthchartList,birthchartprop } = props;
   const canvasRef = useRef(null);
   
     
@@ -31,17 +32,25 @@ const Canvas = props => {
         birthchart = new Birthchart(chart,width,height,context);
         setTimeout(function(){
           const bc = birthchart.createBirthChart(width,height);
-        }, 250)
+        }, 250);
+        setLiftedValue(chart);
       })
     },[]);
 
     const handleBirthchartChange = (chart) => {
+      const canvas = canvasRef.current;
+      canvas.width = 600;
+      canvas.height = 600;
       console.log('handleBirthchartChange');
+      context = canvas.getContext('2d');
+      width = canvas.width;
+      height = canvas.height;
       context.clearRect(0, 0, width, height);
       birthchart = new Birthchart(chart,width,height,context);
       setTimeout(function(){
         const bc = birthchart.createBirthChart(width,height);
-      }, 250)
+      }, 250);
+      setLiftedValue(chart);
     }
 
     const [liftedValue, setLiftedValue] = useState('')
@@ -92,7 +101,7 @@ const Canvas = props => {
         <BirthForm updateBirthchart={handleBirthchartChange} />
         <div id='canvas'><canvas id='can' ref={canvasRef} {...props}></canvas></div>
         <Panel alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
-        <SignList />
+        <SignList birthchartprop={liftedValue} />
       </div>
     )
 
