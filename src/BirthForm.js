@@ -14,7 +14,7 @@ var ts = require('@mapbox/timespace');
 const BirthForm = (props) =>  {
   const { updateBirthchart } = props;
   const { control, register, handleSubmit, formState: { errors } } = useForm();
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState({'lng':-118.2437,'lat':34.0522});
   const [startDate, setBirthDate] = useState(new Date());
   const [value, setBirthTime] = useState('12:00');
   const handleRegistration = (data) => {

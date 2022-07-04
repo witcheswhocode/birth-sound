@@ -65,7 +65,7 @@ import usePlacesAutocomplete, {
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder="Birth location?"
+          placeholder="Los Angeles, CA, USA"
         />
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
         {status === "OK" && <ul>{renderSuggestions()}</ul>}
