@@ -6,7 +6,7 @@ import PlacesAutocomplete from './Autocomplete';
 import "react-datepicker/dist/react-datepicker.css";
 import Moment from 'moment';
 import {apiSignOrder} from './data/settings';
-import { dateToBirthchart } from "./utils/nowToBirthchart";
+import { dateToBirthchart } from "./utils/dateToBirthchart";
 import {handle} from "./Canvas";
 
 var ts = require('@mapbox/timespace');

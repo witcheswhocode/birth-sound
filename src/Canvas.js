@@ -3,7 +3,7 @@ import Panel from './Panel';
 import SignList from './SignList';
 import BirthForm from './BirthForm';
 import {planets,signOrder} from './data/settings';
-import { nowToBirthchart } from './utils/nowToBirthchart';
+import { nowToBirthchart } from './utils/dateToBirthchart';
 import { Birthchart } from './BirthchartClass';
 
 const Canvas = (props) => {
