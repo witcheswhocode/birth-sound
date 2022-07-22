@@ -49,9 +49,12 @@ body {
 }
 
 #birthchart-list {
-  display:flex;
+  display:inline-grid;
   justify-content: center;
   align-items: center;
+}
+#asc-main{
+  margin: 0 auto;
 }
 table {
   border-spacing: 8px;
