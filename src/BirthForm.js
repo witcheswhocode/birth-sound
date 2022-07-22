@@ -90,7 +90,10 @@ const BirthForm = (props) =>  {
                         {...register('birthday', formOptions.birthday)} 
                         selected={startDate} 
                         inputRef={ref}
-                        onChange={(field)=>setBirthDate(field)}  />
+                        onChange={(field)=>setBirthDate(field)}
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"  />
                     )}
                 />
             </div>

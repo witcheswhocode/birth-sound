@@ -144,7 +144,7 @@ form {
   position: relative;
 }
 #birth-form,
-#canvas, #panel, #birthchart-list{
+#canvas, #birthchart-list{
   width: 100%;
   min-height: 180px;
 }
