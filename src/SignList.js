@@ -6,7 +6,7 @@ const SignList = (props) =>  {
   if (props.birthchartprop){
     return (
       <div id='birthchart-list'>
-          <div className={'birthchart-table-data color-'+props['birthchartprop'][planets[0]]} id={'asc-main'}>
+          <div className={'birthchart-table-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]}>
             <span>{planetInfo[planets[0]]}</span>{planets[0]} - {props['birthchartprop'][planets[0]]}
           </div>
           <table>
