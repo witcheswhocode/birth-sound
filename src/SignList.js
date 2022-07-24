@@ -4,45 +4,14 @@ import Select from 'react-select';
 
 const SignList = (props) =>  {
   console.log(props['birthchartprop']);
-  const options = [
-    {label: "one", selected:true, value: 1, className: 'custom-class'},
-    {label: "two", value: 2, className: 'awesome-class'}
-    // more options...
-  ];
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      borderBottom: '1px dotted pink',
-      color: state.isSelected ? 'red' : 'blue',
-      padding: 20,
-    }),
-    control: () => ({
-      // none of react-select's styles are passed to <Control />
-      width: 200,
-    }),
-    singleValue: (provided, state) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-  
-      return { ...provided, opacity, transition };
-    }
-  }
   function selectedAsc(e){
     console.log(e);
   }
   if (props.birthchartprop){
     return (
       <div id='birthchart-list'>
-          {/* <Select className={'birthchart-dropdown-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]} 
-                  options={options} 
-                  isSearchable={false}
-                  styles={customStyles}
-                  value={1}
-                  components={{
-                    IndicatorSeparator: () => null
-                  }} />*/}
-          <select name="select-asc" className={'birthchart-dropdown-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]} onChange={selectedAsc}>
-            <option className={"asc-option color-"+signOrder[0]} value={signOrder[0]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[0]}</option>
+          <select value={props['birthchartprop'][planets[0]]} name="select-asc" className={'birthchart-dropdown-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]} onChange={selectedAsc}>
+            <option className="asc-option" value={signOrder[0]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[0]}</option>
             <option className="asc-option" value={signOrder[1]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[1]}</option>
             <option className="asc-option" value={signOrder[2]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[2]}</option>
             <option className="asc-option" value={signOrder[3]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[3]}</option>
