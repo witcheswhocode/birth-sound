@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { planets,planetInfo,signOrder } from "./data/settings";
-import Select from 'react-select';
 
 const SignList = (props) =>  {
-  console.log(props['birthchartprop']);
   function selectedAsc(e){
-    console.log(e);
+    // change the color of the asc select box
+    const selectedSign = e.target.value;
+    document.getElementById('asc').className = "birthchart-dropdown-data color-"+selectedSign;
+    
+    // update birthchart
   }
   if (props.birthchartprop){
     return (
       <div id='birthchart-list'>
-          <select value={props['birthchartprop'][planets[0]]} name="select-asc" className={'birthchart-dropdown-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]} onChange={selectedAsc}>
+          <select defaultValue={props['birthchartprop'][planets[0]]} name="select-asc" className={'birthchart-dropdown-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]} onChange={selectedAsc}>
             <option className="asc-option" value={signOrder[0]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[0]}</option>
             <option className="asc-option" value={signOrder[1]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[1]}</option>
             <option className="asc-option" value={signOrder[2]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[2]}</option>
