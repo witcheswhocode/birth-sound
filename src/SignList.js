@@ -1,14 +1,60 @@
 import React, { useState } from 'react';
-import { planets,planetInfo } from "./data/settings";
+import { planets,planetInfo,signOrder } from "./data/settings";
+import Select from 'react-select';
 
 const SignList = (props) =>  {
   console.log(props['birthchartprop']);
+  const options = [
+    {label: "one", selected:true, value: 1, className: 'custom-class'},
+    {label: "two", value: 2, className: 'awesome-class'}
+    // more options...
+  ];
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      borderBottom: '1px dotted pink',
+      color: state.isSelected ? 'red' : 'blue',
+      padding: 20,
+    }),
+    control: () => ({
+      // none of react-select's styles are passed to <Control />
+      width: 200,
+    }),
+    singleValue: (provided, state) => {
+      const opacity = state.isDisabled ? 0.5 : 1;
+      const transition = 'opacity 300ms';
+  
+      return { ...provided, opacity, transition };
+    }
+  }
+  function selectedAsc(e){
+    console.log(e);
+  }
   if (props.birthchartprop){
     return (
       <div id='birthchart-list'>
-          <div className={'birthchart-table-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]}>
-            <span>{planetInfo[planets[0]]}</span>{planets[0]} - {props['birthchartprop'][planets[0]]}
-          </div>
+          {/* <Select className={'birthchart-dropdown-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]} 
+                  options={options} 
+                  isSearchable={false}
+                  styles={customStyles}
+                  value={1}
+                  components={{
+                    IndicatorSeparator: () => null
+                  }} />*/}
+          <select name="select-asc" className={'birthchart-dropdown-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]} onChange={selectedAsc}>
+            <option className={"asc-option color-"+signOrder[0]} value={signOrder[0]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[0]}</option>
+            <option className="asc-option" value={signOrder[1]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[1]}</option>
+            <option className="asc-option" value={signOrder[2]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[2]}</option>
+            <option className="asc-option" value={signOrder[3]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[3]}</option>
+            <option className="asc-option" value={signOrder[4]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[4]}</option>
+            <option className="asc-option" value={signOrder[5]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[5]}</option>
+            <option className="asc-option" value={signOrder[6]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[6]}</option>
+            <option className="asc-option" value={signOrder[7]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[7]}</option>
+            <option className="asc-option" value={signOrder[8]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[8]}</option>
+            <option className="asc-option" value={signOrder[9]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[9]}</option>
+            <option className="asc-option" value={signOrder[10]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[10]}</option>
+            <option className="asc-option" value={signOrder[11]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[11]}</option>
+          </select> 
           <table>
               <tbody>
                   <tr className='birthchart-table-row'><td className={'birthchart-table-data color-'+props['birthchartprop'][planets[1]]} id={planets[1]}><span>{planetInfo[planets[1]]}</span>{planets[1]} - {props['birthchartprop'][planets[1]]}</td><td className={'birthchart-table-data color-'+props['birthchartprop'][planets[6]]} id={planets[6]}><span>{planetInfo[planets[6]]}</span>{planets[6]} - {props['birthchartprop'][planets[6]]}</td></tr>

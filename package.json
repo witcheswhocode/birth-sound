@@ -20,6 +20,7 @@
     "react-hook-form": "^7.33.0",
     "react-responsive-canvas": "^1.0.2",
     "react-scripts": "5.0.1",
+    "react-select": "^5.4.0",
     "react-time-picker": "^4.5.0",
     "tone": "^14.7.77",
     "use-places-autocomplete": "^4.0.0",
