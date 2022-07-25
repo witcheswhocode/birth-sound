@@ -100,10 +100,8 @@ const Canvas = (props) => {
         }, (1000*time)+500);
     }
     const handleAscChange = (newAsc) => {
-        console.log(currentBirthchart);
         currentBirthchart['asc'] = newAsc;
         setBirthchart(currentBirthchart);
-        console.log(currentBirthchart);
         handleBirthchartChange(currentBirthchart);
     }
       
