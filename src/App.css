@@ -23,7 +23,7 @@ p{
   position: relative;
 }
 
-#title{
+#title {
   width: 100%;
   height: 100%;
   display: inline-grid;
@@ -31,7 +31,7 @@ p{
   justify-content: center;
   font-family: 'Dosis';
 }
-#title h1{
+#title h1, h2, h3, h4{
   color:white;
   margin: 8px 0px;
 }
@@ -174,7 +174,11 @@ form {
 #birth-form,
 #canvas, #birthchart-list{
   width: 100%;
-  min-height: 180px;
+  min-height: 200px;
+  margin: 40px 0;
+}
+#canvas{
+  text-align: center;
 }
 #birth-form label{
   color:white;

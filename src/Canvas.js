@@ -2,9 +2,9 @@ import React, { useRef, useEffect,componentDidMount, useState } from 'react';
 import Panel from './Panel';
 import SignList from './SignList';
 import BirthForm from './BirthForm';
-import {planets,signOrder} from './data/settings';
 import { nowToBirthchart } from './utils/dateToBirthchart';
 import { Birthchart } from './BirthchartClass';
+import Moment from 'moment';
 
 const Canvas = (props) => {
   const { updateBirthchartList,birthchartprop } = props;
@@ -104,11 +104,18 @@ const Canvas = (props) => {
         setBirthchart(currentBirthchart);
         handleBirthchartChange(currentBirthchart);
     }
+    const handleUpdateChartTitle = (birthday) => {
+      document.getElementById('chart-title').textContent = birthday;
+    }
       
     return(
       <div id="container">
-        <BirthForm updateBirthchart={handleBirthchartChange} />
-        <div id='canvas'><canvas id='can' ref={canvasRef} {...props}></canvas></div>
+        <BirthForm updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} />
+        <div id='canvas'>
+          <h4>Birthchart for:</h4>
+          <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY')}</h2>
+          <canvas id='can' ref={canvasRef} {...props}></canvas>
+        </div>
         <Panel currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
         <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
       </div>

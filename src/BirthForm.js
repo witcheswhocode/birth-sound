@@ -5,14 +5,10 @@ import TimePicker from 'react-time-picker'
 import PlacesAutocomplete from './Autocomplete';
 import "react-datepicker/dist/react-datepicker.css";
 import Moment from 'moment';
-import {apiSignOrder} from './data/settings';
 import { dateToBirthchart } from "./utils/dateToBirthchart";
-import {handle} from "./Canvas";
-
-var ts = require('@mapbox/timespace');
 
 const BirthForm = (props) =>  {
-  const { updateBirthchart } = props;
+  const { updateBirthchart, updateChartTitle } = props;
   const { control, register, handleSubmit, formState: { errors } } = useForm();
   const [location, setLocation] = useState({'lng':-118.2437,'lat':34.0522});
   const [startDate, setBirthDate] = useState(new Date());
@@ -22,6 +18,7 @@ const BirthForm = (props) =>  {
                                         .then((newBirthchart) => {
                                             console.log(newBirthchart)
                                             updateBirthchart(newBirthchart);
+                                            updateChartTitle(Moment(startDate).format('MMMM D, YYYY'));
                                         });
                                     };
   const handleError = (errors) => {console.log(errors)};
