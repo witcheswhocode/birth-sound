@@ -10,6 +10,8 @@ const Canvas = (props) => {
   const { updateBirthchartList,birthchartprop } = props;
   const canvasRef = useRef(null);
   let birthchart;
+  const [liftedValue, setLiftedValue] = useState('');
+  const [currentBirthchart, setBirthchart] = useState(birthchart);
   
     
     //let birthchart;
@@ -57,9 +59,6 @@ const Canvas = (props) => {
       setLiftedValue(chart);
     }
 
-    const [liftedValue, setLiftedValue] = useState('');
-    const [currentBirthchart, setBirthchart] = useState(birthchart);
-
     const handleAlternateClick = (liftedValue, planet, time) => {
       //setLiftedValue(liftedValue);
       console.log(currentBirthchart);
@@ -100,13 +99,20 @@ const Canvas = (props) => {
           birthchart.colorArc(liftedValue,'');
         }, (1000*time)+500);
     }
+    const handleAscChange = (newAsc) => {
+        console.log(currentBirthchart);
+        currentBirthchart['asc'] = newAsc;
+        setBirthchart(currentBirthchart);
+        console.log(currentBirthchart);
+        handleBirthchartChange(currentBirthchart);
+    }
       
     return(
       <div id="container">
         <BirthForm updateBirthchart={handleBirthchartChange} />
         <div id='canvas'><canvas id='can' ref={canvasRef} {...props}></canvas></div>
         <Panel currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
-        <SignList birthchartprop={liftedValue} />
+        <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
       </div>
     )
 

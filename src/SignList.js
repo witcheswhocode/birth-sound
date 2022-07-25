@@ -3,11 +3,13 @@ import { planets,planetInfo,signOrder } from "./data/settings";
 
 const SignList = (props) =>  {
   function selectedAsc(e){
+    const { ascChange } = props;
     // change the color of the asc select box
     const selectedSign = e.target.value;
     document.getElementById('asc').className = "birthchart-dropdown-data color-"+selectedSign;
     
     // update birthchart
+    ascChange(selectedSign);
   }
   if (props.birthchartprop){
     return (
