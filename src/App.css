@@ -175,7 +175,7 @@ form {
 #canvas, #birthchart-list{
   width: 100%;
   min-height: 200px;
-  margin: 40px 0;
+  margin: 8px 0;
 }
 #canvas{
   text-align: center;
@@ -241,3 +241,9 @@ img {
 }
 
 /* END BYLINES */
+
+.emojis,
+.emojis span {
+  margin: 8px auto;
+  text-align: center;
+}

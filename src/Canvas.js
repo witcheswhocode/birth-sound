@@ -4,6 +4,7 @@ import SignList from './SignList';
 import BirthForm from './BirthForm';
 import { nowToBirthchart } from './utils/dateToBirthchart';
 import { Birthchart } from './BirthchartClass';
+import EmojiLinebreak from './EmojiLinebreak';
 import Moment from 'moment';
 
 const Canvas = (props) => {
@@ -109,14 +110,17 @@ const Canvas = (props) => {
     }
       
     return(
-      <div id="container">
+      <div id="container1">
         <BirthForm updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} />
+        <EmojiLinebreak />
         <div id='canvas'>
           <h4>Birthchart for:</h4>
           <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY')}</h2>
           <canvas id='can' ref={canvasRef} {...props}></canvas>
         </div>
+        <EmojiLinebreak />
         <Panel currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
+        <EmojiLinebreak />
         <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
       </div>
     )
