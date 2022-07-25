@@ -206,3 +206,38 @@ form {
 }
 
 /* END FORM */
+
+/* START BYLINES */
+footer{
+  background-color: white;
+  border-radius: 2px;
+  width: 100%;
+}
+.bylines-div{
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  height: fit-content;
+  margin: 16px auto;
+  background-color: white;
+}
+.bylines-text-div{
+  width: 70%;
+  padding: 16px;
+}
+.bylines-div p{
+  height: fit-content;
+  margin:0;
+  color:black;
+}
+
+img {
+  object-fit: cover;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  margin:auto;
+  border:white 2px solid;
+}
+
+/* END BYLINES */

@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
+import Bylines from './Bylines';
 import Canvas from './Canvas';
-import Panel from './Panel';
-import { SomeThing } from './SomeThing';
 
 
 function App() {
@@ -12,6 +11,7 @@ function App() {
       <p id='intro-p'>Inspired by corruptcatalyst on TikTok and his tool to see how songs would look on a birthchart. There is now there is a way to hear your own birthchart.</p>
 
       <Canvas />
+      <Bylines />
     </div>
   );
 }
