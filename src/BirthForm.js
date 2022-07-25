@@ -39,6 +39,8 @@ const BirthForm = (props) =>  {
   return (
 
     <div id='birth-form'>
+        <p id='form-p'>Enter your birth details:</p>
+
         <form onSubmit={handleSubmit(handleRegistration, handleError)}>
             <div className='form-item'>
                 <label>Location</label>
@@ -97,7 +99,7 @@ const BirthForm = (props) =>  {
                     )}
                 />
             </div>
-            <div className='form-item'>
+            <div id='submit-button-div' className='form-item'>
                 <button>Submit</button>
             </div>
 
