@@ -1,6 +1,13 @@
 body {
   /*background-color: #070E0A;*/
   background-color: #0d0c1d;
+
+  /*background: linear-gradient(
+    to bottom,
+    rgb(35, 34, 81),
+    rgba(13, 12, 29),
+    rgba(93, 91, 213)
+  );*/
 }
 
 p{
@@ -36,7 +43,7 @@ p{
   margin: 8px 0px;
 }
 
-#button{
+button{
   min-width: 30px;
   font-family: 'Dosis';
   background-color: #2B3A67;
@@ -171,24 +178,34 @@ form {
 #container{
   position: relative;
 }
-#birth-form,
 #canvas, #birthchart-list{
   width: 100%;
   min-height: 200px;
-  margin: 8px 0;
 }
 #canvas{
   text-align: center;
 }
-#birth-form label{
-  color:white;
+#birth-form{
+  width: 80%;
+  min-height: 200px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 8px 0;
+}
+#birth-form label,#birth-form p{
+  color:#0d0c1d;
 }
 #birth-form .form-item,
-#birth-form button,
-#form-p {
+#birth-form button {
   width: 155px;
   margin: 0 auto;
   padding: 4px;
+}
+.section-header {
+  text-align: center;
+  margin: 0 auto;
+  padding: 4px;
+  color:#0d0c1d;
 }
 #submit-button-div{
   display: flex;
@@ -210,8 +227,8 @@ form {
 /* START BYLINES */
 footer{
   background-color: white;
-  border-radius: 2px;
   width: 100%;
+  padding: 16px 0;
 }
 .bylines-div{
   display: flex;
@@ -228,7 +245,12 @@ footer{
 .bylines-div p{
   height: fit-content;
   margin:0;
-  color:black;
+  color:#0d0c1d;
+}
+.react-time-picker__inputGroup__input,
+.react-time-picker__inputGroup__divider,
+.react-time-picker__inputGroup__leadingZero{
+  color:#0d0c1d !important;
 }
 
 img {
@@ -244,6 +266,9 @@ img {
 
 .emojis,
 .emojis span {
-  margin: 8px auto;
-  text-align: center;
+  margin: 16px auto;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }

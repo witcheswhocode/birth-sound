@@ -4,7 +4,7 @@ export const EmojiLinebreak = () => {
     return (
       <>
         <div className='emojis'>
-            <span>✨</span><span>✨</span><span>✨</span>      
+        <span>✨</span><span>✨</span><span>✨</span><span>✨</span>    
         </div>
       </>
     )

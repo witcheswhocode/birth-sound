@@ -9,8 +9,9 @@ function App() {
   return (
     <div id="wrapper">
       <div id="title"><h1>Birth Sound</h1></div>
-      <p id='intro-p'>Inspired by corruptcatalyst on TikTok and his tool to see how songs would look on a birthchart. There is now there is a way to hear your own birthchart.</p>
-
+      <EmojiLinebreak />
+      <p id='intro-p'>Create your personalized sound birth chart (natal chart) by filling in the form below. 
+      You can listen to your birthsound as if the signs represented the music theory wheel as explained in this TikTok by corruptcatalyst.</p>
       <EmojiLinebreak />
       <Canvas />
       <EmojiLinebreak />

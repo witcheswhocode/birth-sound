@@ -105,8 +105,9 @@ const Canvas = (props) => {
         setBirthchart(currentBirthchart);
         handleBirthchartChange(currentBirthchart);
     }
-    const handleUpdateChartTitle = (birthday) => {
-      document.getElementById('chart-title').textContent = birthday;
+    const handleUpdateChartTitle = (birthday,time,location) => {
+      document.getElementById('chart-title').textContent = birthday + ' ' + time;
+      document.getElementById('chart-coords').textContent = 'Coords: '+location["lat"]+', '+location["lng"];
     }
       
     return(
@@ -115,12 +116,11 @@ const Canvas = (props) => {
         <EmojiLinebreak />
         <div id='canvas'>
           <h4>Birthchart for:</h4>
-          <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY')}</h2>
+          <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY hh:mm A')}</h2>
+          <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
           <canvas id='can' ref={canvasRef} {...props}></canvas>
         </div>
-        <EmojiLinebreak />
         <Panel currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
-        <EmojiLinebreak />
         <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
       </div>
     )

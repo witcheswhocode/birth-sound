@@ -10,15 +10,15 @@ import { dateToBirthchart } from "./utils/dateToBirthchart";
 const BirthForm = (props) =>  {
   const { updateBirthchart, updateChartTitle } = props;
   const { control, register, handleSubmit, formState: { errors } } = useForm();
-  const [location, setLocation] = useState({'lng':-118.2437,'lat':34.0522});
-  const [startDate, setBirthDate] = useState(new Date());
-  const [value, setBirthTime] = useState('12:00');
+  const [birthlocation, setLocation] = useState({'lng':-118.2437,'lat':34.0522});
+  const [birthdate, setBirthDate] = useState(new Date());
+  const [birthtime, setBirthTime] = useState(Moment(new Date()).format('HH:mm'));
   const handleRegistration = (data) => {
-                                        dateToBirthchart(startDate,value,[location['lng'], location['lat']])
+                                        dateToBirthchart(birthdate,birthtime,[birthlocation['lng'], birthlocation['lat']])
                                         .then((newBirthchart) => {
-                                            console.log(newBirthchart)
+                                            console.log(birthtime)
                                             updateBirthchart(newBirthchart);
-                                            updateChartTitle(Moment(startDate).format('MMMM D, YYYY'));
+                                            updateChartTitle(Moment(birthdate).format('MMMM D, YYYY'),Moment(birthtime, 'HH:mm').format('hh:mm A'),birthlocation);
                                         });
                                     };
   const handleError = (errors) => {console.log(errors)};
@@ -36,7 +36,7 @@ const BirthForm = (props) =>  {
   return (
 
     <div id='birth-form'>
-        <p id='form-p'>Enter your birth details:</p>
+        <h3 className="section-header">Enter your birth details:</h3>
 
         <form onSubmit={handleSubmit(handleRegistration, handleError)}>
             <div className='form-item'>
@@ -63,7 +63,7 @@ const BirthForm = (props) =>  {
                         name="birthtime"
                         {...register('birthtime', formOptions.birthtime)}
                         onChange={(field)=>{setBirthTime(field)}}
-                        value={value}
+                        value={birthtime}
                         inputRef={ref}
                         clearIcon={null}
                         clockIcon={null}
@@ -87,7 +87,7 @@ const BirthForm = (props) =>  {
                         type="birthday"
                         name="birthday"
                         {...register('birthday', formOptions.birthday)} 
-                        selected={startDate} 
+                        selected={birthdate} 
                         inputRef={ref}
                         onChange={(field)=>setBirthDate(field)}
                         showMonthDropdown

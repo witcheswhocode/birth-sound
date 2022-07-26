@@ -378,13 +378,8 @@ const mariamaria = () => {
 
   return(
       <div id="panel">
-          <button id="button" onClick={handleClick}>Three</button>
-          <button id="button" onClick={handleOtherClick}>All</button>
-          <button id="button" onClick={handleRhythmClick}>1</button>
-          <button id="button" onClick={handleOtherRhythmClick}>2</button>
-          <button id="button" onClick={heyHo}>Hey Ho</button>
-          <button id="button" onClick={heyHo2}>Hey Ho 2</button>
-          <button id="button" onClick={mariamaria}>Maria</button>
+          <button id="button" onClick={handleClick}>Birthsong</button>
+          <button id="button" onClick={handleOtherClick}>Birthchart</button>
       </div>
   )
 }

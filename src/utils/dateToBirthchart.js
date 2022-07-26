@@ -5,10 +5,10 @@ var ts = require('@mapbox/timespace');
 
 export async function nowToBirthchart(){
     const date = Moment().format('YYYY-MM-DD HH:mm:00');
-    var point = [-118.2437,34.0522];
-    var time = await ts.getFuzzyLocalTimeFromPoint(new Date(date), point);
-    const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(time), point).format().replaceAll(':','%3A')
-                                                                    +"&latitude="+point[1]+"&longitude="+point[0]
+    var birthlocation = [-118.2437,34.0522];
+    var time = await ts.getFuzzyLocalTimeFromPoint(new Date(date), birthlocation);
+    const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(time), birthlocation).format().replaceAll(':','%3A')
+                                                                    +"&latitude="+birthlocation[1]+"&longitude="+birthlocation[0]
     return fetch("http://localhost:3001/horoscope?"+url)
         .then(res => res.json())
         .then((result)=>{
@@ -26,12 +26,12 @@ export async function nowToBirthchart(){
         });
 }
 
-export async function dateToBirthchart(startDate,value,point){
-    const date = Moment(startDate).format('YYYY-MM-DD');
-    const datetime = Moment(date+' '+value, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm:00');
-    var time = ts.getFuzzyLocalTimeFromPoint(new Date(datetime), point);
-    const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(datetime), point).format().replaceAll(':','%3A')
-                                                                    +"&latitude="+point[1]+"&longitude="+point[0]
+export async function dateToBirthchart(birthdate,birthtime,birthlocation){
+    const date = Moment(birthdate).format('YYYY-MM-DD');
+    const datetime = Moment(date+' '+birthtime, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm:00');
+    var time = ts.getFuzzyLocalTimeFromPoint(new Date(datetime), birthlocation);
+    const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(datetime), birthlocation).format().replaceAll(':','%3A')
+                                                                    +"&latitude="+birthlocation[1]+"&longitude="+birthlocation[0]
 
     return fetch("http://localhost:3001/horoscope?"+url)
         .then(res => res.json())
