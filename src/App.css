@@ -191,6 +191,9 @@ form {
   margin: 0 auto;
   background-color: white;
   padding: 8px 0;
+
+  border-radius: 50% 50% 50% 50% / 5% 5% 5% 5% ;
+  box-shadow: 10px 10px rgba(255, 254, 254, 0.25);
 }
 #birth-form label,#birth-form p{
   color:#0d0c1d;
@@ -227,8 +230,12 @@ form {
 /* START BYLINES */
 footer{
   background-color: white;
-  width: 100%;
+  width: 80%;
   padding: 16px 0;
+  margin: 0 auto 16px auto;
+
+  border-radius: 50% 50% 50% 50% / 5% 5% 5% 5% ;
+  box-shadow: 10px 10px rgba(255, 254, 254, 0.25);
 }
 .bylines-div{
   display: flex;
