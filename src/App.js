@@ -11,7 +11,7 @@ function App() {
       <div id="title"><h1>Birth Sound</h1></div>
       <EmojiLinebreak />
       <p id='intro-p'>Create your personalized sound birth chart (natal chart) by filling in the form below. 
-      You can listen to your birthsound as if the signs represented the music theory wheel as explained in this TikTok by corruptcatalyst.</p>
+      You can listen to your birth sound as if the signs represented the music theory wheel as explained in this TikTok by corruptcatalyst.</p>
       <EmojiLinebreak />
       <Canvas />
       <EmojiLinebreak />
