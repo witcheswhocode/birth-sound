@@ -6,12 +6,19 @@ const path = require("path");
 
 const app = express();
 
+// add middlewares
+app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static("public"));
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+});
+
 app.set("trust proxy", "loopback");
 
 // cors
 app.use(cors());
 
-this.app.use(express.static(path.join(__dirname,"../public")));
 
 if (process.env.ENVIRONMENT !== "test") {
   // logger
