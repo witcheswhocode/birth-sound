@@ -186,11 +186,13 @@ form {
   text-align: center;
 }
 #birth-form{
-  width: 80%;
+  max-width: 280px;
   min-height: 200px;
   margin: 0 auto;
   background-color: white;
   padding: 8px 0;
+  display: flex;
+  justify-content: center;
 
   border-radius: 50% 50% 50% 50% / 5% 5% 5% 5% ;
   box-shadow: 10px 10px rgba(255, 254, 254, 0.25);
@@ -230,7 +232,7 @@ form {
 /* START BYLINES */
 footer{
   background-color: white;
-  width: 80%;
+  min-width: 60%;
   padding: 16px 0;
   margin: 0 auto 16px auto;
 

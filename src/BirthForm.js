@@ -36,9 +36,9 @@ const BirthForm = (props) =>  {
   return (
 
     <div id='birth-form'>
-        <h3 className="section-header">Enter your birth details:</h3>
 
         <form onSubmit={handleSubmit(handleRegistration, handleError)}>
+            <h3 className="section-header">Enter your birth details:</h3>
             <div className='form-item'>
                 <label>Location</label>
                 <small className="text-danger">
