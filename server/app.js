@@ -2,6 +2,7 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const morgan = require("morgan");
+const path = require("path");
 
 const app = express();
 
@@ -9,6 +10,8 @@ app.set("trust proxy", "loopback");
 
 // cors
 app.use(cors());
+
+this.app.use(express.static(path.join(__dirname,"../public")));
 
 if (process.env.ENVIRONMENT !== "test") {
   // logger
