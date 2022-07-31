@@ -54,7 +54,7 @@ jobs:
       with:
         task-definition: devops/task-definition.json
         container-name: birthsound
-        image: ${{ steps.build-image.outputs.image }}
+        image: ${{ steps.build-nginx.outputs.ECR_REGISTRY }}/${{ steps.build-nginx.outputs.ECR_REPOSITORY }}:${{ steps.build-nginx.outputs.IMAGE_TAG }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
