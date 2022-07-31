@@ -31,7 +31,7 @@ jobs:
     - name: Build, tag, and push image to Amazon ECR
       id: build-nginx
       env:
-        ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_PATH }}/birthsound-nginx
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: birthsound-nginx
         IMAGE_TAG: ${{ github.sha }}
       run: |
@@ -39,6 +39,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
+        $ECHO ${{ steps.login-ecr.outputs.registry }}
         docker-compose build nginx 
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
