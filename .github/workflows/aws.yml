@@ -39,7 +39,8 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        $ECHO ${{ steps.login-ecr.outputs.registry }}
+        echo ${{ steps.login-ecr.outputs.registry }}
+        echo ${{ steps.build-image.outputs.image }}
         docker-compose build nginx 
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
