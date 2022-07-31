@@ -166,13 +166,13 @@
     }
   ],
   "placementConstraints": [],
-  "memory": "512",
+  "memory": "1024",
   "taskRoleArn": "arn:aws:iam::726562207460:role/ecsTaskExecutionRole",
   "compatibilities": [
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birthsound:3",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birthsound:6",
   "family": "task-birthsound",
   "requiresAttributes": [
     {
@@ -233,8 +233,8 @@
     "operatingSystemFamily": "LINUX",
     "cpuArchitecture": null
   },
-  "cpu": "256",
-  "revision": 3,
+  "cpu": "512",
+  "revision": 6,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
