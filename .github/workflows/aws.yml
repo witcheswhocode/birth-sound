@@ -34,7 +34,6 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: birthsound-nginx
         IMAGE_TAG: ${{ github.sha }}
-      with:
       run: |
         echo "Build docker container"
         # Build a docker container and
