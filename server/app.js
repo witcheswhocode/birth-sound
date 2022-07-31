@@ -29,7 +29,7 @@ if (process.env.ENVIRONMENT !== "test") {
   );
 }
 
-this.app.use(express.static(path.join(__dirname,"../public")));
+//this.app.use(express.static(path.join(__dirname,"../public")));
 
 // helmet configurations
 app.use(helmet());

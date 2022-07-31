@@ -9,7 +9,7 @@ export async function nowToBirthchart(){
     var time = await ts.getFuzzyLocalTimeFromPoint(new Date(date), birthlocation);
     const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(time), birthlocation).format().replaceAll(':','%3A')
                                                                     +"&latitude="+birthlocation[1]+"&longitude="+birthlocation[0]
-    return fetch("http://localhost:3001/horoscope?"+url)
+    return fetch("/api/horoscope?"+url)
         .then(res => res.json())
         .then((result)=>{
             return {"sun":apiSignOrder[result.data.astros.sun.sign-1],
@@ -33,7 +33,7 @@ export async function dateToBirthchart(birthdate,birthtime,birthlocation){
     const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(datetime), birthlocation).format().replaceAll(':','%3A')
                                                                     +"&latitude="+birthlocation[1]+"&longitude="+birthlocation[0]
 
-    return fetch("http://localhost:3001/horoscope?"+url)
+    return fetch("/api/horoscope?"+url)
         .then(res => res.json())
         .then((result)=>{
             return {"sun":apiSignOrder[result.data.astros.sun.sign-1],

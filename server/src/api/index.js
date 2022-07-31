@@ -6,6 +6,7 @@ const router = new Router()
 router.get('/', async (req, res) => res.status(200).json({ message: 'Welcome to Astrology api!' }))
 
 router.get('/horoscope', async (req, res) => {
+  console.log('WE ARE HERE!');
   const date = new Date(req.query.time)
   const { latitude, longitude } = req.query
 

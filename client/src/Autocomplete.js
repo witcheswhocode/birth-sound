@@ -3,6 +3,7 @@ import usePlacesAutocomplete, {
     getLatLng,
   } from "use-places-autocomplete";
   import useOnclickOutside from "react-cool-onclickoutside";
+  import { React } from 'react';
   
   const PlacesAutocomplete = (props) =>  {
     const { alternateClick } = props;
