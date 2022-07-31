@@ -41,8 +41,7 @@ jobs:
         # be deployed to ECS.
         ls
         docker-compose build client 
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        docker push
         
     - name: Build, tag, and push image to Amazon ECR
       id: build-server
@@ -56,8 +55,7 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker-compose build server 
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        docker push
         
     - name: Build, tag, and push image to Amazon ECR
       id: build-nginx
@@ -71,8 +69,7 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker-compose build nginx 
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        docker push 
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
