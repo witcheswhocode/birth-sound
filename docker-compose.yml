@@ -7,13 +7,13 @@ services:
       - client
     restart: always
     build:
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile
       context: ./nginx
     ports:
       - "3050:80"
   api:
     build:
-      dockerfile: Dockerfile.server
+      dockerfile: Dockerfile
       context: "./server"
     volumes:
       - /app/node_modules
@@ -22,7 +22,7 @@ services:
   client:
     stdin_open: true
     build:
-      dockerfile: Dockerfile.client
+      dockerfile: Dockerfile
       context: ./client
     volumes:
       - /app/node_modules
