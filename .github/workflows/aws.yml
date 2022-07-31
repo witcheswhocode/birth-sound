@@ -29,6 +29,21 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build, tag, and push image to Amazon ECR
+      id: build-nginx
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: birthsound-nginx
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        echo "Build docker container"
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        docker-compose build nginx 
+        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        
+    - name: Build, tag, and push image to Amazon ECR
       id: build-client
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -55,21 +70,6 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker-compose build server 
-        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        
-    - name: Build, tag, and push image to Amazon ECR
-      id: build-nginx
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: birthsound-nginx
-        IMAGE_TAG: ${{ github.sha }}
-      run: |
-        echo "Build docker container"
-        # Build a docker container and
-        # push it to ECR so that it can
-        # be deployed to ECS.
-        docker-compose build nginx 
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
