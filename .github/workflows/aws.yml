@@ -44,8 +44,8 @@ jobs:
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker ps
-        echo ${{ steps.build-image.outputs.image }}
-        echo ${{ steps.meta.outputs.tags }}
+        echo steps.build-image.outputs.image
+        echo steps.meta.outputs.tags
         echo $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
     - name: Fill in the new image ID in the Amazon ECS task definition
