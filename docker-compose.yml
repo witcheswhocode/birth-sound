@@ -2,6 +2,7 @@ version: '3.3'
 
 services:
   nginx:
+    image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
     depends_on:
       - api
       - client
@@ -13,6 +14,7 @@ services:
       - "3050:80"
   api:
     build:
+      image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       dockerfile: Dockerfile
       context: "./server"
     volumes:
@@ -20,6 +22,7 @@ services:
       - ./server:/app
       
   client:
+    image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
     stdin_open: true
     build:
       dockerfile: Dockerfile
