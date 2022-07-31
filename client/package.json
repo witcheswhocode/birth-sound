@@ -26,12 +26,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "startreact": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "server": "cd server && npm run dev",
     "serverdev": "cd ../server && npm run dev",
-    "start": "concurrently \"npm run server\" \"npm run startreact\"",
+    "startold": "concurrently \"npm run server\" \"npm run startreact\"",
     "startdev": "concurrently \"npm run serverdev\" \"npm run startreact\""
   },
   "eslintConfig": {
