@@ -63,7 +63,7 @@ jobs:
         echo "Build docker container"
         echo ${{ steps.build-nginx.outputs }}
         echo ${{ steps.build-nginx.output }}
-        echo ${{ steps.build-nginx.outputs.images }}
+        echo ${{ steps.build-nginx.outputs.image }}
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
