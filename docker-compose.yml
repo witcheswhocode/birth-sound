@@ -20,6 +20,8 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
+    expose:
+      - '3001'
       
   client:
     image: $ECR_REGISTRY/$ECR_REPOSITORY:latest
@@ -30,3 +32,5 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+    expose:
+      - '3000'
