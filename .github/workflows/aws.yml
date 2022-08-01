@@ -48,7 +48,6 @@ jobs:
 
         echo "outputs"
         echo ${{ steps.build-nginx.outputs }}
-        echo "steps.build-nginx.outputs"
         echo ${{ steps.build-nginx.output }}
         echo ${{ steps.build-nginx.outputs.image }}
         echo ${{ steps.build-nginx.image }}
@@ -91,7 +90,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: devops/task-definition.json
-        container-name: birth-sound
+        container-name: birthsound-nginx
         image: ${{ steps.build-nginx.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
