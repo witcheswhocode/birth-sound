@@ -79,7 +79,7 @@ jobs:
       with:
         task-definition: devops/task-definition.json
         container-name: birthsound-nginx
-        image: ${{ steps.login-ecr.outputs.registry }}/birthsound-nginx:latest
+        image: ${{ steps.login-ecr.outputs.registry }}/birthsound-nginx:${{ github.sha }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
