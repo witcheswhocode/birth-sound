@@ -125,8 +125,8 @@
       "entryPoint": null,
       "portMappings": [
         {
-          "hostPort": 3050,
           "protocol": "tcp",
+          "hostPort": 80,
           "containerPort": 3050
         }
       ],
