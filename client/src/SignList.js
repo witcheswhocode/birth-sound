@@ -1,5 +1,5 @@
 import React from 'react';
-import { planets,planetInfo,signOrder } from "./data/settings";
+import { planets,planetInfo,signOrder,rihannaChart } from "./data/settings";
 
 const SignList = (props) =>  {
   function selectedAsc(e){
@@ -30,7 +30,17 @@ const SignList = (props) =>  {
     );
   }
   else {
-    return (<p>Loading...</p>)
+    return (
+      <div id='birthchart-list'>
+          <select defaultValue={rihannaChart[planets[0]]} name="select-asc" className={'birthchart-dropdown-data color-'+rihannaChart[planets[0]]} id={planets[0]} onChange={selectedAsc}>
+            {objects.map((object, i) => <option  key={object} className="asc-option" value={signOrder[object]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[object]}</option>)}
+          </select> 
+          <table>
+              <tbody>
+                  {objects.splice(1,5).map((object,i) => <tr key={object} className='birthchart-table-row'><td className={'birthchart-table-data color-'+rihannaChart[planets[object]]} id={planets[object]}><span>{planetInfo[planets[object]]}</span>{planets[object]} - {rihannaChart[planets[object]]}</td><td className={'birthchart-table-data color-'+rihannaChart[planets[object+5]]} id={planets[object+5]}><span>{planetInfo[planets[object+5]]}</span>{planets[object+5]} - {rihannaChart[planets[object+5]]}</td></tr>)}
+              </tbody>
+          </table>
+      </div>)
   }
 }
 

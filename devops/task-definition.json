@@ -126,7 +126,7 @@
       "portMappings": [
         {
           "protocol": "tcp",
-          "hostPort": 80,
+          "hostPort": 3050,
           "containerPort": 3050
         }
       ],

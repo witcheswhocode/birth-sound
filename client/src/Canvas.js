@@ -3,6 +3,7 @@ import Panel from './Panel';
 import SignList from './SignList';
 import BirthForm from './BirthForm';
 import { nowToBirthchart } from './utils/dateToBirthchart';
+import { rihannaChart } from './data/settings';
 import { Birthchart } from './BirthchartClass';
 import EmojiLinebreak from './EmojiLinebreak';
 import Moment from 'moment';
@@ -35,7 +36,7 @@ const Canvas = (props) => {
       nowToBirthchart().then((chart)=>{
         birthchart = new Birthchart(chart,width,height,context);      
         setBirthchart(birthchart);
-
+        console.log(chart);
         setTimeout(function(){
           const bc = birthchart.createBirthChart(width,height);
         }, 250);
@@ -109,21 +110,40 @@ const Canvas = (props) => {
       document.getElementById('chart-title').textContent = birthday + ' ' + time;
       document.getElementById('chart-coords').textContent = 'Coords: '+location["lat"]+', '+location["lng"];
     }
-      
-    return(
-      <div id="container1">
-        <BirthForm updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} />
-        <EmojiLinebreak />
-        <div id='canvas'>
-          <h4>Birthchart for:</h4>
-          <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY hh:mm A')}</h2>
-          <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
-          <canvas id='can' ref={canvasRef} {...props}></canvas>
+    
+    if (liftedValue){
+      return(
+        <div id="container1">
+          <BirthForm updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} currentBirthChart={liftedValue} />
+          <EmojiLinebreak />
+          <div id='canvas'>
+            <h4>Birthchart for:</h4>
+            <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY hh:mm A')}</h2>
+            <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
+            <canvas id='can' ref={canvasRef} {...props}></canvas>
+          </div>
+          <Panel currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
+          <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
         </div>
-        <Panel currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
-        <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
-      </div>
-    )
+      )
+    }
+    else {
+      return(
+        <div id="container1">
+          <BirthForm updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} />
+          <EmojiLinebreak />
+          <div id='canvas'>
+            <h4>Birthchart for:</h4>
+            <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY hh:mm A')}</h2>
+            <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
+            <canvas id='can' ref={canvasRef} {...props}></canvas>
+          </div>
+          <Panel currentBirthChart={rihannaChart} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
+          <SignList birthchartprop={rihannaChart} ascChange={handleAscChange} />
+        </div>
+      )
+      
+    }
 
 }
 
