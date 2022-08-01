@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/task-birthsound",
+          "awslogs-group": "/ecs/task-birth-sound",
           "awslogs-region": "us-west-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -63,7 +63,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/task-birthsound",
+          "awslogs-group": "/ecs/task-birth-sound",
           "awslogs-region": "us-west-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -117,7 +117,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/task-birthsound",
+          "awslogs-group": "/ecs/task-birth-sound",
           "awslogs-region": "us-west-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -172,8 +172,8 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birthsound:6",
-  "family": "task-birthsound",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birth-sound:6",
+  "family": "task-birth-sound",
   "requiresAttributes": [
     {
       "targetId": null,
