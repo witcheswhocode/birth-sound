@@ -36,8 +36,6 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         echo "Build docker container"
-        echo $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo ${{ steps.build-image.outputs.image }}
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
@@ -47,12 +45,6 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:latest"
 
-        echo "outputs"
-        echo ${{ steps.build-nginx.outputs }}
-        echo ${{ steps.build-nginx.output }}
-        echo ${{ steps.build-nginx.outputs.image }}
-        echo ${{ steps.build-nginx.image }}
-
     - name: Build, tag, and push image to Amazon ECR
       id: build-server
       env:
@@ -60,13 +52,6 @@ jobs:
         ECR_REPOSITORY: birthsound-server
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        echo "Build docker container"
-        echo ${{ steps.build-nginx.outputs }}
-        echo ${{ steps.build-nginx.output }}
-        echo ${{ steps.build-nginx.outputs.image }}
-        # Build a docker container and
-        # push it to ECR so that it can
-        # be deployed to ECS.
         docker-compose build api 
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
@@ -78,10 +63,6 @@ jobs:
         ECR_REPOSITORY: birthsound-client
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        echo "Build docker container"
-        # Build a docker container and
-        # push it to ECR so that it can
-        # be deployed to ECS.
         docker-compose build client 
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
