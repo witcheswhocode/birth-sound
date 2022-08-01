@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   nginx:
-    image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    image: 726562207460.dkr.ecr.us-west-1.amazonaws.com/birthsound-nginx:latest
     depends_on:
       - api
       - client
@@ -13,7 +13,7 @@ services:
     ports:
       - "3050:80"
   api:
-    image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    image: 726562207460.dkr.ecr.us-west-1.amazonaws.com/birthsound-server:latest
     build:
       dockerfile: Dockerfile
       context: "./server"
@@ -22,7 +22,7 @@ services:
       - ./server:/app
       
   client:
-    image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    image: 726562207460.dkr.ecr.us-west-1.amazonaws.com/birthsound-client:latest
     stdin_open: true
     build:
       dockerfile: Dockerfile
