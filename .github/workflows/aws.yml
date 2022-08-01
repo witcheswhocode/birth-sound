@@ -44,7 +44,9 @@ jobs:
         docker-compose build nginx 
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "outputs"
         echo ${{ steps.build-nginx.outputs }}
+        echo "steps.build-nginx.outputs"
         echo ${{ steps.build-nginx.output }}
         echo ${{ steps.build-nginx.outputs.image }}
         echo ${{ steps.build-nginx.image }}
