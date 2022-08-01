@@ -50,6 +50,8 @@ jobs:
         echo ${{ steps.build-nginx.output }}
         echo ${{ steps.build-nginx.outputs.image }}
         echo ${{ steps.build-nginx.image }}
+      outputs:
+        image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-server
@@ -96,6 +98,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: birthsound
-        cluster: birthsound
+        service: service-birth-sound
+        cluster: birth-sound
         wait-for-service-stability: true
