@@ -42,10 +42,9 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker-compose build nginx 
-        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker tag birthsound-nginx:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
+        docker tag birthsound-nginx:latest $ECR_REGISTRY/$ECR_REPOSITORY/:latest
 
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG:latest
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
         echo "outputs"
@@ -69,9 +68,8 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker-compose build api 
-        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker tag birthsound-server:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG:latest
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-client
@@ -85,9 +83,8 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker-compose build client 
-        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker tag birthsound-client:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG:latest
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
