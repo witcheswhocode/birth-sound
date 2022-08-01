@@ -53,6 +53,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         echo "Build docker container"
+        echo ${{ steps.build-nginx }}
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
