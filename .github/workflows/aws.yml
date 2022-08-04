@@ -39,7 +39,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker-compose build nginx 
+        docker-compose -f docker-compose-production.yml build nginx 
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
@@ -52,7 +52,7 @@ jobs:
         ECR_REPOSITORY: birthsound-server
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker-compose build api 
+        docker-compose -f docker-compose-production.yml build api 
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
@@ -63,7 +63,7 @@ jobs:
         ECR_REPOSITORY: birthsound-client
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker-compose build client 
+        docker-compose -f docker-compose-production.yml build client 
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
