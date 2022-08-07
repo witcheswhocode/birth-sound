@@ -3,7 +3,7 @@
 
 ### Description
 
-***This project is still a work in progress.*** 
+***This project is still a work in progress.***
 
 ### Preview
 ![Birthchart](https://raw.github.com/witcheswhocode/birthsound/main/readme/chart.png)
@@ -34,5 +34,3 @@ Run server, in terminal:
 #### `cd server`
 #### `npm start`
 [http://localhost:3001](http://localhost:3001).
-
-
