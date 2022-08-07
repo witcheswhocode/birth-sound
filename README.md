@@ -6,11 +6,7 @@
 ***This project is still a work in progress.***
 
 ### Preview
-<img src='/readme/chart.png' alt="birthchart" style="width:200px;"/>
-
-<img src='/readme/list.png' alt="List of planets and signs" style="width:200px;"/>
-
-<img src='/readme/form.png' alt="Interface of form" style="width:200px;"/>
+<img src='/readme/chart.png' alt="birthchart" style="max-width:300px;"/>   <img src='/readme/list.png' alt="List of planets and signs" style="max-width:300px;"/>   <img src='/readme/form.png' alt="Interface of form" style="max-width:300px;"/>
 
 
 
