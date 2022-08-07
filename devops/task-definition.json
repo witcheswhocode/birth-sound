@@ -125,8 +125,8 @@
       "entryPoint": null,
       "portMappings": [
         {
-          "protocol": "tcp",
           "hostPort": 3050,
+          "protocol": "tcp",
           "containerPort": 3050
         }
       ],
@@ -172,7 +172,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birth-sound:6",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birth-sound:26",
   "family": "task-birth-sound",
   "requiresAttributes": [
     {
@@ -234,7 +234,7 @@
     "cpuArchitecture": null
   },
   "cpu": "512",
-  "revision": 6,
+  "revision": 26,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
