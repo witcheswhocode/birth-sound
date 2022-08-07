@@ -10,7 +10,7 @@ export async function nowToBirthchart(){
     const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(time), birthlocation).format().replaceAll(':','%3A')
                                                                     +"&latitude="+birthlocation[1]+"&longitude="+birthlocation[0]
     console.log('what');
-    return fetch("/api/horoscope?"+url)
+    return fetch("/horoscope?"+url)
         .then(res => res.json())
         .then((result)=>{
             console.log("first");
