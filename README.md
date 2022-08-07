@@ -7,7 +7,7 @@
 
 UI built with React, birthchart built with HTML Canvas.
 
-[https://github.com/ryuphi/astrology-api](Astrology API Code) by [https://github.com/ryuphi](Marcos Corona)
+[Astrology API Code](https://github.com/ryuphi/astrology-api) by [Marcos Corona](https://github.com/ryuphi)
 
 
 ### Preview
