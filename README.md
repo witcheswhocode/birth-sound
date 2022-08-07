@@ -6,11 +6,11 @@
 ***This project is still a work in progress.*** 
 
 ### Preview
-![Birthchart](/readme/.chart.png "Birthchart")
+![Birthchart](https://raw.github.com/witcheswhocode/birthsound/main/readme/chart.png)
 
-![List](/readme/.list.png "List of planets and signs")
+![List](/readme/list.png "List of planets and signs")
 
-![Form](/readme/.form.png "Interface of form")
+![Form](/readme/form.png "Interface of form")
 
 
 
