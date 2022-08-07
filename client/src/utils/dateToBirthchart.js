@@ -9,9 +9,11 @@ export async function nowToBirthchart(){
     var time = await ts.getFuzzyLocalTimeFromPoint(new Date(date), birthlocation);
     const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(time), birthlocation).format().replaceAll(':','%3A')
                                                                     +"&latitude="+birthlocation[1]+"&longitude="+birthlocation[0]
+    console.log('what');
     return fetch("/api/horoscope?"+url)
         .then(res => res.json())
         .then((result)=>{
+            console.log("first");
             return {"sun":apiSignOrder[result.data.astros.sun.sign-1],
                     "moon":apiSignOrder[result.data.astros.moon.sign-1],
                     "mercury":apiSignOrder[result.data.astros.mercury.sign-1],
@@ -23,6 +25,23 @@ export async function nowToBirthchart(){
                     "neptune":apiSignOrder[result.data.astros.neptune.sign-1],
                     "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
                     "asc":apiSignOrder[result.data.axes.asc.sign-1]};
+        }).catch(function(error) {
+            return fetch("http://localhost:3001/horoscope?"+url)
+            .then(res => res.json())
+            .then((result)=>{
+                console.log(result.data.axes.asc);
+                return {"sun":apiSignOrder[result.data.astros.sun.sign-1],
+                        "moon":apiSignOrder[result.data.astros.moon.sign-1],
+                        "mercury":apiSignOrder[result.data.astros.mercury.sign-1],
+                        "venus":apiSignOrder[result.data.astros.venus.sign-1],
+                        "mars":apiSignOrder[result.data.astros.mars.sign-1],
+                        "jupiter":apiSignOrder[result.data.astros.jupiter.sign-1],
+                        "saturn":apiSignOrder[result.data.astros.saturn.sign-1],
+                        "uranus":apiSignOrder[result.data.astros.uranus.sign-1],
+                        "neptune":apiSignOrder[result.data.astros.neptune.sign-1],
+                        "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
+                        "asc":apiSignOrder[result.data.axes.asc.sign-1]};
+                    });
         });
 }
 
@@ -47,5 +66,22 @@ export async function dateToBirthchart(birthdate,birthtime,birthlocation){
                     "neptune":apiSignOrder[result.data.astros.neptune.sign-1],
                     "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
                     "asc":apiSignOrder[result.data.axes.asc.sign-1]};
+        }).catch(function(error) {
+            return fetch("http://localhost:3001/horoscope?"+url)
+            .then(res => res.json())
+            .then((result)=>{
+                console.log(error);
+                return {"sun":apiSignOrder[result.data.astros.sun.sign-1],
+                        "moon":apiSignOrder[result.data.astros.moon.sign-1],
+                        "mercury":apiSignOrder[result.data.astros.mercury.sign-1],
+                        "venus":apiSignOrder[result.data.astros.venus.sign-1],
+                        "mars":apiSignOrder[result.data.astros.mars.sign-1],
+                        "jupiter":apiSignOrder[result.data.astros.jupiter.sign-1],
+                        "saturn":apiSignOrder[result.data.astros.saturn.sign-1],
+                        "uranus":apiSignOrder[result.data.astros.uranus.sign-1],
+                        "neptune":apiSignOrder[result.data.astros.neptune.sign-1],
+                        "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
+                        "asc":apiSignOrder[result.data.axes.asc.sign-1]};
+                    });
         });
 }

@@ -33,7 +33,9 @@ const Canvas = (props) => {
       context.fillRect(0, 0, width, height);
 
       context.fillStyle = 'white';
+      console.log('here');
       nowToBirthchart().then((chart)=>{
+        console.log(chart);
         birthchart = new Birthchart(chart,width,height,context);      
         setBirthchart(birthchart);
         console.log(chart);

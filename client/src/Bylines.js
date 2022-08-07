@@ -13,7 +13,7 @@ export const Bylines = () => {
         </div>
       </div>
       <div className='bylines-div'>
-        <img src='/khrystoph.jpg' alt='liz' />
+        <img src='/khrystoph.jpg' alt='krystoph' />
         <div className='bylines-text-div'>
             <p><strong>Khrystoph</strong></p>
             <p>Musician</p>
