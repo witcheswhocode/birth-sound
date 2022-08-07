@@ -5,7 +5,7 @@
 
 ***This project is still a work in progress.***
 
-UI built with React, birthchart built with HTML Canvas.
+UI built with *React*, birthchart built with *HTML Canvas*. Piano played with Tone.js.
 
 [Astrology API Code](https://github.com/ryuphi/astrology-api) by [Marcos Corona](https://github.com/ryuphi)
 
