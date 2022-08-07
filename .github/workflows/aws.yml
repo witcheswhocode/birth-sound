@@ -71,7 +71,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: devops/task-definition.json
+        task-definition: ./devops/task-definition.json
         container-name: birthsound-nginx
         image: ${{ steps.build-nginx.outputs.image }}
 
