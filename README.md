@@ -1,28 +1,28 @@
-# Getting Started with Birth Sound
+# Birth Sound
+## The overlap between music theory and astrology.
 
-## To Run:
+### Description
 
-In the project directory, you can run:
+***This project is still a work in progress.*** 
 
-### `npm install`
-### `npm run start`
 
-Runs the app in the development mode.\
+### To Run:
+
+If you have Docker installed, in this the project directory, you can run:
+
+#### `docker-compose -f docker-compose-develop.yml build`
+#### `docker-compose docker-compose-develop.yml up`
+
+If you do not have Docker installed or it's not working, you can run the `client` and `server` separately by:
+
+Run client, in terminal:
+#### `cd client`
+#### `npm run start`
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Run server, in terminal:
+#### `cd server`
+#### `npm start`
+[http://localhost:3001](http://localhost:3001).
 
-
-## Files
-
-`settings.json` is where to set the currentBirthChart.
-`signInfo.json` is where information about each sign is (element, modality, etc).
-
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
 
