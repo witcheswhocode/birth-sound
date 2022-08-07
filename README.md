@@ -5,6 +5,11 @@
 
 ***This project is still a work in progress.***
 
+UI built with React, birthchart built with HTML Canvas.
+
+[https://github.com/ryuphi/astrology-api](Astrology API Code) by [https://github.com/ryuphi](Marcos Corona)
+
+
 ### Preview
 <img src='/readme/chart.png' alt="birthchart" style="width:300px;"/>   <img src='/readme/list.png' alt="List of planets and signs" style="width:300px;"/>   <img src='/readme/form.png' alt="Interface of form" style="width:300px;"/>
 
