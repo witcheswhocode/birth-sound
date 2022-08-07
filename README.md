@@ -6,11 +6,11 @@
 ***This project is still a work in progress.*** 
 
 ### Preview
-![Birthchart]('/readme/.chart.png')
+![Birthchart](/readme/.chart.png "Birthchart")
 
-![List]('/readme/.list.png')
+![List](/readme/.list.png "List of planets and signs")
 
-![Form]('/readme/.form.png')
+![Form](/readme/.form.png "Interface of form")
 
 
 
