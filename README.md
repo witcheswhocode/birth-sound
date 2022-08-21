@@ -20,7 +20,7 @@ UI built with *React*, birthchart built with *HTML Canvas*. Piano played with To
 If you have Docker installed, in this the project directory, you can run:
 
 #### `docker-compose -f docker-compose-develop.yml build`
-#### `docker-compose docker-compose-develop.yml up`
+#### `docker-compose -f docker-compose-develop.yml up`
 Go to Open [http://astrology.localhost:3050/](http://astrology.localhost:3050/) to view it in your browser.
 
 

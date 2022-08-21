@@ -34,6 +34,7 @@ const Canvas = (props) => {
 
       context.fillStyle = 'white';
       console.log('here');
+
       nowToBirthchart().then((chart)=>{
         console.log(chart);
         birthchart = new Birthchart(chart,width,height,context);      
@@ -44,6 +45,25 @@ const Canvas = (props) => {
         }, 250);
         setLiftedValue(chart);
       })
+      /*var timer = setInterval(getBirthchartDetails, 1000);
+
+      function getBirthchartDetails() {
+        nowToBirthchart().then((chart)=>{
+          console.log(chart);
+          birthchart = new Birthchart(chart,width,height,context);      
+          setBirthchart(birthchart);
+          console.log(chart);
+          setTimeout(function(){
+            const bc = birthchart.createBirthChart(width,height);
+          }, 250);
+          setLiftedValue(chart);
+
+          if(chart){
+            clearInterval(timer);
+            return;
+          }
+        })
+      }*/
     },[]);
 
     const handleBirthchartChange = (chart) => {
