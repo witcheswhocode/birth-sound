@@ -172,7 +172,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birth-sound:26",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birth-sound:45",
   "family": "task-birth-sound",
   "requiresAttributes": [
     {
