@@ -172,7 +172,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birth-sound:47",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/task-birth-sound:52",
   "family": "task-birth-sound",
   "requiresAttributes": [
     {
@@ -234,7 +234,7 @@
     "cpuArchitecture": null
   },
   "cpu": "512",
-  "revision": 26,
+  "revision": 52,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
