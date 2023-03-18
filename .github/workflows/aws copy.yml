@@ -5,7 +5,7 @@ on:
   # run manually
   workflow_dispatch:
 
-name: Deploy to Amazon ECS
+name: Deploy to Amazon ECS COPY
 
 jobs:
   deploy:
