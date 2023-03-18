@@ -26,7 +26,7 @@ export async function nowToBirthchart(){
                     "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
                     "asc":apiSignOrder[result.data.axes.asc.sign-1]};
         }).catch(function(error) {
-            return fetch("http://localhost:3001/api/horoscope?"+url)
+            return fetch("http://localhost:3001/horoscope?"+url)
             .then(res => res.json())
             .then((result)=>{
                 console.log(result.data.axes.asc);
