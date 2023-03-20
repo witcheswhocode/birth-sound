@@ -41,25 +41,7 @@ export async function nowToBirthchart(){
                         "neptune":apiSignOrder[result.data.astros.neptune.sign-1],
                         "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
                         "asc":apiSignOrder[result.data.axes.asc.sign-1]};
-                    }).catch(function(error) {
-                        console.log('got here')
-                        return fetch("http://api:3001/horoscope?"+url)
-                        .then(res => res.json())
-                        .then((result)=>{
-                            console.log(result.data.axes.asc);
-                            return {"sun":apiSignOrder[result.data.astros.sun.sign-1],
-                                    "moon":apiSignOrder[result.data.astros.moon.sign-1],
-                                    "mercury":apiSignOrder[result.data.astros.mercury.sign-1],
-                                    "venus":apiSignOrder[result.data.astros.venus.sign-1],
-                                    "mars":apiSignOrder[result.data.astros.mars.sign-1],
-                                    "jupiter":apiSignOrder[result.data.astros.jupiter.sign-1],
-                                    "saturn":apiSignOrder[result.data.astros.saturn.sign-1],
-                                    "uranus":apiSignOrder[result.data.astros.uranus.sign-1],
-                                    "neptune":apiSignOrder[result.data.astros.neptune.sign-1],
-                                    "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
-                                    "asc":apiSignOrder[result.data.axes.asc.sign-1]};
-                                });
-                    });;
+                    });
         });
 }
 
@@ -85,7 +67,6 @@ export async function dateToBirthchart(birthdate,birthtime,birthlocation){
                     "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
                     "asc":apiSignOrder[result.data.axes.asc.sign-1]};
         }).catch(function(error) {
-            console.log('got here part 2')
             return fetch("http://localhost:3001/horoscope?"+url)
             .then(res => res.json())
             .then((result)=>{
