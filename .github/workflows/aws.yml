@@ -28,7 +28,7 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Build, tag, and push image to Amazon ECR
+    - name: Build, tag, and push nginx image to Amazon ECR
       id: build-nginx
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -45,7 +45,7 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:latest"
 
-    - name: Build, tag, and push image to Amazon ECR
+    - name: Build, tag, and push api image to Amazon ECR
       id: build-server
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -56,7 +56,7 @@ jobs:
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
-    - name: Build, tag, and push image to Amazon ECR
+    - name: Build, tag, and push client image to Amazon ECR
       id: build-client
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
