@@ -21,8 +21,7 @@ services:
       - /app/node_modules
       - ./server:/app
     expose:
-      - '3001'
-      
+      - '3001' 
   client:
     image: $ECR_REGISTRY/$ECR_REPOSITORY:latest
     stdin_open: true
