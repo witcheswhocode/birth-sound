@@ -2,6 +2,7 @@
 import Moment from 'moment';
 import { apiSignOrder, currentBirthChart } from '../data/settings';
 var ts = require('@mapbox/timespace');
+var host = 'http://lb-birth-sound-390b065957cfd0d1.elb.us-west-1.amazonaws.com'
 
 export async function nowToBirthchart(){
     const date = Moment().format('YYYY-MM-DD HH:mm:00');
@@ -26,7 +27,7 @@ export async function nowToBirthchart(){
                     "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
                     "asc":apiSignOrder[result.data.axes.asc.sign-1]};
         }).catch(function(error) {
-            return fetch("http://localhost:3001/horoscope?"+url)
+            return fetch(host+":3001/horoscope?"+url)
             .then(res => res.json())
             .then((result)=>{
                 console.log(result.data.axes.asc);
@@ -67,7 +68,7 @@ export async function dateToBirthchart(birthdate,birthtime,birthlocation){
                     "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
                     "asc":apiSignOrder[result.data.axes.asc.sign-1]};
         }).catch(function(error) {
-            return fetch("http://localhost:3001/horoscope?"+url)
+            return fetch(host+":3001/horoscope?"+url)
             .then(res => res.json())
             .then((result)=>{
                 console.log(error);
