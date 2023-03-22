@@ -2,7 +2,7 @@
 import Moment from 'moment';
 import { apiSignOrder, currentBirthChart } from '../data/settings';
 var ts = require('@mapbox/timespace');
-var host = 'http://127.0.0.1'
+var host = 'http://lb-birth-sound-390b065957cfd0d1.elb.us-west-1.amazonaws.com'
 
 export async function nowToBirthchart(){
     const date = Moment().format('YYYY-MM-DD HH:mm:00');
