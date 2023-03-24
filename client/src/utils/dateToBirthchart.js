@@ -27,7 +27,7 @@ export async function nowToBirthchart(){
                     "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
                     "asc":apiSignOrder[result.data.axes.asc.sign-1]};
         }).catch(function(error) {
-            return fetch(host+":3001/horoscope?"+url)
+            return fetch(host+":3050/api/horoscope?"+url)
             .then(res => res.json())
             .then((result)=>{
                 console.log(result.data.axes.asc);
@@ -68,7 +68,7 @@ export async function dateToBirthchart(birthdate,birthtime,birthlocation){
                     "pluto":apiSignOrder[result.data.astros.pluto.sign-1],
                     "asc":apiSignOrder[result.data.axes.asc.sign-1]};
         }).catch(function(error) {
-            return fetch(host+":3001/horoscope?"+url)
+            return fetch(host+":3050/api/horoscope?"+url)
             .then(res => res.json())
             .then((result)=>{
                 console.log(error);
