@@ -2,7 +2,7 @@
   "taskDefinitionArn": "arn:aws:ecs:us-west-1:726562207460:task-definition/bridge-birth-sound:3",
   "containerDefinitions": [
       {
-          "name": "nginx",
+          "name": "birthsound-nginx",
           "image": "726562207460.dkr.ecr.us-west-1.amazonaws.com/birthsound-nginx",
           "cpu": 0,
           "portMappings": [
@@ -30,7 +30,7 @@
           }
       },
       {
-          "name": "api",
+          "name": "birthsound-server",
           "image": "726562207460.dkr.ecr.us-west-1.amazonaws.com/birthsound-server",
           "cpu": 0,
           "portMappings": [
@@ -58,7 +58,7 @@
           }
       },
       {
-          "name": "client",
+          "name": "birthsound-client",
           "image": "726562207460.dkr.ecr.us-west-1.amazonaws.com/birthsound-client",
           "cpu": 0,
           "portMappings": [
