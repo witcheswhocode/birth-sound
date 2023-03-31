@@ -30,8 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "server": "cd server && npm run dev",
-    "serverdev": "cd ../server && npm run dev",
+    "server": "cd api && npm run dev",
+    "serverdev": "cd ../api && npm run dev",
     "startold": "concurrently \"npm run server\" \"npm run startreact\"",
     "startdev": "concurrently \"npm run serverdev\" \"npm run startreact\""
   },

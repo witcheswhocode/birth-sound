@@ -24,14 +24,14 @@ If you have Docker installed, in this the project directory, you can run:
 Go to Open [http://astrology.localhost/](http://astrology.localhost/) to view it in your browser.
 
 
-If you do not have Docker installed or it's not working, you can run the `client` and `server` separately by:
+If you do not have Docker installed or it's not working, you can run the `client` and `api` separately by:
 
 Run client, in terminal:
 #### `cd client`
 #### `npm run start`
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Run server, in terminal:
-#### `cd server`
+Run api, in terminal:
+#### `cd api`
 #### `npm start`
 [http://localhost:3001](http://localhost:3001).

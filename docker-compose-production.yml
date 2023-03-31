@@ -16,10 +16,10 @@ services:
     image: $ECR_REGISTRY/$ECR_REPOSITORY:latest
     build:
       dockerfile: Dockerfile
-      context: "./server"
+      context: "./api"
     volumes:
       - /app/node_modules
-      - ./server:/app
+      - ./api:/app
     expose:
       - '3001' 
   client:
