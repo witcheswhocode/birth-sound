@@ -11,7 +11,7 @@ services:
       dockerfile: Dockerfile
       context: ./nginx
     ports:
-      - "3050:80"
+      - "80:80"
   api:
     image: $ECR_REGISTRY/$ECR_REPOSITORY:latest
     build:

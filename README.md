@@ -21,7 +21,7 @@ If you have Docker installed, in this the project directory, you can run:
 
 #### `docker-compose -f docker-compose-develop.yml build`
 #### `docker-compose -f docker-compose-develop.yml up`
-Go to Open [http://astrology.localhost:3050/](http://astrology.localhost:3050/) to view it in your browser.
+Go to Open [http://astrology.localhost/](http://astrology.localhost/) to view it in your browser.
 
 
 If you do not have Docker installed or it's not working, you can run the `client` and `server` separately by:
