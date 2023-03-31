@@ -79,6 +79,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: service-birth-sound1
+        service: service-birth-sound2
         cluster: birth-sound
         wait-for-service-stability: true
