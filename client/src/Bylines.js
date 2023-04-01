@@ -9,7 +9,7 @@ export const Bylines = () => {
             <br></br>
             <p><a href="https://github.com/ryuphi/astrology-api">Astrology API Code</a> by <a href="https://github.com/ryuphi">Marcos Corona</a></p>
             <br></br>
-            <p><a href="">Give feedback here.</a></p>
+            <p><a href="https://github.com/witcheswhocode">Give feedback here.</a></p>
         </div>
       </div>
       </footer>
