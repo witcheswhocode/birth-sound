@@ -13,14 +13,6 @@ export const Bylines = () => {
         </div>
       </div>
       <div className='bylines-div'>
-        <img src='/khrystoph.jpg' alt='krystoph' />
-        <div className='bylines-text-div'>
-            <p><strong>Khrystoph</strong></p>
-            <p>Musician</p>
-            <p>email@address.com</p>
-        </div>
-      </div>
-      <div className='bylines-div'>
         <div className='bylines-text-div'>
             <p><a href="https://github.com/ryuphi/astrology-api">Astrology API Code</a> by <a href="https://github.com/ryuphi">Marcos Corona</a></p>
             <br></br>
