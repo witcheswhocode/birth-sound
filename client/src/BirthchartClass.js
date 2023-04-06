@@ -104,9 +104,6 @@ export class Birthchart {
     }
     return arr;
   }
-  hello() {
-    console.log("why hello there");
-  }
   getAscendent() {
     if (this.asc) return this.asc;
     else {

@@ -16,14 +16,13 @@ const BirthForm = (props) =>  {
   const handleRegistration = (data) => {
                                         dateToBirthchart(birthdate,birthtime,[birthlocation['lng'], birthlocation['lat']])
                                         .then((newBirthchart) => {
-                                            console.log(birthtime)
                                             updateBirthchart(newBirthchart);
                                             updateChartTitle(Moment(birthdate).format('MMMM D, YYYY'),Moment(birthtime, 'HH:mm').format('hh:mm A'),birthlocation);
                                         });
                                     };
   const handleError = (errors) => {console.log(errors)};
   const handleAlternateClick = (liftedValue) => {
-      console.log("I've been clicked!!!");
+      console.log("handleAlternateClick");
       setLocation(liftedValue);
   }
 

@@ -33,12 +33,14 @@ const Canvas = (props) => {
       context.fillRect(0, 0, width, height);
 
       context.fillStyle = 'white';
-      console.log('here');
+      console.log('useEffect');
 
       nowToBirthchart().then((chart)=>{
+        console.log('before:');
         console.log(chart);
-        birthchart = new Birthchart(chart,width,height,context);      
+        birthchart = new Birthchart(chart,width,height,context);
         setBirthchart(birthchart);
+        console.log('after');  
         console.log(chart);
         setTimeout(function(){
           const bc = birthchart.createBirthChart(width,height);
@@ -85,15 +87,13 @@ const Canvas = (props) => {
 
     const handleAlternateClick = (liftedValue, planet, time) => {
       //setLiftedValue(liftedValue);
-      console.log(currentBirthchart);
+      console.log("handleAlternateClick");
         setTimeout(() => {
           currentBirthchart.colorArc(liftedValue,'Active');
 
           // highlight birthchart list
           const elem = document.getElementById(planet);
           elem.classList.toggle('active');
-
-          console.log('printing this one');
         }, 1000*time);
         setTimeout(() => {
           currentBirthchart.colorArc(liftedValue,'');
@@ -106,7 +106,7 @@ const Canvas = (props) => {
     }
     
     const handleOtherAlternateClick = (liftedValue, time) => {
-      console.log("I've been other clicked!!!");
+      console.log("handleOtherAlternateClick");
       setTimeout(() => {
         birthchart.colorArc(liftedValue,'Active');
       }, 1000*time);
@@ -115,7 +115,7 @@ const Canvas = (props) => {
       }, (1000*time)+500);
     }
     const handleRhythmAlternateClick = (liftedValue, time) => {
-        console.log("I've been other clicked!!!");
+        console.log("handleRhythmAlternateClick");
         setTimeout(() => {
           birthchart.colorArc(liftedValue,'Active');
         }, 1000*time);
