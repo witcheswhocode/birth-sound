@@ -232,7 +232,7 @@ form {
 /* START BYLINES */
 footer{
   background-color: white;
-  min-width: 40%;
+  min-width: 90%;
   padding: 16px 0;
   margin: 0 auto 16px auto;
 
@@ -284,6 +284,6 @@ img {
 
 @media screen and (min-width: 400px) {
   footer {
-    min-width: 90%;
+    min-width: 40%;
   }
 }
