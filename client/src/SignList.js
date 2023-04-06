@@ -15,11 +15,11 @@ const SignList = (props) =>  {
   // generate objects
   const objects = [0,1,2,3,4,5,6,7,8,9,10,11];
 
-  if (props.birthchartprop){
+  if (props.birthchartprop && !document.getElementById("asc")){
     return (
       <div id='birthchart-list'>
-          <select defaultValue={props['birthchartprop'][planets[0]]} name="select-asc" className={'birthchart-dropdown-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]} onChange={selectedAsc}>
-            {objects.map((object, i) => <option  key={object} className="asc-option" value={signOrder[object]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[object]}</option>)}
+          <select defaultValue={{ label: props['birthchartprop'][planets[0]], value: props['birthchartprop'][planets[0]] }} name="select-asc" className={'birthchart-dropdown-data color-'+props['birthchartprop'][planets[0]]} id={planets[0]} onChange={selectedAsc}>
+            {objects.map((object, i) => <option  key={props['birthchartprop'][planets[0]]} className="asc-option" value={props['birthchartprop'][planets[object]]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[object]}</option>)}
           </select> 
           <table>
               <tbody>
@@ -28,19 +28,6 @@ const SignList = (props) =>  {
           </table>
       </div>
     );
-  }
-  else {
-    return (
-      <div id='birthchart-list'>
-          <select defaultValue={rihannaChart[planets[0]]} name="select-asc" className={'birthchart-dropdown-data color-'+rihannaChart[planets[0]]} id={planets[0]} onChange={selectedAsc}>
-            {objects.map((object, i) => <option  key={object} className="asc-option" value={signOrder[object]}>{planetInfo[planets[0]]}    {planets[0]} - {signOrder[object]}</option>)}
-          </select> 
-          <table>
-              <tbody>
-                  {objects.splice(1,5).map((object,i) => <tr key={object} className='birthchart-table-row'><td className={'birthchart-table-data color-'+rihannaChart[planets[object]]} id={planets[object]}><span>{planetInfo[planets[object]]}</span>{planets[object]} - {rihannaChart[planets[object]]}</td><td className={'birthchart-table-data color-'+rihannaChart[planets[object+5]]} id={planets[object+5]}><span>{planetInfo[planets[object+5]]}</span>{planets[object+5]} - {rihannaChart[planets[object+5]]}</td></tr>)}
-              </tbody>
-          </table>
-      </div>)
   }
 }
 
