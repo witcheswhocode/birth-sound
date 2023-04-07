@@ -284,6 +284,6 @@ img {
 
 @media screen and (min-width: 400px) {
   footer {
-    min-width: 40%;
+    min-width: 50%;
   }
 }
