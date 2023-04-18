@@ -23,7 +23,7 @@ p a:hover{
 p a:visited{
   color:white;
 }
-#intro-p, #disclaimer-p{
+#intro-p, .disclaimer-p{
   width: 80%;
   margin: 0 auto;
 }
@@ -99,6 +99,7 @@ button{
 }
 table {
   border-spacing: 8px;
+  margin-bottom: 8px;
 }
 .birthchart-table-data {
   border-radius: 2px;
@@ -309,7 +310,7 @@ img {
 }
 
 @media screen and (min-width: 800px) {
-  #intro-p, #disclaimer-p {
-    width: 50%;
+  #intro-p, .disclaimer-p {
+    width: 40%;
   }
 }
