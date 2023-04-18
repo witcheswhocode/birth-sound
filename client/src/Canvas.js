@@ -162,7 +162,7 @@ const Canvas = (props) => {
           </div>
           <Panel currentBirthChart={rihannaChart} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
           <SignList birthchartprop={rihannaChart} ascChange={handleAscChange} />
-          <p class="disclaimer-p">If your ascendant is wrong, click the dropdown and change it. The API can be off sometimes.</p>
+          <p className="disclaimer-p">If your ascendant is wrong, click the dropdown and change it. The API can be off sometimes.</p>
         </div>
       )
       
