@@ -378,7 +378,7 @@ const mariamaria = () => {
 
   return(
       <div id="panel">
-          <button id="button" onClick={handleOtherClick}>Play Birth Chart</button>
+          <button id="button" onClick={handleOtherClick}>🔉 Play Birth Chart 🎹</button>
       </div>
   )
 }

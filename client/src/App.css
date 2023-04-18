@@ -56,12 +56,12 @@ button{
   min-width: 30px;
   font-family: 'Dosis';
   background-color: #2B3A67;
-  border-color: #2B3A67;
+  border-color: #5678e0;
   color: white;
   letter-spacing: 0.5px;
   border-radius: 5px;
   margin: 8px;
-  padding: 4px;
+  padding: 8px;
 }
 #can {
   width:100%;
@@ -72,6 +72,7 @@ button{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 8px 0;
 }
 
 #birthchart-list {
