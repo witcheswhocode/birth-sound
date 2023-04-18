@@ -146,6 +146,7 @@ const Canvas = (props) => {
           </div>
           <Panel currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
           <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
+          <p className="disclaimer-p">If your ascendant is wrong, click the dropdown and change it. The API can be off sometimes.</p>
         </div>
       )
     }
@@ -159,10 +160,8 @@ const Canvas = (props) => {
             <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY hh:mm A')}</h2>
             <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
             <canvas id='can' ref={canvasRef} {...props}></canvas>
+            <p>Loading...</p>
           </div>
-          <Panel currentBirthChart={rihannaChart} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
-          <SignList birthchartprop={rihannaChart} ascChange={handleAscChange} />
-          <p className="disclaimer-p">If your ascendant is wrong, click the dropdown and change it. The API can be off sometimes.</p>
         </div>
       )
       
