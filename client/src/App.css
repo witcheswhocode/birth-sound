@@ -14,7 +14,16 @@ p{
   color:white;
   font-family: 'Dosis';
 }
-#intro-p{
+p a{
+  color:#7ebdc2;
+}
+p a:hover{
+  color:#f9b9f2;
+}
+p a:visited{
+  color:white;
+}
+#intro-p, #disclaimer-p{
   width: 80%;
   margin: 0 auto;
 }
@@ -256,6 +265,16 @@ footer{
   margin:0;
   color:#0d0c1d;
 }
+
+.bylines-div p a{
+  color:#bb4430;
+}
+.bylines-div p a:hover{
+  color:#646536;
+}
+.bylines-div p a:visited{
+  color:black;
+}
 .react-time-picker__inputGroup__input,
 .react-time-picker__inputGroup__divider,
 .react-time-picker__inputGroup__leadingZero{
@@ -275,15 +294,21 @@ img {
 
 .emojis,
 .emojis span {
-  margin: 16px auto;
+  margin: 24px 0;
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: center;
+  color: white;
 }
 
 @media screen and (min-width: 400px) {
   footer {
     min-width: 50%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #intro-p, #disclaimer-p {
+    width: 50%;
   }
 }
