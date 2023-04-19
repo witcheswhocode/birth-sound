@@ -126,34 +126,38 @@ const Canvas = (props) => {
     
     if (liftedValue){
       return(
-        <div id="container1">
-          <BirthForm updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} currentBirthChart={liftedValue} />
-          <EmojiLinebreak />
-          <div id='canvas'>
-            <h4>Birthchart for:</h4>
-            <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY hh:mm A')}</h2>
-            <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
-            <canvas id='can' ref={canvasRef} {...props}></canvas>
+        <React.Fragment>
+          <div id="container1">
+            <BirthForm updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} currentBirthChart={liftedValue} />
+            <EmojiLinebreak />
+            <div id='canvas'>
+              <h4>Birthchart for:</h4>
+              <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY hh:mm A')}</h2>
+              <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
+              <canvas id='can' ref={canvasRef} {...props}></canvas>
+            </div>
+            <Panel updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
+            <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
+            <p className="disclaimer-p">If your ascendant is wrong, click the dropdown and change it. The API can be off sometimes.</p>
           </div>
-          <Panel updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
-          <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
-          <p className="disclaimer-p">If your ascendant is wrong, click the dropdown and change it. The API can be off sometimes.</p>
-        </div>
+        </React.Fragment>
       )
     }
     else {
       return(
-        <div id="container1">
-          <BirthForm updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} />
-          <EmojiLinebreak />
-          <div id='canvas'>
-            <h4>Birthchart for:</h4>
-            <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY hh:mm A')}</h2>
-            <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
-            <canvas id='can' ref={canvasRef} {...props}></canvas>
-            <p>Loading...</p>
+        <React.Fragment>
+          <div id="container1">
+            <BirthForm updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} />
+            <EmojiLinebreak />
+            <div id='canvas'>
+              <h4>Birthchart for:</h4>
+              <h2 id='chart-title'>{Moment(new Date()).format('MMMM D, YYYY hh:mm A')}</h2>
+              <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
+              <canvas id='can' ref={canvasRef} {...props}></canvas>
+              <p>Loading...</p>
+            </div>
           </div>
-        </div>
+        </React.Fragment>
       )
       
     }

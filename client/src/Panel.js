@@ -382,6 +382,7 @@ const handleTaylorClick = () => {
     .then((newBirthchart) => {
         updateBirthchart(newBirthchart);
         updateChartTitle(Moment('Wed Dec 13 1989 05:17:41 GMT-0700 (Eastern Daylight Time)').format('MMMM D, YYYY'),Moment('05:17', 'HH:mm').format('hh:mm A'),{'lng':-75.94,'lat':40.33});
+        document.getElementById('asc').value = newBirthchart['asc'];
     });
   
   setTimeout(()=>{
