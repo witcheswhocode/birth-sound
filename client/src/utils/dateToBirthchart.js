@@ -10,11 +10,9 @@ export async function nowToBirthchart(){
     var time = await ts.getFuzzyLocalTimeFromPoint(new Date(date), birthlocation);
     const url = "time="+ts.getFuzzyLocalTimeFromPoint(new Date(time), birthlocation).format().replaceAll(':','%3A')
                                                                     +"&latitude="+birthlocation[1]+"&longitude="+birthlocation[0]
-    console.log('what');
     return fetch("/api/horoscope?"+url)
         .then(res => res.json())
         .then((result)=>{
-            console.log("first");
             return {"sun":apiSignOrder[result.data.astros.sun.sign-1],
                     "moon":apiSignOrder[result.data.astros.moon.sign-1],
                     "mercury":apiSignOrder[result.data.astros.mercury.sign-1],
@@ -30,7 +28,6 @@ export async function nowToBirthchart(){
             return fetch(host+"/horoscope?"+url)
             .then(res => res.json())
             .then((result)=>{
-                console.log(result.data.axes.asc);
                 return {"sun":apiSignOrder[result.data.astros.sun.sign-1],
                         "moon":apiSignOrder[result.data.astros.moon.sign-1],
                         "mercury":apiSignOrder[result.data.astros.mercury.sign-1],
@@ -71,7 +68,6 @@ export async function dateToBirthchart(birthdate,birthtime,birthlocation){
             return fetch(host+"/horoscope?"+url)
             .then(res => res.json())
             .then((result)=>{
-                console.log(error);
                 return {"sun":apiSignOrder[result.data.astros.sun.sign-1],
                         "moon":apiSignOrder[result.data.astros.moon.sign-1],
                         "mercury":apiSignOrder[result.data.astros.mercury.sign-1],

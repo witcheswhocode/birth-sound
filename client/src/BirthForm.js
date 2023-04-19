@@ -22,7 +22,6 @@ const BirthForm = (props) =>  {
                                     };
   const handleError = (errors) => {console.log(errors)};
   const handleAlternateClick = (liftedValue) => {
-      console.log("handleAlternateClick");
       setLocation(liftedValue);
   }
 

@@ -60,7 +60,6 @@ export class Birthchart {
   }
   sortSignOrderToGenerateChart() {
     // asc should be the sixth item in the list
-    console.log(this.getAscendent());
     var sisterIndex = signOrder.indexOf(
       signInfo[this.getAscendent()]["sister"]
     );
@@ -74,7 +73,6 @@ export class Birthchart {
         signOrder.slice(0, sisterIndex + 1)
       ).split(",");
     } else {
-      console.log("else on sign order sort!!!");
       return signOrder;
     }
   }

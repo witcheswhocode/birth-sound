@@ -118,7 +118,6 @@ const Panel = (props) =>  {
   const [userInput, setUserInput] = useState('');
   
   function playNote(now,planet){
-    console.log(signToNotesLemniscate[currentBirthChart[planet]][type]+scale)
     sampler.triggerAttack(signToNotesLemniscate[currentBirthChart[planet]][type]+scale,now);  
     sampler.triggerRelease(now+1);
   }

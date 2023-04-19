@@ -17,7 +17,6 @@ const houses = (date, position) => {
   const sunriseHr = (sunrise.sunrise).toLocaleTimeString("en-US", { timeZone: timezone }).split(':')[0];
   const numHours = 1
   // 
-  console.log(sunriseHr);
   /*if (sunriseHr <= 5 && sunriseHr >= 4){
     console.log('0');
     date.setTime(date.getTime() + 1 * 60 * 60 * 1000)

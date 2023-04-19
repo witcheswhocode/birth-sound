@@ -21,6 +21,7 @@ const Canvas = (props) => {
     let height;
     let context;
     useEffect(() => {
+      console.log("useEffect");
       const canvas = canvasRef.current;
       canvas.width = 600;
       canvas.height = 600;
@@ -33,15 +34,10 @@ const Canvas = (props) => {
       context.fillRect(0, 0, width, height);
 
       context.fillStyle = 'white';
-      console.log('useEffect');
 
       nowToBirthchart().then((chart)=>{
-        console.log('before:');
-        console.log(chart);
         birthchart = new Birthchart(chart,width,height,context);
         setBirthchart(birthchart);
-        console.log('after');  
-        console.log(chart);
         setTimeout(function(){
           const bc = birthchart.createBirthChart(width,height);
         }, 250);
@@ -72,7 +68,6 @@ const Canvas = (props) => {
       const canvas = canvasRef.current;
       canvas.width = 600;
       canvas.height = 600;
-      console.log('handleBirthchartChange');
       context = canvas.getContext('2d');
       width = canvas.width;
       height = canvas.height;
@@ -87,7 +82,6 @@ const Canvas = (props) => {
 
     const handleAlternateClick = (liftedValue, planet, time) => {
       //setLiftedValue(liftedValue);
-      console.log("handleAlternateClick");
         setTimeout(() => {
           currentBirthchart.colorArc(liftedValue,'Active');
 
@@ -102,11 +96,9 @@ const Canvas = (props) => {
           const elem = document.getElementById(planet);
           elem.classList.toggle('active');
         }, (1000*time)+500);
-      console.log(liftedValue)
     }
     
     const handleOtherAlternateClick = (liftedValue, time) => {
-      console.log("handleOtherAlternateClick");
       setTimeout(() => {
         birthchart.colorArc(liftedValue,'Active');
       }, 1000*time);
@@ -115,7 +107,6 @@ const Canvas = (props) => {
       }, (1000*time)+500);
     }
     const handleRhythmAlternateClick = (liftedValue, time) => {
-        console.log("handleRhythmAlternateClick");
         setTimeout(() => {
           birthchart.colorArc(liftedValue,'Active');
         }, 1000*time);
