@@ -17,7 +17,8 @@ const BirthForm = (props) =>  {
                                         dateToBirthchart(birthdate,birthtime,[birthlocation['lng'], birthlocation['lat']])
                                         .then((newBirthchart) => {
                                             updateBirthchart(newBirthchart);
-                                            updateChartTitle(Moment(birthdate).format('MMMM D, YYYY'),Moment(birthtime, 'HH:mm').format('hh:mm A'),birthlocation);
+                                            updateChartTitle(Moment(birthdate).format('MMMM D, YYYY'),Moment(birthtime, 'HH:mm').format('hh:mm A'),birthlocation); 
+                                            document.getElementById('asc').value = newBirthchart['asc'];
                                         });
                                     };
   const handleError = (errors) => {console.log(errors)};
