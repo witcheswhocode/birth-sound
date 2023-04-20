@@ -17,7 +17,7 @@ const houses = (date, position) => {
   const sunriseHr = (sunrise.sunrise).toLocaleTimeString("en-US", { timeZone: timezone }).split(':')[0];
   const numHours = 1
   // 
-  /*if (sunriseHr <= 5 && sunriseHr >= 4){
+  if (sunriseHr <= 5 && sunriseHr >= 4){
     console.log('0');
     date.setTime(date.getTime() + 1 * 60 * 60 * 1000)
   }
@@ -32,13 +32,13 @@ const houses = (date, position) => {
   else if (sunriseHr > 7 && sunriseHr <= 8){
     console.log('3');
     date.setTime(date.getTime() - 1 * 60 * 60 * 1000)
-  }*/
+  }
   // works for liz, stevo, dad. 7am sunrise, 6-630 birthtime
   /*if (sunriseHr => 7 && sunriseHr <= 8){
     date.setTime(date.getTime() - 3 * 60 * 60 * 1000)
   }*/    
   // subtracting 3 somehow returns the right ascendent the most
-  date.setTime(date.getTime() - 3 * 60 * 60 * 1000)
+  //date.setTime(date.getTime() - 3 * 60 * 60 * 1000)
   // 1:50pm +3
 
   const julianDayUT = utcToJulianUt(date)
