@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Tone from "tone";
 import {mergeDurationVelocityAndPitch,mergeDurationsAndPitch} from "./Rhythm";
-import {planets,type,scale} from './data/settings';
+import {planets,type,scale,taylorChart,macmillerChart,rihannaChart} from './data/settings';
 import Moment from 'moment';
 import { dateToBirthchart } from "./utils/dateToBirthchart";
 
@@ -115,7 +115,7 @@ const signToNotesLemniscate = require('./data/signsPianoNotes.json');
 
 
 const Panel = (props) =>  {
-  const { alternateClick, currentBirthChart, updateBirthchart, updateChartTitle } = props;
+  const { alternateClick, currentBirthChart, updateBirthchart, updateChartTitle, setLiftedValue } = props;
 
   const [userInput, setUserInput] = useState('');
   
@@ -377,37 +377,17 @@ const mariamaria = () => {
   Tone.Transport.start("+0.1");
 }
 
-const handleTaylorClick = () => {
-  dateToBirthchart('Wed Dec 13 1989 05:17:41 GMT-0700 (Eastern Daylight Time)','05:17',[-75.94, 40.33])
-    .then((newBirthchart) => {
-        updateBirthchart(newBirthchart);
-        updateChartTitle(Moment('Wed Dec 13 1989 05:17:41 GMT-0700 (Eastern Daylight Time)').format('MMMM D, YYYY'),Moment('05:17', 'HH:mm').format('hh:mm A'),{'lng':-75.94,'lat':40.33});
-        document.getElementById('asc').value = newBirthchart['asc'];
-    });
+const handleCelebClick = (data) => {
+  updateBirthchart(data);
+  updateChartTitle(Moment(data['day']).format('MMMM D, YYYY'),Moment(data['time'], 'HH:mm').format('hh:mm A'),data['location']);
+  document.getElementById('asc').value = data['asc'];
   
   setTimeout(()=>{
     const now = Tone.now();
     let nowInc = 0;
     for (var planet in planets) {
       playNote(now+nowInc,planets[planet]);
-      alternateClick(currentBirthChart[planets[planet]],planets[planet],(nowInc));
-      nowInc += 0.5;
-    };
-  }, 1000);
-}
-const handleRihannaClick = () => {
-  dateToBirthchart('Sat Feb 20 1988 08:50:41 GMT-0700 (Eastern Daylight Time)','08:50',[59.61, 13.10])
-    .then((newBirthchart) => {
-        updateBirthchart(newBirthchart);
-        updateChartTitle(Moment('Sat Feb 20 1988 08:50:41 GMT-0700 (Eastern Daylight Time)').format('MMMM D, YYYY'),Moment('08:50', 'HH:mm').format('hh:mm A'),{'lng':59.61,'lat':13.10});
-    });
-  
-  setTimeout(()=>{
-    const now = Tone.now();
-    let nowInc = 0;
-    for (var planet in planets) {
-      playNote(now+nowInc,planets[planet]);
-      alternateClick(currentBirthChart[planets[planet]],planets[planet],(nowInc));
+      alternateClick(data[planets[planet]],planets[planet],(nowInc));
       nowInc += 0.5;
     };
   }, 1000);
@@ -418,7 +398,8 @@ const handleRihannaClick = () => {
   return(
       <div id="panel">
           <button id="button" onClick={handleOtherClick}>🔉 Play Birth Chart</button>
-          <button id="button" onClick={handleTaylorClick}>🎹 Taylor Swift</button>
+          <button id="button" onClick={() => handleCelebClick(taylorChart)}>🎹 Taylor Swift</button>
+          <button id="button" onClick={() => handleCelebClick(rihannaChart)}>🎤 Rihanna</button>
       </div>
   )
 }

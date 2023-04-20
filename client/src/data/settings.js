@@ -11,8 +11,8 @@ export const type = 'major';
 
 const lizBirthChart = require('./lizbc.json');
 const krystophChart = require('./krystophbc.json');
-const taylorChart = require('./taylorbc.json');
+export const taylorChart = require('./taylorbc.json');
 export const rihannaChart = require('./rihannabc.json');
-const macmillerChart = require('./macmbc.json'); // chart is off by one shift
+export const macmillerChart = require('./macmbc.json'); // chart is off by one shift
 const britthowardChart = require('./brittanyhbc.json');
 export const currentBirthChart = lizBirthChart;

@@ -73,11 +73,13 @@ const Canvas = (props) => {
       height = canvas.height;
       context.clearRect(0, 0, width, height);
       birthchart = new Birthchart(chart,width,height,context);
+      console.log(chart);
+      console.log(birthchart);
+      setLiftedValue(chart);
       setBirthchart(birthchart);
       setTimeout(function(){
         const bc = birthchart.createBirthChart(width,height);
       }, 250);
-      setLiftedValue(chart);
     }
 
     const handleAlternateClick = (liftedValue, planet, time) => {
