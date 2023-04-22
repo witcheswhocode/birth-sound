@@ -40,6 +40,7 @@ class ArcLocation {
 }
 export class Birthchart {
   constructor(array, width, height, context) {
+    console.log('constructing...');
     for (var i = 0; i < planets.length; i++) {
       this[planets[i]] = array[planets[i]];
     }

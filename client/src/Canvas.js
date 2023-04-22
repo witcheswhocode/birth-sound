@@ -7,13 +7,18 @@ import { rihannaChart } from './data/settings';
 import { Birthchart } from './BirthchartClass';
 import EmojiLinebreak from './EmojiLinebreak';
 import Moment from 'moment';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from './redux/birthchart/birthchartSlice'
+
 
 const Canvas = (props) => {
   const { updateBirthchartList,birthchartprop } = props;
   const canvasRef = useRef(null);
   let birthchart;
   const [liftedValue, setLiftedValue] = useState('');
-  const [currentBirthchart, setBirthchart] = useState(birthchart);
+  //const [currentBirthchart, setBirthchart] = useState(birthchart);
+  const dispatch = useDispatch();
+  let cBirthChart = useSelector((state) => state.counter.value);
   
     
     //let birthchart;
@@ -36,10 +41,12 @@ const Canvas = (props) => {
       context.fillStyle = 'white';
 
       nowToBirthchart().then((chart)=>{
-        birthchart = new Birthchart(chart,width,height,context);
-        setBirthchart(birthchart);
+        //birthchart = new Birthchart(chart,width,height,context);
+        //setBirthchart(birthchart);
+        dispatch(increment({chart:chart,width:width,height:height,context:context}));
+        console.log(cBirthChart);
         setTimeout(function(){
-          const bc = birthchart.createBirthChart(width,height);
+          const bc = cBirthChart.createBirthChart(width,height);
         }, 250);
         setLiftedValue(chart);
       })
@@ -72,27 +79,28 @@ const Canvas = (props) => {
       width = canvas.width;
       height = canvas.height;
       context.clearRect(0, 0, width, height);
-      birthchart = new Birthchart(chart,width,height,context);
-      console.log(chart);
-      console.log(birthchart);
+      dispatch(increment({chart:chart,width:width,height:height,context:context}));
+     //birthchart = new Birthchart(chart,width,height,context);
+      console.log(cBirthChart)
       setLiftedValue(chart);
-      setBirthchart(birthchart);
+      //setBirthchart(birthchart);
       setTimeout(function(){
-        const bc = birthchart.createBirthChart(width,height);
+        const bc = cBirthChart.createBirthChart(width,height);
       }, 250);
+      console.log(cBirthChart)
     }
 
     const handleAlternateClick = (liftedValue, planet, time) => {
       //setLiftedValue(liftedValue);
         setTimeout(() => {
-          currentBirthchart.colorArc(liftedValue,'Active');
+          cBirthChart.colorArc(liftedValue,'Active');
 
           // highlight birthchart list
           const elem = document.getElementById(planet);
           elem.classList.toggle('active');
         }, 1000*time);
         setTimeout(() => {
-          currentBirthchart.colorArc(liftedValue,'');
+          cBirthChart.colorArc(liftedValue,'');
 
           // highlight birthchart list
           const elem = document.getElementById(planet);
@@ -117,9 +125,10 @@ const Canvas = (props) => {
         }, (1000*time)+500);
     }
     const handleAscChange = (newAsc) => {
-        currentBirthchart['asc'] = newAsc;
-        setBirthchart(currentBirthchart);
-        handleBirthchartChange(currentBirthchart);
+        cBirthChart['asc'] = newAsc;      
+        //dispatch(decrement(newAsc));
+        //setBirthchart(currentBirthchart);
+        handleBirthchartChange(cBirthChart);
     }
     const handleUpdateChartTitle = (birthday,time,location) => {
       document.getElementById('chart-title').textContent = birthday + ' ' + time;
@@ -138,7 +147,7 @@ const Canvas = (props) => {
               <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
               <canvas id='can' ref={canvasRef} {...props}></canvas>
             </div>
-            <Panel updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
+            <Panel updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} cBirthChart={cBirthChart} alternateClick={handleAlternateClick} />
             <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
             <p className="disclaimer-p">If your ascendant is wrong, click the dropdown and change it. The API can be off sometimes.</p>
           </div>
