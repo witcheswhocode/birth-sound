@@ -7,6 +7,7 @@ import { rihannaChart } from './data/settings';
 import { Birthchart } from './BirthchartClass';
 import EmojiLinebreak from './EmojiLinebreak';
 import Moment from 'moment';
+import Wheel from './Wheel';
 
 const Canvas = (props) => {
   const { updateBirthchartList,birthchartprop } = props;
@@ -136,6 +137,7 @@ const Canvas = (props) => {
               <h3 id='chart-coords'>Coords: -118.2437, 34.0522</h3>
               <canvas id='can' ref={canvasRef} {...props}></canvas>
             </div>
+            <Wheel birthchart={liftedValue} />
             <Panel updateBirthchart={handleBirthchartChange} updateChartTitle={handleUpdateChartTitle} currentBirthChart={liftedValue} alternateClick={handleAlternateClick} otherAlternateClick={handleOtherAlternateClick} rhythmAlternateClick={handleRhythmAlternateClick} />
             <SignList birthchartprop={liftedValue} ascChange={handleAscChange} />
             <p className="disclaimer-p">If your ascendant is wrong, click the dropdown and change it. The API can be off sometimes.</p>
